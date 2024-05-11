@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PawPals</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_article">Article</string>
+    <string name="menu_community">Community</string>
+    <string name="menu_schedule">Schedule</string>
+    <string name="menu_profile">Profile</string>
 </resources>
