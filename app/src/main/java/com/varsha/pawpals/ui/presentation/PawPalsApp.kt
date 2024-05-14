@@ -62,7 +62,7 @@ fun PawPalsApp(
                 .padding(contentPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(navController)
             }
 
             composable(Screen.Article.route) {
@@ -78,9 +78,8 @@ fun PawPalsApp(
             }
 
             composable(Screen.Profile.route) {
-                ProfileScreen()
+                ProfileScreen(onBackClicked = {})
             }
-
         }
     }
 }

@@ -16,9 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PawPalsTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PawPalsApp()
-                }
+                PawPalsApp()
             }
         }
     }
