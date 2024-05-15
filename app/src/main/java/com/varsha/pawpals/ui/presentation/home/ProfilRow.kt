@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -32,7 +33,7 @@ import com.varsha.pawpals.R
 
 @Composable
 fun ProfilRow(
-    navController: NavHostController,
+//    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     val profil = DataUser.User
@@ -61,7 +62,8 @@ fun ProfilRow(
         Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = DataUser.User.nama,
-            style = MaterialTheme.typography.titleMedium, fontSize = 20.sp,
+            style = MaterialTheme.typography.titleMedium,
+            fontSize = 20.sp,
             modifier = Modifier.weight(1f)
         )
         Icon(
@@ -80,3 +82,10 @@ fun ProfilRow(
         )
     }
 }
+
+@Preview (showBackground = true )
+@Composable
+private fun ProfileRowPreview() {
+    ProfilRow(modifier = Modifier)
+}
+
