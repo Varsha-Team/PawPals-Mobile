@@ -21,10 +21,35 @@ object DataArticle {
     )
 
     val kategoriArtikel = listOf(
-                KategoriArtikel(
-                    id = 1,
-                    tagname = "Pet Health",
-                    photo = R.drawable.logo_pawpals,
-                )
-            )
+        KategoriArtikel(
+            id = 1,
+            tagname = "Pet Health",
+            photo = R.drawable.article_dog,
+            title = "Cara Merawat Anjing Seperti Anak Sendiri Bagian Pertama"
+        ),
+        KategoriArtikel(
+            id = 2,
+            tagname = "Pet Health",
+            photo = R.drawable.article_dog,
+            title = "Cara Merawat Anjing Seperti Anak Sendiri Bagian Pertama"
+        ),
+        KategoriArtikel(
+            id = 3,
+            tagname = "Pet Health",
+            photo = R.drawable.article_dog,
+            title = "Cara Merawat Anjing Seperti Anak Sendiri Bagian Pertama"
+        ),
+        KategoriArtikel(
+            id = 4,
+            tagname = "Pet Health",
+            photo = R.drawable.article_dog,
+            title = "Cara Merawat Anjing Seperti Anak Sendiri Bagian Pertama"
+        ),
+        KategoriArtikel(
+            id = 5,
+            tagname = "Pet Health",
+            photo = R.drawable.article_dog,
+            title = "Cara Merawat Anjing Seperti Anak Sendiri Bagian Pertama"
+        )
+    )
 }

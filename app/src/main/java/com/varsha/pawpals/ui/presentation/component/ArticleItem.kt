@@ -88,8 +88,9 @@ private fun ArticleItemPrev() {
         ArticleItem(
             kategoriArtikel = KategoriArtikel(
                 1,
-                tagname = "Pet Health",
-                R.drawable.logo_pawpals
+                "Pet Health",
+                R.drawable.logo_pawpals,
+                "Null"
             )
         )
     }
