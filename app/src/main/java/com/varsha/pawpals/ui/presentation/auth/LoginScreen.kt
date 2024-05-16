@@ -22,7 +22,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -269,7 +268,7 @@ fun LoginScreen (
 
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.group46fb),
+                        painter = painterResource(id = R.drawable.logo_fb),
                         contentDescription = "icon fb",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
@@ -280,7 +279,7 @@ fun LoginScreen (
                             .clip(CircleShape)
                     )
                     Image(
-                        painter = painterResource(id = R.drawable.group45google),
+                        painter = painterResource(id = R.drawable.logo_google),
                         contentDescription = "icon fb",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier

@@ -6,7 +6,7 @@ object DataUser {
     val User = UserData (
         id = 1,
         nama = "Varsha",
-        photo = R.drawable.p1,
+        photo = R.drawable.profile_photo,
         email = "varshaaaaaa@gmail.com",
         pass = "1234",
         no_hp = "0000",
