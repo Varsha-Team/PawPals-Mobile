@@ -78,7 +78,7 @@ fun PawPalsApp(
             }
 
             composable(Screen.Profile.route) {
-                ProfileScreen(onBackClicked = {})
+                ProfileScreen()
             }
         }
     }

@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Accessibility
 import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material.icons.filled.PeopleAlt
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -59,10 +60,11 @@ fun HomeCommunity(modifier: Modifier = Modifier) {
                     )
             ) {
                 Icon(
-                    imageVector = Icons.Default.Accessibility,
+                    imageVector = Icons.Default.PeopleAlt,
                     contentDescription = "Icon Community",
                     modifier = Modifier
-                        .fillMaxSize()
+                        .size(40.dp)
+                        .align(Alignment.Center)
                 )
             }
 
