@@ -70,14 +70,8 @@ fun ArticleItem(
                     imageVector = Icons.Default.ArrowForwardIos,
                     contentDescription = "Back"
                 )
-
             }
-
         }
-
-
-
-
     }
 }
 

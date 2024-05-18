@@ -47,6 +47,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.R
+import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -100,8 +101,7 @@ fun LoginScreen (
                 )
                 Column(
                     modifier = Modifier
-                        .width(315.dp)
-                        .height(75.dp)
+                        .padding(32.dp, 0.dp)
                 ) {
                     Text(
                         text = "Email",
@@ -116,35 +116,18 @@ fun LoginScreen (
                             textAlign = TextAlign.Center,
                         )
                     )
-                    TextField(
+                    TextFieldItem(
                         value = textInput,
                         onValueChange = { textInput = it },
-                        label = { Text(
-                            "Enter Email",
-                            fontSize = 12.sp,
-                        ) },
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = androidx.compose.ui.graphics.Color.White
-                        ),
-                        modifier = Modifier
-                            .shadow(
-                                elevation = 4.dp,
-                                spotColor = Color(0x40000000),
-                                ambientColor = Color(0x40000000)
-                            )
-                            .border(
-                                width = 1.dp,
-                                color = Color(0x66000000),
-                                shape = RoundedCornerShape(size = 10.dp)
-                            )
-                            .clip(RoundedCornerShape(10.dp))
-                            .width(312.dp)
-                            .height(48.dp)
-                            .padding(0.5.dp)
+                        label = "Enter Username",
+                        keyboardType = KeyboardType.Text,
                     )
                 }
 
-                Column {
+                Column (
+                    modifier = Modifier
+                        .padding(32.dp, 0.dp)
+                ){
                     Text(
                         text = "Kata Sandi",
                         modifier = Modifier
@@ -158,33 +141,12 @@ fun LoginScreen (
                             textAlign = TextAlign.Center
                         )
                     )
-                    TextField(
+                    TextFieldItem(
                         value = password,
                         onValueChange = { password = it },
-                        label = { Text(
-                            "Enter Password",
-                            fontSize = 12.sp,
-                        ) },
-                        visualTransformation = PasswordVisualTransformation(),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = androidx.compose.ui.graphics.Color.White
-                        ),
-                        modifier = Modifier
-                            .shadow(
-                                elevation = 4.dp,
-                                spotColor = Color(0x40000000),
-                                ambientColor = Color(0x40000000)
-                            )
-                            .border(
-                                width = 1.dp,
-                                color = Color(0x66000000),
-                                shape = RoundedCornerShape(size = 10.dp)
-                            )
-                            .clip(RoundedCornerShape(10.dp))
-                            .width(312.dp)
-                            .height(48.dp)
-                            .padding(0.5.dp)
+                        label = "Enter Password",
+                        keyboardType = KeyboardType.Text,
+                        isPassword = true
                     )
                 }
 
