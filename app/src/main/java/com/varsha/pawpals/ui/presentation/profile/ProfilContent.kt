@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -55,7 +56,8 @@ fun ProfilContent(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         imageVector = Icons.Default.AccountCircle,
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = Color(0xFFD05440)
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
@@ -67,6 +69,7 @@ fun ProfilContent(
                 Icon(
                     imageVector = Icons.Default.ArrowForwardIos,
                     contentDescription = null,
+                    tint = Color(0xFFD05440)
                 )
             }
 
@@ -80,7 +83,8 @@ fun ProfilContent(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         imageVector = Icons.Default.NotificationsNone,
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = Color(0xFFD05440)
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
@@ -92,6 +96,7 @@ fun ProfilContent(
                 Icon(
                     imageVector = Icons.Default.ArrowForwardIos,
                     contentDescription = null,
+                    tint = Color(0xFFD05440)
                 )
             }
 
@@ -105,7 +110,8 @@ fun ProfilContent(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         imageVector = Icons.Default.Logout,
-                        contentDescription = null
+                        contentDescription = null,
+                        tint = Color(0xFFD05440)
                     )
                     Spacer(modifier = Modifier.padding(8.dp))
                     Text(
@@ -117,8 +123,15 @@ fun ProfilContent(
                 Icon(
                     imageVector = Icons.Default.ArrowForwardIos,
                     contentDescription = null,
+                    tint = Color(0xFFD05440)
                 )
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun ProfilContentPreview() {
+    ProfilContent()
 }

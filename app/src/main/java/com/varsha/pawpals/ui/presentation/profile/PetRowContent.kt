@@ -62,12 +62,14 @@ fun PetRowContent(modifier: Modifier = Modifier) {
                     text = "Jumlah Pets",
                     fontSize = 25.sp,
                     lineHeight = 19.sp,
+                    color = Color(0xFF973B2C),
                     fontWeight = FontWeight(600),
                 )
                 Text(
                     text = "2",
                     fontSize = 42.sp,
                     lineHeight = 19.sp,
+                    color = Color(0xFF973B2C),
                     fontWeight = FontWeight(600),
                 )
             }
