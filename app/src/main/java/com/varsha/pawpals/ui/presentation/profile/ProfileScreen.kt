@@ -80,7 +80,9 @@ fun ProfileScreen() {
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
+                    color = Color(0xFF973B2C),
                     modifier = Modifier.align(Alignment.Center)
+
                 )
                 BackIconItem(
                     onBackClicked = { /*TODO*/ },
@@ -104,6 +106,9 @@ fun ProfileScreen() {
                     contentDescription = "Profil Photo",
                     modifier = Modifier
                         .size(200.dp)
+                        .border(
+                            width = 3.dp, Color(0xFFD05440), shape = RoundedCornerShape(size = 110.dp)
+                        )
                         .clip(CircleShape),
                     contentScale = ContentScale.Crop
                 )
