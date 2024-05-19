@@ -13,4 +13,6 @@ sealed class Screen(val route: String) {
 
     // OTHERS MENU
     data object Pets : Screen("pets")
+    data object ExploreArticle : Screen("explore_article")
+    data object DetailArticle : Screen("detail_article")
 }
