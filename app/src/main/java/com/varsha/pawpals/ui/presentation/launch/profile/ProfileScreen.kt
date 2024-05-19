@@ -1,4 +1,4 @@
-package com.varsha.pawpals.ui.presentation.profile
+package com.varsha.pawpals.ui.presentation.launch.profile
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
