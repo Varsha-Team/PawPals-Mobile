@@ -23,13 +23,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.varsha.pawpals.navigation.NavigationItem
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.ArticleScreen
+import com.varsha.pawpals.ui.presentation.article.DetailArticleScreen
+import com.varsha.pawpals.ui.presentation.article.ExploreArticleScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
 import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
@@ -65,8 +69,8 @@ fun PawPalsApp(
                 HomeScreen(navController)
             }
 
-            composable(Screen.Article.route) {
-                ArticleScreen()
+            composable(Screen.Article.route){
+                ArticleScreen( navController = navController)
             }
 
             composable(Screen.Community.route) {
@@ -80,6 +84,28 @@ fun PawPalsApp(
             composable(Screen.Profile.route) {
                 ProfileScreen()
             }
+
+            composable(
+                Screen.ExploreArticle.route + "/{kategoriArtikelId}",
+                arguments = listOf(navArgument("kategoriArtikelId"){type = NavType.IntType})
+                ){navBackStackEntry ->
+                ExploreArticleScreen(
+                    navController = navController,
+                    kategoriArtikelId = navBackStackEntry.arguments?.getInt("kategoriArtikelId")
+                )
+            }
+
+            composable(
+                Screen.DetailArticle.route + "/{artikelId}",
+                arguments = listOf(navArgument("artikelId"){type = NavType.IntType})
+                ){navBackStackEntry ->
+                DetailArticleScreen(
+                    navController = navController,
+                    artikelId = navBackStackEntry.arguments?.getInt("artikelId"),
+                //    kategoriArtikelId = navBackStackEntry.arguments?.getInt("kategoriArtikelId"),
+                  )
+            }
+
         }
     }
 }
