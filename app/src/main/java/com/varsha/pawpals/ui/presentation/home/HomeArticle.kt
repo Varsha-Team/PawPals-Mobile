@@ -55,7 +55,7 @@ fun HomeArticle(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-        ) { 
+        ) {
             Text(
                 text = "Artikel",
                 style = MaterialTheme.typography.titleLarge,
