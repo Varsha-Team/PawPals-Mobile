@@ -23,7 +23,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -41,10 +40,9 @@ import com.varsha.pawpals.ui.presentation.auth.LoginScreen
 import com.varsha.pawpals.ui.presentation.auth.RegisterScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
+import com.varsha.pawpals.ui.presentation.onboarding.OnboardingScreen
 import com.varsha.pawpals.ui.presentation.profile.EditProfileScreen
 import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
-import com.varsha.pawpals.ui.presentation.launch.profile.ProfileScreen
-import com.varsha.pawpals.ui.presentation.onboarding.OnboardingScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
 
 // Background Color
