@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.ui.presentation.component.ScaffoldProfile
@@ -33,7 +34,7 @@ fun HomeScreen(
     ) { contentPadding ->
         Column(
             modifier = Modifier
-                .background(color =  Color(0xFFFBEDEC))
+                .background(color = Color(0xFFFBEDEC))
                 .verticalScroll(scrollState)
                 .padding(contentPadding)
         ) {
@@ -48,7 +49,7 @@ fun HomeScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                HomeArticle()
+                HomeArticle(navController = rememberNavController())
 
                 Spacer(modifier = Modifier.height(16.dp))
 

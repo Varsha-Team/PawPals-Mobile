@@ -21,6 +21,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.DataUser
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.schedule.addPet.ColumnAddPet
@@ -30,7 +32,8 @@ import com.varsha.pawpals.ui.theme.PawPalsTheme
 @Composable
 
 fun AddPetScreen(
-    onBackClicked: () -> Unit
+    onBackClicked: () -> Unit,
+    navController: NavController
 ) {
     val profil = DataUser.User
 
@@ -52,7 +55,7 @@ fun AddPetScreen(
                     modifier = Modifier.align(Alignment.Center)
                 )
                 BackIconItem(
-                    onBackClicked = { /*TODO*/ },
+                    onBackClicked = { navController.navigateUp() },
                     modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
@@ -89,6 +92,8 @@ fun AddPetScreen(
 @Composable
 private fun AddPetScreenPreview() {
     PawPalsTheme {
-        AddPetScreen(onBackClicked = {})
+        AddPetScreen(onBackClicked = {},
+            navController = rememberNavController()
+        )
     }
 }

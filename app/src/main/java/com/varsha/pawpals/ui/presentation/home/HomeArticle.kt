@@ -36,16 +36,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.varsha.pawpals.R
 import com.varsha.pawpals.data.DataArticle
 import com.varsha.pawpals.model.KategoriArtikel
+import com.varsha.pawpals.navigation.Screen
 
 @Composable
 fun HomeArticle(
     modifier: Modifier = Modifier,
+    navController: NavController,
     article: List<KategoriArtikel> = DataArticle.kategoriArtikel,
 ) {
-    
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -55,6 +58,7 @@ fun HomeArticle(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
+                .clickable { navController.navigate(Screen.Article.route) }
         ) {
             Text(
                 text = "Artikel",
@@ -65,7 +69,7 @@ fun HomeArticle(
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .clickable {  }
+
             ) {
                 Text(text = "Semua")
                 Spacer(modifier = Modifier.width(8.dp))
@@ -161,7 +165,7 @@ fun LazyArticle(
 @Preview (showBackground = true)
 @Composable
 private fun HomeArticlePreview() {
-//    HomeArticle()
+ //   HomeArticle()
     LazyArticle(article = KategoriArtikel(
         1,
         "a",

@@ -3,6 +3,7 @@ package com.varsha.pawpals.ui.presentation.schedule
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +30,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.data.DataPet
 import com.varsha.pawpals.model.PetData
+import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 import com.varsha.pawpals.ui.presentation.profile.AddPetScreen
@@ -58,17 +60,18 @@ fun ScheduleScreen(
                     modifier = Modifier.align(Alignment.Center)
 
                 )
-                BackIconItem(
-                    onBackClicked = { /*TODO*/ },
-                    modifier = Modifier.align(Alignment.CenterStart)
-                )
+//                BackIconItem(
+//                    onBackClicked = { navController.navigateUp() },
+//                    modifier = Modifier.align(Alignment.CenterStart)
+//                )
             }
         },
         floatingActionButton = {
             ButtonItem1(
                 text = "Add Pets",
                 icon = Icons.Default.Add,
-                onClick = { navController.navigate("addPetScreen") }
+                //modifier = Modifier.clickable { navController.navigate(Screen.AddPet.route) }
+                onClick = { navController.navigate(Screen.AddPet.route) }
             )
         }
     ) { contentPadding ->
@@ -79,22 +82,24 @@ fun ScheduleScreen(
                 .fillMaxSize()
                 .background(color = Color(0xFFFBEDEC)),
         ) {
-            items(petProfil, key = { it.id }) {
-                PetProfilContent(pet = it)
+            items(
+                petProfil, key = { it.id }
+            ) {
+                PetProfilContent(pet = it, navController = rememberNavController())
             }
         }
     }
 }
 
-@Composable
-fun PetScreenNavHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") { /* Your Home Screen Content */ }
-        composable("addPetScreen") { AddPetScreen(onBackClicked = {}) }
-        composable("editPetScreen") { /* Your Edit Pet Screen Content */ }
-        composable("editPlanScreen") { /* Your Edit Plan Screen Content */ }
-    }
-}
+//@Composable
+//fun PetScreenNavHost(navController: NavHostController) {
+//    NavHost(navController = navController, startDestination = "home") {
+//        composable("home") { /* Your Home Screen Content */ }
+//        composable("addPetScreen") { AddPetScreen(onBackClicked = {}) }
+//        composable("editPetScreen") { /* Your Edit Pet Screen Content */ }
+//        composable("editPlanScreen") { /* Your Edit Plan Screen Content */ }
+//    }
+//}
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)

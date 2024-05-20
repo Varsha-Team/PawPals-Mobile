@@ -40,10 +40,14 @@ import com.varsha.pawpals.ui.presentation.auth.LoginScreen
 import com.varsha.pawpals.ui.presentation.auth.RegisterScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
+import com.varsha.pawpals.ui.presentation.notification.NotificationScreen
 import com.varsha.pawpals.ui.presentation.onboarding.OnboardingScreen
+import com.varsha.pawpals.ui.presentation.profile.AddPetScreen
 import com.varsha.pawpals.ui.presentation.profile.EditProfileScreen
 import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
+import com.varsha.pawpals.ui.presentation.schedule.editPet.EditPetScreen
+import com.varsha.pawpals.ui.presentation.schedule.editPlan.EditPlanScreen
 
 // Background Color
 val backgroundColor = Brush.radialGradient(
@@ -79,15 +83,14 @@ fun PawPalsApp(
         NavHost(
             navController = navController,
             startDestination = Screen.Onboarding.route,
-            modifier = Modifier
-                .padding(contentPadding)
+            modifier = Modifier.padding(contentPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen(navController)
+                HomeScreen(navController = navController)
             }
 
-            composable(Screen.Article.route){
-                ArticleScreen( navController = navController)
+            composable(Screen.Article.route) {
+                ArticleScreen(navController = navController)
             }
 
             composable(Screen.Community.route) {
@@ -95,7 +98,7 @@ fun PawPalsApp(
             }
 
             composable(Screen.Schedule.route) {
-                ScheduleScreen(navController = rememberNavController())
+                ScheduleScreen(navController = navController)
             }
 
             composable(Screen.Profile.route) {
@@ -103,25 +106,41 @@ fun PawPalsApp(
             }
 
             composable(Screen.EditProfile.route) {
-                EditProfileScreen(navController = rememberNavController())
+                EditProfileScreen(navController = navController)
             }
 
-            composable(Screen.Onboarding.route){
+            composable(Screen.Onboarding.route) {
                 OnboardingScreen(navController = navController)
             }
-            
-            composable(Screen.Login.route){
+
+            composable(Screen.Login.route) {
                 LoginScreen(navController = navController)
             }
 
-            composable(Screen.Register.route){
+            composable(Screen.Register.route) {
                 RegisterScreen(navController = navController)
+            }
+
+            composable(Screen.Notification.route) {
+                NotificationScreen(navController = navController)
+            }
+
+            composable(Screen.AddPet.route) {
+                AddPetScreen(onBackClicked = {}, navController = navController)
+            }
+
+            composable(Screen.EditPet.route) {
+                EditPetScreen(onBackClicked = {}, navController = navController)
+            }
+
+            composable(Screen.EditPlan.route) {
+                EditPlanScreen(navController = navController)
             }
 
             composable(
                 Screen.ExploreArticle.route + "/{kategoriArtikelId}",
-                arguments = listOf(navArgument("kategoriArtikelId"){type = NavType.IntType})
-                ){navBackStackEntry ->
+                arguments = listOf(navArgument("kategoriArtikelId") { type = NavType.IntType })
+            ) { navBackStackEntry ->
                 ExploreArticleScreen(
                     navController = navController,
                     kategoriArtikelId = navBackStackEntry.arguments?.getInt("kategoriArtikelId")
@@ -130,15 +149,13 @@ fun PawPalsApp(
 
             composable(
                 Screen.DetailArticle.route + "/{artikelId}",
-                arguments = listOf(navArgument("artikelId"){type = NavType.IntType})
-                ){navBackStackEntry ->
+                arguments = listOf(navArgument("artikelId") { type = NavType.IntType })
+            ) { navBackStackEntry ->
                 DetailArticleScreen(
                     navController = navController,
-                    artikelId = navBackStackEntry.arguments?.getInt("artikelId"),
-                //    kategoriArtikelId = navBackStackEntry.arguments?.getInt("kategoriArtikelId"),
-                  )
+                    artikelId = navBackStackEntry.arguments?.getInt("artikelId")
+                )
             }
-
         }
     }
 }
@@ -159,22 +176,18 @@ private fun BottomBar(
                 icon = Icons.Outlined.Home,
                 screen = Screen.Home
             ),
-
             NavigationItem(
                 icon = Icons.Outlined.Search,
                 screen = Screen.Article
             ),
-
             NavigationItem(
                 icon = Icons.Outlined.Newspaper,
                 screen = Screen.Community
             ),
-
             NavigationItem(
                 icon = Icons.Outlined.EventAvailable,
                 screen = Screen.Schedule
             ),
-
             NavigationItem(
                 icon = Icons.Outlined.PersonOutline,
                 screen = Screen.Profile
@@ -193,13 +206,11 @@ private fun BottomBar(
                         launchSingleTop = true
                     }
                 },
-
                 icon = {
                     Icon(
                         imageVector = item.icon,
                         contentDescription = "Icon Bottom Bar",
-                        modifier = Modifier
-                            .size(25.dp)
+                        modifier = Modifier.size(25.dp)
                     )
                 }
             )
@@ -210,5 +221,5 @@ private fun BottomBar(
 @Preview(showBackground = true)
 @Composable
 private fun PawPalsAppPreview() {
-    //PawPalsApp()
+    // PawPalsApp()
 }

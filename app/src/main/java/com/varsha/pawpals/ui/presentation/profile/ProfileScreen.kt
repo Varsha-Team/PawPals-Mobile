@@ -60,10 +60,10 @@ fun ProfileScreen(
                     modifier = Modifier.align(Alignment.Center)
 
                 )
-                BackIconItem(
-                    onBackClicked = { /*TODO*/ },
-                    modifier = Modifier.align(Alignment.CenterStart)
-                )
+//                BackIconItem(
+//                    onBackClicked = { navController.navigateUp() },
+//                    modifier = Modifier.align(Alignment.CenterStart)
+//                )
             }
         }
     ) { contentPadding ->
