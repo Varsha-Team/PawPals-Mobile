@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -39,16 +40,16 @@ fun SearchTextFieldItem(
     TextField(
         value = value,
         onValueChange = onValueChange,
-        label = {
+        placeholder = {
             Row {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
                     tint = Color.Gray,
-                    modifier = Modifier.size(18.dp)
+                    modifier = Modifier.size(20.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(label, fontSize = 12.sp)
+                Text(label)
             }
         },
         visualTransformation = VisualTransformation.None,
@@ -69,7 +70,6 @@ fun SearchTextFieldItem(
             )
             .clip(RoundedCornerShape(10.dp))
             .width(253.dp)
-            .height(48.dp)
             .padding(0.5.dp)
     )
 }

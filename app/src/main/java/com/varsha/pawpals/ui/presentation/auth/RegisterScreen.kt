@@ -157,6 +157,7 @@ fun RegisterScreen (
                         textAlign = TextAlign.Center
                     )
                 )
+
                 TextFieldItem(
                     value = confirmpass,
                     onValueChange = { confirmpass = it },

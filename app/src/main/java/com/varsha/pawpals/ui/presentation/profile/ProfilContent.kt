@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.profile
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,14 +24,19 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.navigation.Screen
 
 @Composable
 fun ProfilContent(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    //onItemClicked: (Int) -> Unit
 ) {
     Card(
         modifier = modifier
-            .padding(16.dp, 16.dp)
+            .padding(16.dp)
             .shadow(
                 elevation = 4.dp,
                 spotColor = Color(0x40000000),
@@ -49,7 +55,10 @@ fun ProfilContent(
             Row(
                 modifier = Modifier
                     .padding(8.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .clickable {
+                        navController.navigate(Screen.EditProfile.route)
+                    },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -133,5 +142,6 @@ fun ProfilContent(
 @Preview
 @Composable
 private fun ProfilContentPreview() {
-    ProfilContent()
+    val navController = rememberNavController()
+    ProfilContent(navController = rememberNavController())
 }

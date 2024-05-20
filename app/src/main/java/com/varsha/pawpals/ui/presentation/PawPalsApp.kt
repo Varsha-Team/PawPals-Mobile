@@ -1,5 +1,7 @@
 package com.varsha.pawpals.ui.presentation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -27,11 +29,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.R
+import com.varsha.pawpals.model.UserData
 import com.varsha.pawpals.navigation.NavigationItem
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.ArticleScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
+import com.varsha.pawpals.ui.presentation.profile.EditProfileScreen
 import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
 
@@ -42,17 +47,20 @@ val backgroundColor = Brush.radialGradient(
     radius = 1500f
 )
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PawPalsApp(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
 ) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
     Scaffold(
         bottomBar = {
-            BottomBar(
-                navController = navController
-            )
+            if (currentRoute != Screen.EditProfile.route) {
+                BottomBar(navController = navController)
+            }
         }
     ) { contentPadding ->
         NavHost(
@@ -74,18 +82,22 @@ fun PawPalsApp(
             }
 
             composable(Screen.Schedule.route) {
-                ScheduleScreen()
+                ScheduleScreen(navController = rememberNavController())
             }
 
             composable(Screen.Profile.route) {
-                ProfileScreen()
+                ProfileScreen(navController = navController)
+            }
+
+            composable(Screen.EditProfile.route) {
+                EditProfileScreen(navController = rememberNavController())
             }
         }
     }
 }
 
 @Composable
-private fun BottomBar (
+private fun BottomBar(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
@@ -135,19 +147,21 @@ private fun BottomBar (
                     }
                 },
 
-                icon = { Icon(
-                    imageVector = item.icon,
-                    contentDescription = "Icon Bottom Bar",
-                    modifier = Modifier
-                        .size(25.dp))
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = "Icon Bottom Bar",
+                        modifier = Modifier
+                            .size(25.dp)
+                    )
                 }
             )
         }
     }
 }
 
-@Preview (showBackground = true)
+@Preview(showBackground = true)
 @Composable
 private fun PawPalsAppPreview() {
-    PawPalsApp()
+    //PawPalsApp()
 }

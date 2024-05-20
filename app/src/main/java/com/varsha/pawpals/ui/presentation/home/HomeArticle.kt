@@ -42,8 +42,8 @@ import com.varsha.pawpals.model.KategoriArtikel
 
 @Composable
 fun HomeArticle(
+    modifier: Modifier = Modifier,
     article: List<KategoriArtikel> = DataArticle.kategoriArtikel,
-    modifier: Modifier = Modifier
 ) {
     
     Column(
