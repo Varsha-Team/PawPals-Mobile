@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.article
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,6 +37,7 @@ import com.varsha.pawpals.model.Artikel
 import com.varsha.pawpals.model.KategoriArtikel
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.componentArticle.ExploreArticleItem
+import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,25 +70,27 @@ fun ExploreArticleScreenContent(
     //onBackClicked: () -> Unit
 ) {
     Scaffold(
-        modifier = Modifier,
         topBar = {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(86.dp, Alignment.Start),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp),
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFFBEDEC))
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center
             ) {
-                Box (
-                    modifier = Modifier
-                        .border(1.dp, Color.Black, RoundedCornerShape(16.dp))
-                ){
-                    IconButton(onClick = {navController.navigateUp()}) {
-                        Icon(Icons.Filled.ArrowBackIosNew, contentDescription = "Back")
-                    }
-                }
-                TopAppBar(title = { Text(
-                    text = "Article",
-                    textAlign = TextAlign.Center
-                ) })
+                Text(
+                    text = "Artikel",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight(600),
+                    textAlign = TextAlign.Center,
+                    color = Color(0xFF973B2C),
+                    modifier = Modifier.align(Alignment.Center)
+
+                )
+                BackIconItem(
+                    onBackClicked = { navController.navigateUp() },
+                    modifier = Modifier.align(Alignment.CenterStart)
+                )
             }
         }
     ) {contentPadding ->
@@ -94,8 +98,8 @@ fun ExploreArticleScreenContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .padding(contentPadding)
-                .padding(2.dp)
                 .fillMaxSize()
+                .background(color = Color(0xFFFBEDEC))
         ) {
             Column(
                 horizontalAlignment = Alignment.Start,

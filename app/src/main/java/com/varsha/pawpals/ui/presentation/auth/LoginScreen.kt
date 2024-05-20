@@ -46,14 +46,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
+import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen (
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController
 ) {
     var textInput by remember { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -79,7 +83,7 @@ fun LoginScreen (
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxSize()
-               // .padding(it)
+                // .padding(it)
                 .background(
                     color = Color(android.graphics.Color.parseColor("#f9dcd3"))
                 )
@@ -180,7 +184,7 @@ fun LoginScreen (
                     )
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(Screen.Home.route) },
                     colors = ButtonDefaults.buttonColors(
                         Color(android.graphics.Color.parseColor("#D05440"))
                     ),
@@ -255,11 +259,14 @@ fun LoginScreen (
 
                 Text(
                     text = "Belum punya akun?  Daftar",
+                    modifier = Modifier
+                        .clickable { navController.navigate(Screen.Register.route) },
                     style = TextStyle(
                         fontSize = 14.sp,
                         //   fontFamily = FontFamily(Font(R.font.poppins)),
                         fontWeight = FontWeight(400),
                         color = Color(0xCC000000),
+
                     )
                 )
 
@@ -274,6 +281,6 @@ fun LoginScreen (
 @Composable
 private fun LoginScreenPrev() {
     PawPalsTheme {
-        LoginScreen()
+        LoginScreen(navController = rememberNavController())
     }
 }
