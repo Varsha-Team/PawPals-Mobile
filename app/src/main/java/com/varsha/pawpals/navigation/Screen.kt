@@ -26,5 +26,10 @@ sealed class Screen(val route: String) {
     data object Login : Screen("login")
     data object Register: Screen("Register")
 
+    //Schedule Pet
+    data object AddPet : Screen("add_pet")
+    data object EditPet : Screen("edit_pet")
+    data object EditPlan : Screen("edit_plan")
+
 
 }

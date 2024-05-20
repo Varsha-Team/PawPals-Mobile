@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.navigation.Screen
 
 @Composable
 fun ButtonItem1(
@@ -70,10 +71,11 @@ fun ButtonItem1(
 @Composable
 fun ButtonItem2(
     text: String,
-    icon: ImageVector
+    icon: ImageVector,
+    onClick: () -> Unit,
 ) {
     Button(
-        onClick = { /* TODO */ },
+        onClick = onClick,
         modifier = Modifier
             .padding(8.dp)
             .height(48.dp)
@@ -106,19 +108,69 @@ fun ButtonItem2(
     }
 }
 
+//@Composable
+//fun ButtonItem3(
+//    text: String,
+//    icon: ImageVector,
+//    onClick: () -> Unit,
+//    ) {
+//    Button(
+//        onClick = onClick,
+//        modifier = Modifier
+//            .padding(8.dp)
+//            .height(48.dp)
+//            .clip(RoundedCornerShape(50))
+//            .border(
+//                width = 2.dp,
+//                color = Color(0xFFC85440),
+//                shape = RoundedCornerShape(50)
+//            ),
+//        colors = ButtonDefaults.buttonColors(
+//            containerColor = Color.White,
+//            //backgroundColor = Color(0xFFE57373),
+//            contentColor = Color(0xFFC85440)
+//        ),
+//        contentPadding = PaddingValues(horizontal = 24.dp)
+//    ) {
+//        Icon(
+//            imageVector = icon,
+//            contentDescription = "Add",
+//            modifier = Modifier.size(24.dp)
+//        )
+//        Spacer(modifier = Modifier.width(8.dp))
+//        Text(
+//            text = text,
+//            style = TextStyle(
+//                fontSize = 16.sp,
+//                fontWeight = FontWeight.Bold
+//            )
+//        )
+//    }
+//}
+
 @Preview()
 @Composable
 fun ButtonItemPreview1() {
-    val navController = rememberNavController()
+   // val navController = rememberNavController()
     ButtonItem1(
-        text = "Pets", icon = Icons.Default.Add, onClick = { navController.navigate("addPetScreen") },
+        text = "Pets", icon = Icons.Default.Add, onClick = {},
     )
 }
 
 @Preview()
 @Composable
 fun ButtonItemPreview2() {
+   // val navController = rememberNavController()
     ButtonItem2(
-        text = "Pets", icon = Icons.Default.Add
+        text = "Pets", icon = Icons.Default.Add, onClick = {}
     )
 }
+
+//@Preview()
+//@Composable
+//fun ButtonItemPreview3() {
+//    val navController = rememberNavController()
+//    ButtonItem3(
+//        text = "Pets", icon = Icons.Default.Add, onClick = {  }
+//    )
+//}

@@ -85,7 +85,10 @@ fun ProfilContent(
             Row(
                 modifier = Modifier
                     .padding(8.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .clickable {
+                        navController.navigate(Screen.Notification.route)
+                               },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -112,7 +115,8 @@ fun ProfilContent(
             Row(
                 modifier = Modifier
                     .padding(8.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .clickable { navController.navigate(Screen.Login.route) },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {

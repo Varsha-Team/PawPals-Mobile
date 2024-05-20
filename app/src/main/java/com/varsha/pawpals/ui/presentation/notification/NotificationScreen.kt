@@ -8,9 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun NotificationScreen(modifier: Modifier = Modifier) {
+fun NotificationScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -24,5 +29,5 @@ fun NotificationScreen(modifier: Modifier = Modifier) {
 @Preview (showBackground = true)
 @Composable
 private fun NotificationScreenPreview() {
-    NotificationScreen()
+    NotificationScreen(navController = rememberNavController())
 }

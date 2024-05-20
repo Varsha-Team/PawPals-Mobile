@@ -3,6 +3,7 @@ package com.varsha.pawpals.ui.presentation.schedule
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,16 +32,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
 import com.varsha.pawpals.model.PetData
+import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.ButtonItem2
 import java.time.LocalDate
 
 @Composable
 fun PetProfilContent(
     pet : PetData,
-    //navController: NavController,
-    modifier: Modifier = Modifier
+    navController: NavController,
+   // modifier: Modifier = Modifier
 ) {
     Card(
         modifier = Modifier
@@ -95,10 +99,17 @@ fun PetProfilContent(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 ButtonItem2(
-                    text = "Edit Pet", icon = Icons.Default.Edit
+                    text = "Edit Pet",
+                    icon = Icons.Default.Edit,
+                    onClick = {navController.navigate(Screen.EditPet.route)},
+                   // modifier = Modifier .clickable { navController.navigate(Screen.EditPet.route) }
                 )
                 ButtonItem2(
-                    text = "Edit Plan", icon = Icons.Default.Edit
+                    text = "Edit Plan",
+                    icon = Icons.Default.Edit,
+                    onClick = {navController.navigate(Screen.EditPlan.route)},
+                  //  modifier = Modifier.clickable { navController.navigate(Screen.EditPlan.route) }
+
                 )
             }
         }
@@ -115,6 +126,8 @@ private fun PetProfilContentPreview() {
             photo = R.drawable.pet_photo1,
             jenis = "kucing oren",
             gender = "tidak tau",
-            birthday = LocalDate.of(2020, 5, 18))
+            birthday = LocalDate.of(2020, 5, 18)
+        ),
+        navController = rememberNavController()
     )
 }
