@@ -31,8 +31,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.varsha.pawpals.R
-import com.varsha.pawpals.model.UserData
 import com.varsha.pawpals.navigation.NavigationItem
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.ArticleScreen
@@ -40,7 +38,6 @@ import com.varsha.pawpals.ui.presentation.article.DetailArticleScreen
 import com.varsha.pawpals.ui.presentation.article.ExploreArticleScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
-import com.varsha.pawpals.ui.presentation.launch.profile.ProfileScreen
 import com.varsha.pawpals.ui.presentation.profile.EditProfileScreen
 import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
