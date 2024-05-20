@@ -37,7 +37,7 @@ fun HomeScreen(
     ) { contentPadding ->
         Column(
             modifier = Modifier
-                .background(color =  Color(0xFBEDEC))
+                .background(color =  Color(0xFFFBEDEC))
                 .verticalScroll(scrollState)
                 .padding(contentPadding)
         ) {

@@ -10,8 +10,31 @@
       </SelectionState>
       <SelectionState runConfigName="MainActivity">
         <option name="selectionMode" value="DROPDOWN" />
+<<<<<<< HEAD
       </SelectionState>
       <SelectionState runConfigName="PawPalsAppPreview">
+        <option name="selectionMode" value="DROPDOWN" />
+=======
+        <DropdownSelection timestamp="2024-05-16T18:25:17.937803400Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\LENOVO\.android\avd\Pixel_Fold_API_30.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+>>>>>>> fa1f9b7d203e83a4b175c5fe231a3b01afd6301c
+      </SelectionState>
+      <SelectionState runConfigName="RegisterScreenPrev">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="ProfileScreenPreview">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="EditProfilPreview">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="LoginScreenPrev">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
