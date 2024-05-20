@@ -3,7 +3,6 @@ package com.varsha.pawpals.ui.presentation.schedule.editPlan
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,9 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.varsha.pawpals.DataUser
 import com.varsha.pawpals.R
-import com.varsha.pawpals.data.DataPet
 import com.varsha.pawpals.model.PetData
 import java.time.LocalDate
 
