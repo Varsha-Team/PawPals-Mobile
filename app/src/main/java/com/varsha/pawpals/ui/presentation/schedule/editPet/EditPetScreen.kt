@@ -86,6 +86,7 @@ fun EditPetScreen(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
 @Composable
 private fun EditPetScreenPreview() {

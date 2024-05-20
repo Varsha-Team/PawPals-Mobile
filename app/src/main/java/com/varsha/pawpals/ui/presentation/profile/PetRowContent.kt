@@ -1,4 +1,4 @@
-package com.varsha.pawpals.ui.presentation.launch.profile
+package com.varsha.pawpals.ui.presentation.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
