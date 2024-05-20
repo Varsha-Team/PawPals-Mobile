@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.article
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -44,6 +45,7 @@ import com.varsha.pawpals.data.DataArticle.kategoriArtikel
 import com.varsha.pawpals.model.Artikel
 import com.varsha.pawpals.model.KategoriArtikel
 import com.varsha.pawpals.ui.presentation.article.componentArticle.TagItem
+import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @Composable
@@ -79,25 +81,27 @@ fun DetailArticleContent(
     navController: NavController
 ) {
     Scaffold(
-        modifier = Modifier,
         topBar = {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(86.dp, Alignment.Start),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp),
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFFBEDEC))
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center
             ) {
-                Box (
-                    modifier = Modifier
-                        .border(1.dp, Color.Black, RoundedCornerShape(16.dp))
-                ){
-                    IconButton(onClick = {navController.navigateUp()}) {
-                        Icon(Icons.Filled.ArrowBackIosNew, contentDescription = "Back")
-                    }
-                }
-                TopAppBar(title = { Text(
-                    text = "Article",
-                    textAlign = TextAlign.Center
-                ) })
+                Text(
+                    text = "Detail Artikel",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight(600),
+                    textAlign = TextAlign.Center,
+                    color = Color(0xFF973B2C),
+                    modifier = Modifier.align(Alignment.Center)
+
+                )
+                BackIconItem(
+                    onBackClicked = { navController.navigateUp() },
+                    modifier = Modifier.align(Alignment.CenterStart)
+                )
             }
         }
     ){contentPadding ->
@@ -108,6 +112,7 @@ fun DetailArticleContent(
                 .padding(16.dp)
                 .padding(contentPadding)
                 .verticalScroll(rememberScrollState())
+
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)

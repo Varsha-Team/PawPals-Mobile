@@ -39,53 +39,15 @@ import com.varsha.pawpals.ui.theme.PawPalsTheme
 @Composable
 fun ExploreArticleItem(
     modifier: Modifier = Modifier,
-   //ategoriArtikel: KategoriArtikel,
     artikel: Artikel,
     onItemClicked: (Int) -> Unit
     ) {
     Column(
-//        verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
-//        horizontalAlignment = Alignment.CenterStart,
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
             .padding(start = 16.dp, end = 16.dp)
     ) {
-//        Row(
-//            horizontalArrangement = Arrangement.SpaceBetween,
-//            verticalAlignment = Alignment.CenterVertically,
-//        ) {
-//
-//            Spacer(modifier = Modifier.padding(end = 50.dp))
-////            Row(
-////                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
-////                verticalAlignment = Alignment.CenterVertically,
-////                modifier = Modifier
-////                    .fillMaxWidth()
-////                    .height(20.dp)
-////            ) {
-////                Text(
-////                    text = "Semua",
-////                    style = TextStyle(
-////                        fontSize = 12.sp,
-////                        lineHeight = 20.sp,
-////                        fontWeight = FontWeight(600),
-////                        color = Color(0xFF010911),
-////                    )
-////                )
-////                Icon(
-////                    imageVector = Icons.Default.ArrowForwardIos,
-////                    contentDescription = "Back"
-////                )
-////
-////            }
-//
-//
-//
-//
-//
-//        }
-
         Card(
             shape = RoundedCornerShape(25.dp),
             elevation = CardDefaults.cardElevation(6.dp),
@@ -146,7 +108,7 @@ fun ExploreArticleItem(
                     )
                     Text(
                         text = artikel.description,
-                        modifier = Modifier.padding(start = 8.dp, top = 4.dp, bottom = 4.dp, end = 4.dp),
+                        modifier = Modifier.padding(start = 8.dp, top = 4.dp, bottom = 0.dp, end = 4.dp),
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight(400),

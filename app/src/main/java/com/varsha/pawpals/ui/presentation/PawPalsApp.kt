@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -36,10 +37,14 @@ import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.ArticleScreen
 import com.varsha.pawpals.ui.presentation.article.DetailArticleScreen
 import com.varsha.pawpals.ui.presentation.article.ExploreArticleScreen
+import com.varsha.pawpals.ui.presentation.auth.LoginScreen
+import com.varsha.pawpals.ui.presentation.auth.RegisterScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
 import com.varsha.pawpals.ui.presentation.profile.EditProfileScreen
 import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
+import com.varsha.pawpals.ui.presentation.launch.profile.ProfileScreen
+import com.varsha.pawpals.ui.presentation.onboarding.OnboardingScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
 
 // Background Color
@@ -58,16 +63,24 @@ fun PawPalsApp(
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.EditProfile.route) {
+            if (currentRoute != null
+                && !currentRoute.contains(Screen.Onboarding.route)
+                && !currentRoute.contains(Screen.Login.route)
+                && !currentRoute.contains(Screen.Register.route)
+                && !currentRoute.contains(Screen.ExploreArticle.route)
+                && !currentRoute.contains(Screen.DetailArticle.route)
+                && !currentRoute.contains(Screen.EditProfile.route)
+            ) {
                 BottomBar(navController = navController)
             }
         }
     ) { contentPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Home.route,
+            startDestination = Screen.Onboarding.route,
             modifier = Modifier
                 .padding(contentPadding)
         ) {
@@ -93,6 +106,18 @@ fun PawPalsApp(
 
             composable(Screen.EditProfile.route) {
                 EditProfileScreen(navController = rememberNavController())
+            }
+
+            composable(Screen.Onboarding.route){
+                OnboardingScreen(navController = navController)
+            }
+            
+            composable(Screen.Login.route){
+                LoginScreen(navController = navController)
+            }
+
+            composable(Screen.Register.route){
+                RegisterScreen(navController = navController)
             }
 
             composable(

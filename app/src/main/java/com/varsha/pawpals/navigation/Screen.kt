@@ -22,4 +22,9 @@ sealed class Screen(val route: String) {
     //Profil Screen User
     data object EditProfile : Screen("editScreen")
     data object Logout : Screen("logout")
+    data object Onboarding : Screen("onboarding")
+    data object Login : Screen("login")
+    data object Register: Screen("Register")
+
+
 }

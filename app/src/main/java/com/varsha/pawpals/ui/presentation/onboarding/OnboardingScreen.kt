@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -24,17 +26,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
+import com.varsha.pawpals.navigation.Screen
 
 @Composable
 fun OnboardingScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(64.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
 
         Box(
@@ -79,7 +86,9 @@ fun OnboardingScreen(
         }
         
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                navController.navigate(Screen.Login.route)
+                      },
             colors = ButtonDefaults.buttonColors(Color(0xFFD05440)),
             elevation = ButtonDefaults.elevatedButtonElevation(4.dp),
             modifier = Modifier
@@ -94,5 +103,5 @@ fun OnboardingScreen(
 @Preview (showBackground = true)
 @Composable
 private fun OnboardingScreenPreview() {
-    OnboardingScreen()
+    OnboardingScreen(navController = rememberNavController())
 }
