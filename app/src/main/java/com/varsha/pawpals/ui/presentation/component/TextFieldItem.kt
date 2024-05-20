@@ -42,11 +42,11 @@ fun TextFieldItem(
     TextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text(label, fontSize = 12. sp) },
+        placeholder = { Text(label) },
         visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None,
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = keyboardType),
         colors = TextFieldDefaults.textFieldColors(
-            containerColor = androidx.compose.ui.graphics.Color.White
+            containerColor = Color.White
         ),
         modifier = modifier
             .shadow(
@@ -62,9 +62,12 @@ fun TextFieldItem(
             .clip(RoundedCornerShape(10.dp))
             .fillMaxWidth()
             //.width(312.dp)
-            .height(48.dp)
             .padding(0.5.dp)
     )
+}
+
+@Composable
+fun FormInput(modifier: Modifier = Modifier) {
 }
 
 @Preview

@@ -34,10 +34,11 @@ import com.varsha.pawpals.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScaffoldProfile(modifier: Modifier = Modifier) {
+fun ScaffoldProfile(
+    modifier: Modifier = Modifier
 
+) {
     val profile = DataUser.User
-
     TopAppBar(
         title = {
             Text(

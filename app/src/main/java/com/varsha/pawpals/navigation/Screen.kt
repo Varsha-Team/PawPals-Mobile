@@ -4,7 +4,7 @@ import okhttp3.Route
 
 sealed class Screen(val route: String) {
 
-    // MAIN MENU
+    // MAIN MENU (NavBottom)
     data object Home : Screen("home")
     data object Article : Screen("article")
     data object Community : Screen("community")
@@ -15,4 +15,11 @@ sealed class Screen(val route: String) {
     data object Pets : Screen("pets")
     data object ExploreArticle : Screen("explore_article")
     data object DetailArticle : Screen("detail_article")
+
+    // MENU Notification
+    data object Notification : Screen("notification")
+
+    //Profil Screen User
+    data object EditProfile : Screen("editScreen")
+    data object Logout : Screen("logout")
 }

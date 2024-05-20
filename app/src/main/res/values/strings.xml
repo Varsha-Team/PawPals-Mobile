@@ -6,4 +6,10 @@
     <string name="menu_schedule">Schedule</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_notifikasi">Notification</string>
+
+<!--    menu_schedule-->
+<!--    <string name="add_pet">AddPet</string>-->
+<!--    <string name="edit_pet">EditPet</string>-->
+<!--    <string name="edit_pet_plan">SchedulePlan</string>-->
+
 </resources>

@@ -54,18 +54,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.DataUser
 import com.varsha.pawpals.R
 import com.varsha.pawpals.model.UserData
+import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 import kotlin.math.round
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen() {
-    val profil = DataUser.User
-
+fun ProfileScreen(
+    //profile: DataUser
+    navController: NavController = rememberNavController(),
+) {
+    val profile = DataUser.User
     Scaffold(
         topBar = {
             Box(
@@ -102,12 +107,14 @@ fun ProfileScreen() {
             item {
                 Spacer(modifier = Modifier.height(16.dp))
                 Image(
-                    painter = painterResource(id = profil.photo),
+                    painter = painterResource(id = profile.photo),
                     contentDescription = "Profil Photo",
                     modifier = Modifier
                         .size(200.dp)
                         .border(
-                            width = 3.dp, Color(0xFFD05440), shape = RoundedCornerShape(size = 110.dp)
+                            width = 3.dp,
+                            Color(0xFFD05440),
+                            shape = RoundedCornerShape(size = 110.dp)
                         )
                         .clip(CircleShape),
                     contentScale = ContentScale.Crop
@@ -116,13 +123,13 @@ fun ProfileScreen() {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = profil.nama,
+                    text = profile.nama,
                     fontSize = 24.sp,
                     color = Color.Black,
                     modifier = Modifier.padding(bottom = 40.dp)
                 )
                 PetRowContent()
-                ProfilContent()
+                ProfilContent(navController = navController)
             }
         }
     }
@@ -135,24 +142,3 @@ private fun ProfileScreenPreview() {
         ProfileScreen()
     }
 }
-
-//Row(
-//modifier = Modifier
-//.padding(16.dp)
-//.fillMaxWidth()
-//.background(Color(0xFFFBEDEC)),
-//verticalAlignment = Alignment.CenterVertically
-//) {
-//    BackIconItem(
-//        onBackClicked = { /*TODO*/ }
-//    )
-//    Spacer(modifier = Modifier.weight(1f))
-//    Text(
-//        text = "Profil",
-//        fontSize = 24.sp,
-//        fontWeight = FontWeight(600),
-//        textAlign = TextAlign.Center,
-//        modifier = Modifier.weight(2f)
-//    )
-//    Spacer(modifier = Modifier.weight(1f))
-//}

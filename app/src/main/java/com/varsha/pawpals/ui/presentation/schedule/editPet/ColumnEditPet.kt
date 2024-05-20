@@ -1,10 +1,11 @@
-package com.varsha.pawpals.ui.presentation.launch.profile
+package com.varsha.pawpals.ui.presentation.schedule.addPet
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,14 +36,14 @@ import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ColumnEdit(
+fun ColumnEditPet(
     modifier: Modifier = Modifier
 ) {
-    var username by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var nomor by remember { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
-    var newpass by rememberSaveable { mutableStateOf("") }
+    var namepet by remember { mutableStateOf("") }
+    var type by remember { mutableStateOf("") }
+    var breed by remember { mutableStateOf("") }
+    var gender by remember { mutableStateOf("") }
+    var birthday by rememberSaveable { mutableStateOf("") }
 
     Column(
         verticalArrangement = Arrangement.spacedBy(25.dp, Alignment.CenterVertically),
@@ -58,6 +59,20 @@ fun ColumnEdit(
         )
         {
             Text(
+                text = "Pet Details",
+                modifier = Modifier
+                    .height(21.dp),
+                style = TextStyle(
+                    fontSize = 20.sp,
+                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
+                    fontWeight = FontWeight(600),
+                    color = Color(0xFF030303),
+                    textAlign = TextAlign.Center,
+                )
+            )
+            Spacer(modifier = Modifier.padding(16.dp))
+
+            Text(
                 text = "Nama",
                 modifier = Modifier
                     .width(78.dp)
@@ -71,9 +86,9 @@ fun ColumnEdit(
                 )
             )
             TextFieldItem(
-                value = username,
-                onValueChange = { username = it },
-                label = "Enter Username",
+                value = namepet,
+                onValueChange = { namepet = it },
+                label = "Enter Name Pet",
                 keyboardType = KeyboardType.Text,
             )
         }
@@ -83,7 +98,7 @@ fun ColumnEdit(
                 .padding(32.dp, 0.dp)
         ) {
             Text(
-                text = "Email",
+                text = "Type",
                 modifier = Modifier
                     .width(54.dp)
                     .height(21.dp),
@@ -96,9 +111,9 @@ fun ColumnEdit(
                 )
             )
             TextFieldItem(
-                value = email,
-                onValueChange = { email = it },
-                label = "Enter Email",
+                value = type,
+                onValueChange = { type = it },
+                label = "Type",
                 keyboardType = KeyboardType.Text,
             )
         }
@@ -108,7 +123,7 @@ fun ColumnEdit(
                 .padding(32.dp, 0.dp)
         ){
             Text(
-                text = "Nomor Telp",
+                text = "Breed",
                 modifier = Modifier
                     .width(78.dp)
                     .height(21.dp),
@@ -121,21 +136,20 @@ fun ColumnEdit(
                 )
             )
             TextFieldItem(
-                value = nomor,
-                onValueChange = { nomor = it },
-                label = "Masukkan nomor telp",
-                keyboardType = KeyboardType.Text,
+                value = breed,
+                onValueChange = { breed = it },
+                label = "Masukkan Jenis Hewan",
             )
         }
 
-        Column(
+        Column (
             modifier = Modifier
                 .padding(32.dp, 0.dp)
-        ) {
+        ){
             Text(
-                text = "Kata Sandi Lama",
+                text = "Gender",
                 modifier = Modifier
-                    .width(148.dp)
+                    .width(78.dp)
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
@@ -146,22 +160,20 @@ fun ColumnEdit(
                 )
             )
             TextFieldItem(
-                value = password,
-                onValueChange = { password = it },
-                label = "Enter Password",
-                keyboardType = KeyboardType.Text,
-                isPassword = true
+                value = gender,
+                onValueChange = { gender = it },
+                label = "Gender",
             )
         }
 
-        Column(
+        Column (
             modifier = Modifier
                 .padding(32.dp, 0.dp)
-        ) {
+        ){
             Text(
-                text = "Kata Sandi Baru",
+                text = "Birthday",
                 modifier = Modifier
-                    .width(148.dp)
+                    .width(78.dp)
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
@@ -172,14 +184,11 @@ fun ColumnEdit(
                 )
             )
             TextFieldItem(
-                value = newpass,
-                onValueChange = { newpass = it },
-                label = "Enter Password New",
-                keyboardType = KeyboardType.Text,
-                isPassword = true
+                value = birthday,
+                onValueChange = { birthday = it },
+                label = "Birthday",
             )
         }
-
 
         Button(
             onClick = { /*TODO*/ },
@@ -210,6 +219,6 @@ fun ColumnEdit(
 
 @Preview
 @Composable
-private fun ColumnEditPreview() {
-    ColumnEdit()
+private fun ColumnEditPetPreview() {
+    ColumnEditPet()
 }
