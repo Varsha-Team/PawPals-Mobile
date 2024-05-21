@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,21 +33,27 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
 import com.varsha.pawpals.data.DataArticle
 import com.varsha.pawpals.model.KategoriArtikel
 import com.varsha.pawpals.navigation.Screen
+import com.varsha.pawpals.ui.presentation.article.componentArticle.ArticleItem
 
 @Composable
 fun HomeArticle(
     modifier: Modifier = Modifier,
     navController: NavController,
-    article: List<KategoriArtikel> = DataArticle.kategoriArtikel,
+    //article: List<KategoriArtikel> = DataArticle.kategoriArtikel,
+    kategoriArtikels: List<KategoriArtikel> = DataArticle.kategoriArtikel,
+
 ) {
 
     Column(
@@ -85,9 +92,14 @@ fun HomeArticle(
         Spacer(modifier = Modifier.height(16.dp))
 
         LazyRow(
+          //  verticalArrangement = Arrangement.spacedBy(0.dp),
+            modifier = Modifier
+                .background(color = Color(0xFFFBEDEC))
         ) {
-            items(article){
-                LazyArticle(article = it)
+            items(kategoriArtikels, key = { it.id }) {
+                LazyArticle(kategoriArtikel = it) { kategoriArtikelId ->
+                    navController.navigate(Screen.ExploreArticle.route + "/$kategoriArtikelId")
+                }
             }
         }
 
@@ -96,80 +108,144 @@ fun HomeArticle(
 
 @Composable
 fun LazyArticle(
-    article: KategoriArtikel,
-    modifier: Modifier = Modifier
+    kategoriArtikel: KategoriArtikel,
+    modifier: Modifier = Modifier,
+    onItemClicked: (Int) -> Unit
+    //  modifier: (Any) -> Unit = Modifier
 ) {
-
-    Card(
-        shape = RoundedCornerShape(25.dp),
-        elevation = CardDefaults.cardElevation(6.dp),
-        colors = CardDefaults.cardColors(Color.White),
+    Column(
+        verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(end = 16.dp)
-            .clickable {  }
+            .padding(start = 8.dp)
+            .fillMaxWidth()
+            .clickable { onItemClicked(kategoriArtikel.id) }
     ) {
-        Column(
-            verticalArrangement = Arrangement.SpaceBetween,
+//        Row(
+//            horizontalArrangement = Arrangement.SpaceBetween,
+//            verticalAlignment = Alignment.CenterVertically,
+//        ) {
+//            Text(
+//                text = kategoriArtikel.tagname,
+//                style = TextStyle(
+//                    fontSize = 16.sp,
+//                    lineHeight = 24.sp,
+//                    fontWeight = FontWeight(600),
+//                    color = Color(0xFF010911),
+//                )
+//            )
+//            // Spacer(modifier = Modifier.padding(end = 40.dp))
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(20.dp)
+//            ) {
+//                Text(
+//                    text = "Semua",
+//                    style = TextStyle(
+//                        fontSize = 12.sp,
+//                        lineHeight = 20.sp,
+//                        fontWeight = FontWeight(600),
+//                        color = Color(0xFF010911),
+//                    )
+//                )
+//                Icon(
+//                    imageVector = Icons.Default.ArrowForwardIos,
+//                    contentDescription = "Back"
+//                )
+//
+//            }
+//
+//
+//
+//
+//
+//        }
+
+        Card(
+            shape = RoundedCornerShape(25.dp),
+            elevation = CardDefaults.cardElevation(6.dp),
+            colors = CardDefaults.cardColors(Color.White),
             modifier = Modifier
-                .height(200.dp)
-                .width(300.dp)
-                .fillMaxWidth()
-                .border(1.dp, Color.Transparent, RoundedCornerShape(25.dp))
+                .padding(bottom = 8.dp, end = 8.dp)
+                .clickable { onItemClicked(kategoriArtikel.id) }
         ) {
-            Box(
+            Column(
+                verticalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
-                    .background(
-                        shape = RoundedCornerShape(
-                            topStart = 25.dp,
-                            topEnd = 25.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 0.dp
-                        ), color = Color.Gray
-                    )
+                    .height(200.dp)
+                    .width(308.dp)
                     .fillMaxWidth()
-                    .size(150.dp)
+                    .border(1.dp, Color.Transparent, RoundedCornerShape(25.dp))
             ) {
-                Image(
-                    painter = painterResource(id = article.photo),
-                    contentDescription = "Gambar Sampul Artikel",
-                    contentScale = ContentScale.Crop,
+                Box(
                     modifier = Modifier
-                        .clip(
+                        .background(
                             shape = RoundedCornerShape(
                                 topStart = 25.dp,
                                 topEnd = 25.dp,
                                 bottomEnd = 0.dp,
                                 bottomStart = 0.dp
-                            )
+                            ), color = Color.Gray
                         )
-                        .fillMaxSize()
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .padding(vertical = 14.dp)
-            ) {
-                Spacer(modifier = modifier.width(16.dp))
-                Text(
-                    text = article.title,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
+                        .fillMaxWidth()
+                        .size(150.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = kategoriArtikel.photo),
+                        contentDescription = "Gambar Sampul Artikel",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .clip(
+                                shape = RoundedCornerShape(
+                                    topStart = 25.dp,
+                                    topEnd = 25.dp,
+                                    bottomEnd = 0.dp,
+                                    bottomStart = 0.dp
+                                )
+                            )
+                            .fillMaxSize()
+                    )
+                }
+                Row(
                     modifier = Modifier
-                        .padding(end = 16.dp)
-                )
+                        .padding(vertical = 14.dp)
+                ) {
+                    Spacer(modifier = modifier.width(16.dp))
+                    Text(
+                        text = kategoriArtikel.title,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1,
+                        modifier = Modifier
+                            .padding(end = 16.dp)
+                    )
+                }
             }
         }
+
+
+
     }
 }
-
-@Preview (showBackground = true)
+@Preview(showBackground = true)
 @Composable
 private fun HomeArticlePreview() {
- //   HomeArticle()
-    LazyArticle(article = KategoriArtikel(
-        1,
-        "a",
-        R.drawable.article_dog,
-        "Cara Merawat Anak Anjing Seperti Anak Sendiri"
-    ))
+    val navController = rememberNavController()
+    HomeArticle(navController = navController)
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun LazyArticlePreview() {
+    LazyArticle(
+        kategoriArtikel = KategoriArtikel(
+            1,
+            "Pet Health",
+            R.drawable.article_dog,
+            "Health care for your pets service"
+        ),
+        onItemClicked = { kategoriArtikelId -> println("Kategori Id : $kategoriArtikelId") }
+    )
 }

@@ -39,7 +39,7 @@ import com.varsha.pawpals.ui.theme.PawPalsTheme
 @Composable
 fun ProfileScreen(
     //profile: DataUser
-    navController: NavController = rememberNavController(),
+    navController: NavController,
 ) {
     val profile = DataUser.User
     Scaffold(
@@ -110,6 +110,6 @@ fun ProfileScreen(
 @Composable
 private fun ProfileScreenPreview() {
     PawPalsTheme {
-        ProfileScreen()
+        ProfileScreen(navController = rememberNavController())
     }
 }

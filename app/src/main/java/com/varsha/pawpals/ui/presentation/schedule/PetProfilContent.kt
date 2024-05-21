@@ -43,8 +43,9 @@ import java.time.LocalDate
 @Composable
 fun PetProfilContent(
     pet : PetData,
-    navController: NavController,
+    //navController: NavController,
    // modifier: Modifier = Modifier
+    onItemClicked: (Int) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -101,13 +102,15 @@ fun PetProfilContent(
                 ButtonItem2(
                     text = "Edit Pet",
                     icon = Icons.Default.Edit,
-                    onClick = {navController.navigate(Screen.EditPet.route)},
+                    onClick = {onItemClicked(pet.id)},
                    // modifier = Modifier .clickable { navController.navigate(Screen.EditPet.route) }
                 )
                 ButtonItem2(
                     text = "Edit Plan",
                     icon = Icons.Default.Edit,
-                    onClick = {navController.navigate(Screen.EditPlan.route)},
+                    onClick = {
+                       // navController.navigate(Screen.EditPlan.route)
+                              },
                   //  modifier = Modifier.clickable { navController.navigate(Screen.EditPlan.route) }
 
                 )
@@ -128,6 +131,7 @@ private fun PetProfilContentPreview() {
             gender = "tidak tau",
             birthday = LocalDate.of(2020, 5, 18)
         ),
-        navController = rememberNavController()
+        onItemClicked = {petId -> println("pet Id : $petId")},
+        //navController = rememberNavController()
     )
 }

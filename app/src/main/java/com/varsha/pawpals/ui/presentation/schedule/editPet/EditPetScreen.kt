@@ -25,18 +25,19 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.DataUser
+import com.varsha.pawpals.data.DataPet
+import com.varsha.pawpals.ui.presentation.article.DetailArticleContent
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.schedule.addPet.ColumnEditPet
 import com.varsha.pawpals.ui.theme.PawPalsTheme
-
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-
 fun EditPetScreen(
     onBackClicked: () -> Unit,
-    navController: NavController
+    navController: NavController,
+    petId: Int?
 ) {
-    val profil = DataUser.User
+    val newPetList = DataPet.Pet.filter { pet -> pet.id == petId }
 
     Scaffold(
         topBar = {
@@ -63,31 +64,26 @@ fun EditPetScreen(
         }
     ) { contentPadding ->
         Column(
-            modifier = Modifier,
+            modifier = Modifier
+                .padding(contentPadding)
+                .background(color = Color(0xFFFBEDEC)),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
+            ManageEditPet(pet = newPetList[0])
+            LazyColumn(
                 modifier = Modifier
-                    .padding(contentPadding)
-                    .background(color = Color(0xFFFBEDEC)),
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(Color.White)
             ) {
-                //ManageEditPet()
-                LazyColumn (
-                    modifier = Modifier
-                        //.padding(16.dp)
-                        .clip(RoundedCornerShape(16.dp))
-                        //.background(Color(0xFFFBEDEC))
-                        .background(Color.White)
-                ){
-                    item {
-                        ColumnEditPet()
-                    }
+                item {
+                    ColumnEditPet(newPetList = newPetList)
                 }
             }
         }
     }
 }
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
@@ -95,7 +91,9 @@ fun EditPetScreen(
 private fun EditPetScreenPreview() {
     PawPalsTheme {
         EditPetScreen(
-           onBackClicked = {},
-            navController = rememberNavController())
+            onBackClicked = {},
+            navController = rememberNavController(),
+            petId = DataPet.Pet.first().id // Ensure there's a valid pet ID for the preview
+        )
     }
 }
