@@ -22,14 +22,14 @@ import com.varsha.pawpals.ui.presentation.component.ScaffoldProfile
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavHostController,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()
 
     Scaffold(
         topBar = {
-            ScaffoldProfile()
+            ScaffoldProfile(navController = rememberNavController())
         },
     ) { contentPadding ->
         Column(
@@ -45,7 +45,7 @@ fun HomeScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                HomeCommunity()
+                HomeCommunity(navController = rememberNavController())
 
                 Spacer(modifier = Modifier.height(16.dp))
 

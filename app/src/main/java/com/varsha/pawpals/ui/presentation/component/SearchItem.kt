@@ -57,6 +57,7 @@ fun SearchTextFieldItem(
         colors = TextFieldDefaults.textFieldColors(
             containerColor = Color.White
         ),
+        maxLines = 1,
         modifier = modifier
             .shadow(
                 elevation = 4.dp,

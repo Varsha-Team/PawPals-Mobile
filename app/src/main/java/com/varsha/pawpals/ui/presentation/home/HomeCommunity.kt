@@ -26,20 +26,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.navigation.Screen
 
 @Composable
-fun HomeCommunity(modifier: Modifier = Modifier) {
+fun HomeCommunity(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .clickable {  }
             .background(
                 color = Color(0xFFD05440),
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(vertical = 20.dp)
             .fillMaxWidth()
+            .clickable { navController.navigate("community") }
     ) {
 
         Row(
@@ -56,8 +62,9 @@ fun HomeCommunity(modifier: Modifier = Modifier) {
                 Icon(
                     imageVector = Icons.Default.PeopleAlt,
                     contentDescription = "Icon Community",
+                    tint = Color(0xFFD05440),
                     modifier = Modifier
-                        .size(40.dp)
+                        .size(35.dp)
                         .align(Alignment.Center)
                 )
             }
@@ -83,5 +90,5 @@ fun HomeCommunity(modifier: Modifier = Modifier) {
 @Preview (showBackground = true)
 @Composable
 private fun HomeCommunityPreview() {
-    HomeCommunity()
+    HomeCommunity(navController = rememberNavController())
 }

@@ -31,5 +31,8 @@ sealed class Screen(val route: String) {
     data object EditPet : Screen("edit_pet")
     data object EditPlan : Screen("edit_plan")
 
+    // Community Menu
+    data object CommunityDetail : Screen("community_detail")
+
 
 }

@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -38,6 +39,7 @@ import com.varsha.pawpals.ui.presentation.article.DetailArticleScreen
 import com.varsha.pawpals.ui.presentation.article.ExploreArticleScreen
 import com.varsha.pawpals.ui.presentation.auth.LoginScreen
 import com.varsha.pawpals.ui.presentation.auth.RegisterScreen
+import com.varsha.pawpals.ui.presentation.community.CommunityDetail
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
 import com.varsha.pawpals.ui.presentation.notification.NotificationScreen
@@ -94,7 +96,7 @@ fun PawPalsApp(
             }
 
             composable(Screen.Community.route) {
-                CommunityScreen()
+                CommunityScreen(navController = navController)
             }
 
             composable(Screen.Schedule.route) {
@@ -141,6 +143,16 @@ fun PawPalsApp(
 
             composable(Screen.EditPlan.route) {
                 EditPlanScreen(navController = navController)
+            }
+
+            composable(
+                Screen.CommunityDetail.route + "/{idCommunity}",
+                arguments = listOf(navArgument("idCommunity") { type = NavType.IntType })
+            ){navBackStackEntry ->
+                CommunityDetail(
+                    navController = navController,
+                    idCommunity = navBackStackEntry.arguments?.getInt("idCommunity")
+                )
             }
 
             composable(
