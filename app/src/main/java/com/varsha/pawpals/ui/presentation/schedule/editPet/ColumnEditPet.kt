@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.data.DataPet
 import com.varsha.pawpals.model.PetData
+import com.varsha.pawpals.ui.presentation.component.TextFieldDropdowns
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -80,12 +81,14 @@ fun ColumnEditPet(
 
             Text(
                 text = "Nama",
-                modifier = Modifier.width(78.dp).height(21.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -101,20 +104,17 @@ fun ColumnEditPet(
         ) {
             Text(
                 text = "Type",
-                modifier = Modifier.width(54.dp).height(21.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
-            TextFieldItem(
-                value = type,
-                onValueChange = { type = it },
-                label = pet.jenis,
-                keyboardType = KeyboardType.Text,
-            )
+            TextFieldDropdowns(list = listOf("Cat", "Dog"))
         }
 
         Column(
@@ -122,12 +122,14 @@ fun ColumnEditPet(
         ) {
             Text(
                 text = "Breed",
-                modifier = Modifier.width(78.dp).height(21.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -142,19 +144,17 @@ fun ColumnEditPet(
         ) {
             Text(
                 text = "Gender",
-                modifier = Modifier.width(78.dp).height(21.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
-            TextFieldItem(
-                value = gender,
-                onValueChange = { gender = it },
-                label = pet.gender,
-            )
+            TextFieldDropdowns(list = listOf("Male", "Girl"))
         }
 
         Column(
@@ -162,12 +162,14 @@ fun ColumnEditPet(
         ) {
             Text(
                 text = "Birthday",
-                modifier = Modifier.width(78.dp).height(21.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
             TextFieldItem(
