@@ -21,11 +21,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 
 @Composable
-fun PlanPetScreen(modifier: Modifier = Modifier) {
+fun PlanPetScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController
+    ) {
     Scaffold(
         topBar = {
             Box(
@@ -54,7 +59,7 @@ fun PlanPetScreen(modifier: Modifier = Modifier) {
             ButtonItem1(
                 text = "Plan",
                 icon = Icons.Default.Add,
-                //onClick = { navController.navigate("addPetScreen") }
+                onClick = { navController.navigate("addPetScreen") }
             )
         }
     ){contentPadding ->
@@ -78,5 +83,5 @@ fun PlanPetScreen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun PlanPetScreenPreview() {
-    PlanPetScreen()
+    PlanPetScreen(navController = rememberNavController())
 }

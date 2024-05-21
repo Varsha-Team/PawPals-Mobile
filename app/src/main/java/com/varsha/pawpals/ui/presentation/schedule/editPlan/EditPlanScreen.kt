@@ -15,12 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
+import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @Composable
-fun EditPlanScreen(modifier: Modifier = Modifier) {
+fun EditPlanScreen(modifier: Modifier = Modifier, navController: NavController) {
     Scaffold(
         topBar = {
             Box(
@@ -31,7 +35,7 @@ fun EditPlanScreen(modifier: Modifier = Modifier) {
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Add Pet",
+                    text = "Edit Pet",
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
@@ -51,5 +55,13 @@ fun EditPlanScreen(modifier: Modifier = Modifier) {
         ) {
 
         }
+    }
+}
+
+@Preview
+@Composable
+private fun EditPlanPrev() {
+    PawPalsTheme {
+        EditPlanScreen(navController = rememberNavController())
     }
 }

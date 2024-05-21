@@ -23,7 +23,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -146,16 +145,6 @@ fun PawPalsApp(
             }
 
             composable(
-                Screen.CommunityDetail.route + "/{idCommunity}",
-                arguments = listOf(navArgument("idCommunity") { type = NavType.IntType })
-            ){navBackStackEntry ->
-                CommunityDetail(
-                    navController = navController,
-                    idCommunity = navBackStackEntry.arguments?.getInt("idCommunity")
-                )
-            }
-
-            composable(
                 Screen.ExploreArticle.route + "/{kategoriArtikelId}",
                 arguments = listOf(navArgument("kategoriArtikelId") { type = NavType.IntType })
             ) { navBackStackEntry ->
@@ -172,6 +161,16 @@ fun PawPalsApp(
                 DetailArticleScreen(
                     navController = navController,
                     artikelId = navBackStackEntry.arguments?.getInt("artikelId")
+                )
+            }
+
+            composable(
+                Screen.CommunityDetail.route + "/{idCommunity}",
+                arguments = listOf(navArgument("idCommunity") { type = NavType.IntType })
+            ){navBackStackEntry ->
+                CommunityDetail(
+                    navController = navController,
+                    idCommunity = navBackStackEntry.arguments?.getInt("idCommunity")
                 )
             }
 

@@ -81,6 +81,7 @@ fun ScheduleScreen(
                 petProfil, key = { it.id }
             ) { pet ->
                 PetProfilContent(
+                    navController = rememberNavController(),
                     pet = pet,
                 ) { petId ->
                     navController.navigate(Screen.EditPet.route + "/$petId")
