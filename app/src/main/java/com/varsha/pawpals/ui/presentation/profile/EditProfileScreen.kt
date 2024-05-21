@@ -56,7 +56,7 @@ fun EditProfileScreen(
                     modifier = Modifier.align(Alignment.Center)
                 )
                 BackIconItem(
-                    onBackClicked = { /*TODO*/ },
+                    onBackClicked = { navController.navigateUp() },
                     modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
