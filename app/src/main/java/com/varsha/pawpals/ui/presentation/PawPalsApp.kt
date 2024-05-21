@@ -40,10 +40,7 @@ import com.varsha.pawpals.ui.presentation.auth.LoginScreen
 import com.varsha.pawpals.ui.presentation.auth.RegisterScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
-<<<<<<< HEAD
 import com.varsha.pawpals.ui.presentation.onboarding.OnboardingScreen
-=======
->>>>>>> 3bc3a4d276245be7d56eaeed91d077229fdca6ad
 import com.varsha.pawpals.ui.presentation.profile.EditProfileScreen
 import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
