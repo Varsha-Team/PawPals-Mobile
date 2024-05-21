@@ -27,12 +27,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.DataUser
 import com.varsha.pawpals.R
+import com.varsha.pawpals.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScaffoldProfile(
+    navController: NavController,
     modifier: Modifier = Modifier
 
 ) {
@@ -57,7 +61,7 @@ fun ScaffoldProfile(
                     .clip(CircleShape)
                     .size(50.dp)
                     .fillMaxSize()
-                    .clickable {  }
+                    .clickable { navController.navigateUp() }
             )
         },
         actions = {
@@ -67,7 +71,7 @@ fun ScaffoldProfile(
                     .background(Color.White, RoundedCornerShape(16.dp))
             ) {
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(Screen.Notification.route) },
                     modifier = Modifier
                 ) {
                     Icon(
@@ -91,5 +95,5 @@ fun ScaffoldProfile(
 @Preview (showBackground = true)
 @Composable
 private fun ScaffoldProfilePreview() {
-    ScaffoldProfile()
+    ScaffoldProfile(navController = rememberNavController())
 }
