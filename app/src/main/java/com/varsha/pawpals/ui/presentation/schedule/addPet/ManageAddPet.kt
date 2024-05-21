@@ -32,7 +32,7 @@ import java.time.LocalDate
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ManageAddPet(
-    pet : PetData,
+   // pet : PetData,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -94,11 +94,11 @@ fun ManageAddPet(
 @Composable
 private fun ManageEditPetPreview() {
     ManageAddPet(
-        pet = PetData(id = 1,
-            nama = "Bjir",
-            photo = R.drawable.pet_photo1,
-            jenis = "kucing oren",
-            gender = "tidak tau",
-            birthday = LocalDate.of(2020, 5, 18))
+//        pet = PetData(id = 1,
+//            nama = "Bjir",
+//            photo = R.drawable.pet_photo1,
+//            jenis = "kucing oren",
+//            gender = "tidak tau",
+//            birthday = LocalDate.of(2020, 5, 18))
     )
 }

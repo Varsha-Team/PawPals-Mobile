@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.data.DataArticle
@@ -36,13 +37,10 @@ import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.componentArticle.ArticleItem
 import com.varsha.pawpals.ui.presentation.component.SearchTextFieldItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArticleScreen(
     kategoriArtikels: List<KategoriArtikel> = DataArticle.kategoriArtikel,
-    // onBackClicked: () -> Unit,
-    navController: NavHostController = rememberNavController(),
+    navController: NavController
 ) {
     var searchQuery by remember { mutableStateOf("") }
 
@@ -62,9 +60,7 @@ fun ArticleScreen(
                     textAlign = TextAlign.Center,
                     color = Color(0xFF973B2C),
                     modifier = Modifier.align(Alignment.Center)
-
                 )
-
             }
         }
     ) { contentPadding ->
@@ -86,7 +82,6 @@ fun ArticleScreen(
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(0.dp),
                 modifier = Modifier
-
                     .background(color = Color(0xFFFBEDEC))
             ) {
                 items(kategoriArtikels, key = { it.id }) {
@@ -96,8 +91,6 @@ fun ArticleScreen(
                 }
             }
         }
-
-
     }
 }
 

@@ -129,8 +129,14 @@ fun PawPalsApp(
                 AddPetScreen(onBackClicked = {}, navController = navController)
             }
 
-            composable(Screen.EditPet.route) {
-                EditPetScreen(onBackClicked = {}, navController = navController)
+            composable(Screen.EditPet.route + "/{petId}",
+                arguments = listOf(navArgument("petId"){type = NavType.IntType})
+            ) {navBackStackEntry ->
+                EditPetScreen(
+                    onBackClicked = {},
+                    navController = navController,
+                    petId = navBackStackEntry.arguments?.getInt("petId")
+                    )
             }
 
             composable(Screen.EditPlan.route) {
@@ -156,6 +162,11 @@ fun PawPalsApp(
                     artikelId = navBackStackEntry.arguments?.getInt("artikelId")
                 )
             }
+
+//            composable(Screen.ExploreArticle.route + "/{articleId}") { backStackEntry ->
+//                val articleId = backStackEntry.arguments?.getString("articleId")
+//                ExploreArticleScreen(navController, articleId)
+
         }
     }
 }

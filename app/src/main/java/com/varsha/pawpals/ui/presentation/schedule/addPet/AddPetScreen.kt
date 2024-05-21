@@ -1,5 +1,7 @@
 package com.varsha.pawpals.ui.presentation.profile
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,8 +28,10 @@ import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.DataUser
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.schedule.addPet.ColumnAddPet
+import com.varsha.pawpals.ui.presentation.schedule.addPet.ManageAddPet
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
@@ -71,7 +75,7 @@ fun AddPetScreen(
                     .padding(contentPadding)
                     .background(color = Color(0xFFFBEDEC)),
             ) {
-                //ManageAddPet()
+                ManageAddPet()
                 LazyColumn (
                     modifier = Modifier
                         //.padding(16.dp)
@@ -88,6 +92,7 @@ fun AddPetScreen(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
 @Composable
 private fun AddPetScreenPreview() {

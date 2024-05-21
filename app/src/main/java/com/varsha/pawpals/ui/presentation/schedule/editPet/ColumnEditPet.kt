@@ -1,5 +1,7 @@
 package com.varsha.pawpals.ui.presentation.schedule.addPet
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -27,12 +29,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.varsha.pawpals.data.DataPet
+import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ColumnEditPet(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    newPetList: List<PetData>
 ) {
     var namepet by remember { mutableStateOf("") }
     var type by remember { mutableStateOf("") }
@@ -40,26 +46,31 @@ fun ColumnEditPet(
     var gender by remember { mutableStateOf("") }
     var birthday by rememberSaveable { mutableStateOf("") }
 
+  //  if (newPetList.isNotEmpty()) {
+        val pet = newPetList[0] // Assuming you want to edit the first pet in the list
+//        namepet = pet.nama
+//        type = pet.jenis
+//       // breed = pet.breed
+//        gender = pet.gender
+//        birthday = pet.birthday.toString()
+   // }
+
     Column(
         verticalArrangement = Arrangement.spacedBy(25.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .fillMaxWidth(1f)
+            .fillMaxWidth()
             .padding(0.dp, 24.dp)
-        //.background(Color.White),
     ) {
         Column(
             modifier = Modifier
                 .padding(32.dp, 0.dp)
-        )
-        {
+        ) {
             Text(
                 text = "Pet Details",
-                modifier = Modifier
-                    .height(21.dp),
+                modifier = Modifier.height(21.dp),
                 style = TextStyle(
                     fontSize = 20.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(600),
                     color = Color(0xFF030303),
                     textAlign = TextAlign.Center,
@@ -69,12 +80,9 @@ fun ColumnEditPet(
 
             Text(
                 text = "Nama",
-                modifier = Modifier
-                    .width(78.dp)
-                    .height(21.dp),
+                modifier = Modifier.width(78.dp).height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
                     textAlign = TextAlign.Center,
@@ -83,23 +91,19 @@ fun ColumnEditPet(
             TextFieldItem(
                 value = namepet,
                 onValueChange = { namepet = it },
-                label = "Enter Name Pet",
+                label = pet.nama,
                 keyboardType = KeyboardType.Text,
             )
         }
 
         Column(
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
+            modifier = Modifier.padding(32.dp, 0.dp)
         ) {
             Text(
                 text = "Type",
-                modifier = Modifier
-                    .width(54.dp)
-                    .height(21.dp),
+                modifier = Modifier.width(54.dp).height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
                     textAlign = TextAlign.Center,
@@ -108,23 +112,19 @@ fun ColumnEditPet(
             TextFieldItem(
                 value = type,
                 onValueChange = { type = it },
-                label = "Type",
+                label = pet.jenis,
                 keyboardType = KeyboardType.Text,
             )
         }
 
-        Column (
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
-        ){
+        Column(
+            modifier = Modifier.padding(32.dp, 0.dp)
+        ) {
             Text(
                 text = "Breed",
-                modifier = Modifier
-                    .width(78.dp)
-                    .height(21.dp),
+                modifier = Modifier.width(78.dp).height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
                     textAlign = TextAlign.Center,
@@ -133,22 +133,18 @@ fun ColumnEditPet(
             TextFieldItem(
                 value = breed,
                 onValueChange = { breed = it },
-                label = "Masukkan Jenis Hewan",
+                label = "Breed",
             )
         }
 
-        Column (
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
-        ){
+        Column(
+            modifier = Modifier.padding(32.dp, 0.dp)
+        ) {
             Text(
                 text = "Gender",
-                modifier = Modifier
-                    .width(78.dp)
-                    .height(21.dp),
+                modifier = Modifier.width(78.dp).height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
                     textAlign = TextAlign.Center
@@ -157,22 +153,18 @@ fun ColumnEditPet(
             TextFieldItem(
                 value = gender,
                 onValueChange = { gender = it },
-                label = "Gender",
+                label = pet.gender,
             )
         }
 
-        Column (
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
-        ){
+        Column(
+            modifier = Modifier.padding(32.dp, 0.dp)
+        ) {
             Text(
                 text = "Birthday",
-                modifier = Modifier
-                    .width(78.dp)
-                    .height(21.dp),
+                modifier = Modifier.width(78.dp).height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
                     textAlign = TextAlign.Center
@@ -181,27 +173,23 @@ fun ColumnEditPet(
             TextFieldItem(
                 value = birthday,
                 onValueChange = { birthday = it },
-                label = "Birthday",
+                label = pet.birthday.toString(),
             )
         }
 
         Button(
             onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(
-                Color(android.graphics.Color.parseColor("#D05440"))
-            ),
+            colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#D05440"))),
             modifier = Modifier
-
                 .width(194.dp)
                 .height(60.dp)
-                .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp)
+                .padding(10.dp)
         ) {
             Text(
                 text = "Simpan",
                 style = TextStyle(
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(700),
                     color = Color(0xFFFFFFFF),
                     textAlign = TextAlign.Center,
@@ -209,11 +197,11 @@ fun ColumnEditPet(
             )
         }
     }
-
 }
 
-@Preview (showBackground = true)
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview(showBackground = true)
 @Composable
 private fun ColumnEditPetPreview() {
-    ColumnEditPet()
+    ColumnEditPet(newPetList = DataPet.Pet)
 }

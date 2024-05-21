@@ -31,6 +31,7 @@ import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.data.DataPet
 import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.navigation.Screen
+import com.varsha.pawpals.ui.presentation.article.componentArticle.ArticleItem
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 import com.varsha.pawpals.ui.presentation.profile.AddPetScreen
@@ -58,19 +59,13 @@ fun ScheduleScreen(
                     textAlign = TextAlign.Center,
                     color = Color(0xFF973B2C),
                     modifier = Modifier.align(Alignment.Center)
-
                 )
-//                BackIconItem(
-//                    onBackClicked = { navController.navigateUp() },
-//                    modifier = Modifier.align(Alignment.CenterStart)
-//                )
             }
         },
         floatingActionButton = {
             ButtonItem1(
                 text = "Add Pets",
                 icon = Icons.Default.Add,
-                //modifier = Modifier.clickable { navController.navigate(Screen.AddPet.route) }
                 onClick = { navController.navigate(Screen.AddPet.route) }
             )
         }
@@ -84,22 +79,16 @@ fun ScheduleScreen(
         ) {
             items(
                 petProfil, key = { it.id }
-            ) {
-                PetProfilContent(pet = it, navController = rememberNavController())
+            ) { pet ->
+                PetProfilContent(
+                    pet = pet,
+                ) { petId ->
+                    navController.navigate(Screen.EditPet.route + "/$petId")
+                }
             }
         }
     }
 }
-
-//@Composable
-//fun PetScreenNavHost(navController: NavHostController) {
-//    NavHost(navController = navController, startDestination = "home") {
-//        composable("home") { /* Your Home Screen Content */ }
-//        composable("addPetScreen") { AddPetScreen(onBackClicked = {}) }
-//        composable("editPetScreen") { /* Your Edit Pet Screen Content */ }
-//        composable("editPlanScreen") { /* Your Edit Plan Screen Content */ }
-//    }
-//}
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
