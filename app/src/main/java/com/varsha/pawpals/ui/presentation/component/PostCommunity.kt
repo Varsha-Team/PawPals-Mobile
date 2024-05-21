@@ -1,6 +1,7 @@
 package com.varsha.pawpals.ui.presentation.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,24 +25,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.varsha.pawpals.data.DataCommunity
+import androidx.navigation.NavController
 import com.varsha.pawpals.model.Community
 
 @Composable
-fun Community(
-    community: List<Community> = DataCommunity.DataCommunity,
-    modifier: Modifier = Modifier) {
-
-}
-
-@Composable
 fun PostCommunity(
-    posted: Community
+    posted: Community,
+    onItemClicked: (Int) -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White, RoundedCornerShape(8.dp))
+            .clickable { onItemClicked(posted.id) }
             .padding(16.dp)
     ) {
         Row(
@@ -113,8 +109,10 @@ private fun PostCommunityReview() {
             title = "Cara Merawat Anjing Yang Menjengkelkan Hingga Mau Dibuang Ke laut",
             content = "Merawat anjing bisa menjadi pengalaman yang memuaskan, meskipun mungkin ada tantangan yang harus dihadapi. Namun, membuang anjing ke laut bukanlah pilihan yang baik dan bahkan bisa menjadi ilegal di banyak tempat. Sebagai gantinya, berikut adalah beberapa tips untuk merawat anjing yang mungkin membuatnya kurang menjengkelkan...",
             time = 1,
+            picture = null,
             muchLike = 100,
             muchComment = 200
-        )
+        ),
+        onItemClicked = {}
     )
 }

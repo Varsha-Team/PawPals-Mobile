@@ -62,9 +62,7 @@ fun ArticleScreen(
                     textAlign = TextAlign.Center,
                     color = Color(0xFF973B2C),
                     modifier = Modifier.align(Alignment.Center)
-
                 )
-
             }
         }
     ) { contentPadding ->

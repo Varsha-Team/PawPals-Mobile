@@ -79,7 +79,6 @@ fun OnboardingScreen(
                     lineHeight = 21.sp,
                     fontWeight = FontWeight(600),
                     color = Color(0xFF8E9090),
-
                     textAlign = TextAlign.Center,
                 )
             )
@@ -92,10 +91,13 @@ fun OnboardingScreen(
             colors = ButtonDefaults.buttonColors(Color(0xFFD05440)),
             elevation = ButtonDefaults.elevatedButtonElevation(4.dp),
             modifier = Modifier
-                .width(120.dp)
+                .width(125.dp)
                 .height(44.dp)
         ) {
-            Text(text = "Get Started")
+            Text(
+                text = "Get Started",
+                fontWeight = FontWeight.Black
+            )
         }
     }
 }
