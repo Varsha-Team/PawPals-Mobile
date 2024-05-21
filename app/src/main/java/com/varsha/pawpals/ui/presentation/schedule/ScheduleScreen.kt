@@ -68,7 +68,7 @@ fun ScheduleScreen(
             ButtonItem1(
                 text = "Add Pets",
                 icon = Icons.Default.Add,
-                onClick = { navController.navigate("addPetScreen") }
+                //onClick = { navController.navigate("addPetScreen") }
             )
         }
     ) { contentPadding ->
@@ -83,16 +83,6 @@ fun ScheduleScreen(
                 PetProfilContent(pet = it)
             }
         }
-    }
-}
-
-@Composable
-fun PetScreenNavHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") { /* Your Home Screen Content */ }
-        composable("addPetScreen") { AddPetScreen(onBackClicked = {}) }
-        composable("editPetScreen") { /* Your Edit Pet Screen Content */ }
-        composable("editPlanScreen") { /* Your Edit Plan Screen Content */ }
     }
 }
 

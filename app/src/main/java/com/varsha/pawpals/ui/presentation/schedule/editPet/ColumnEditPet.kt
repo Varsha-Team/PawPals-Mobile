@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.varsha.pawpals.ui.presentation.component.TextFieldDropdowns
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,14 +71,14 @@ fun ColumnEditPet(
             Text(
                 text = "Nama",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -95,22 +96,17 @@ fun ColumnEditPet(
             Text(
                 text = "Type",
                 modifier = Modifier
-                    .width(54.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
-            TextFieldItem(
-                value = type,
-                onValueChange = { type = it },
-                label = "Type",
-                keyboardType = KeyboardType.Text,
-            )
+            TextFieldDropdowns(list = listOf("Cat", "Dog"))
         }
 
         Column (
@@ -120,14 +116,14 @@ fun ColumnEditPet(
             Text(
                 text = "Breed",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -144,21 +140,17 @@ fun ColumnEditPet(
             Text(
                 text = "Gender",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
-            TextFieldItem(
-                value = gender,
-                onValueChange = { gender = it },
-                label = "Gender",
-            )
+            TextFieldDropdowns(list = listOf("Male", "Girl"))
         }
 
         Column (
@@ -168,14 +160,14 @@ fun ColumnEditPet(
             Text(
                 text = "Birthday",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
             TextFieldItem(

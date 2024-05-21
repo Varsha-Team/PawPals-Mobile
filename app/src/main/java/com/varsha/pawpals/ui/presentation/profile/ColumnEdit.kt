@@ -55,14 +55,14 @@ fun ColumnEdit(
             Text(
                 text = "Nama",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -80,14 +80,14 @@ fun ColumnEdit(
             Text(
                 text = "Email",
                 modifier = Modifier
-                    .width(54.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -105,14 +105,14 @@ fun ColumnEdit(
             Text(
                 text = "Nomor Telp",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -130,14 +130,14 @@ fun ColumnEdit(
             Text(
                 text = "Kata Sandi Lama",
                 modifier = Modifier
-                    .width(148.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
             TextFieldItem(
@@ -156,14 +156,14 @@ fun ColumnEdit(
             Text(
                 text = "Kata Sandi Baru",
                 modifier = Modifier
-                    .width(148.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
             TextFieldItem(
