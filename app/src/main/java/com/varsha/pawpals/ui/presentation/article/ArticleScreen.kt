@@ -39,8 +39,8 @@ import com.varsha.pawpals.ui.presentation.component.SearchTextFieldItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 @Composable
 fun ArticleScreen(
+    navController: NavController,
     kategoriArtikels: List<KategoriArtikel> = DataArticle.kategoriArtikel,
-    navController: NavController
 ) {
     var searchQuery by remember { mutableStateOf("") }
 
