@@ -29,6 +29,9 @@ sealed class Screen(val route: String) {
     //Schedule Pet
     data object AddPet : Screen("add_pet")
     data object EditPet : Screen("edit_pet")
+
+    data object PlanPet : Screen("plan_pet")
+
     data object EditPlan : Screen("edit_plan")
 
     // Community Menu

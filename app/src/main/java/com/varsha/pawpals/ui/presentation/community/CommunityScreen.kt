@@ -44,9 +44,9 @@ import com.varsha.pawpals.ui.presentation.component.SearchTextFieldItem
 
 @Composable
 fun CommunityScreen(
+    navController: NavController,
     modifier: Modifier = Modifier,
     community: List<Community> = DataCommunity.DataCommunity,
-    navController: NavController
 ) {
 
     var searchQuery by remember { mutableStateOf("") }

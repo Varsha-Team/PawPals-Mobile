@@ -81,7 +81,7 @@ fun EditProfileScreen(
                         .background(Color.White)
                 ){
                     item {
-                        ColumnEdit()
+                        ColumnEdit(userData = DataUser.User)
                     }
                 }
             }
