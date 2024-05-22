@@ -106,12 +106,14 @@ private fun PostCommunityReview() {
         posted = Community(
             id = 1,
             user = "Danir",
+            userPhoto = null,
             title = "Cara Merawat Anjing Yang Menjengkelkan Hingga Mau Dibuang Ke laut",
             content = "Merawat anjing bisa menjadi pengalaman yang memuaskan, meskipun mungkin ada tantangan yang harus dihadapi. Namun, membuang anjing ke laut bukanlah pilihan yang baik dan bahkan bisa menjadi ilegal di banyak tempat. Sebagai gantinya, berikut adalah beberapa tips untuk merawat anjing yang mungkin membuatnya kurang menjengkelkan...",
             time = 1,
             picture = null,
             muchLike = 100,
-            muchComment = 200
+            muchComment = 200,
+            date = "5 Mei 2024"
         ),
         onItemClicked = {}
     )

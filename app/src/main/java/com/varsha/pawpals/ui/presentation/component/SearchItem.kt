@@ -59,6 +59,7 @@ fun SearchTextFieldItem(
         ),
         maxLines = 1,
         modifier = modifier
+            .fillMaxWidth()
             .shadow(
                 elevation = 4.dp,
                 spotColor = Color(0x40000000),
@@ -70,7 +71,6 @@ fun SearchTextFieldItem(
                 shape = RoundedCornerShape(size = 10.dp)
             )
             .clip(RoundedCornerShape(10.dp))
-            .width(253.dp)
             .padding(0.5.dp)
     )
 }

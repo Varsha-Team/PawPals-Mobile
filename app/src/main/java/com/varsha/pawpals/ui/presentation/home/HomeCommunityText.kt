@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
@@ -29,15 +31,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.varsha.pawpals.R
+import com.varsha.pawpals.data.DataCommunity
+import com.varsha.pawpals.model.Community
+import com.varsha.pawpals.navigation.Screen
 
 @Composable
-fun HomeCommunityText(modifier: Modifier = Modifier) {
+fun HomeCommunityText(
+    modifier: Modifier = Modifier,
+    community: List<Community> = DataCommunity.DataCommunity
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -77,68 +90,109 @@ fun HomeCommunityText(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        LazyCommunity()
+        LazyRow {
+
+        }
+
+        LazyRow(
+            //  verticalArrangement = Arrangement.spacedBy(0.dp),
+            modifier = Modifier
+                .background(color = Color(0xFFFBEDEC))
+        ) {
+            items(community) {
+                LazyCommunity(community = it)
+            }
+        }
+
     }
 }
 
 @Composable
-fun LazyCommunity(modifier: Modifier = Modifier) {
+fun LazyCommunity(
+    community : Community,
+    modifier: Modifier = Modifier
+) {
     Card(
-        shape = RoundedCornerShape(25.dp),
-        elevation = CardDefaults.cardElevation(6.dp),
-        colors = CardDefaults.cardColors(Color.White)
+        colors = CardDefaults.cardColors(Color.White),
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
+        modifier = Modifier
+//            .padding(16.dp)
+            .padding(horizontal = 8.dp)
+            .width(325.dp)
+            .height(160.dp)
     ) {
         Column(
-            verticalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier
-                .height(200.dp)
-                .width(300.dp)
-                .fillMaxWidth()
-//            .padding(10.dp)
-                .border(1.dp, Color.Transparent, RoundedCornerShape(25.dp))
+            modifier = Modifier.padding(16.dp)
         ) {
-            Box(
-                modifier = Modifier
-                    .background(
-                        shape = RoundedCornerShape(
-                            topStart = 25.dp,
-                            topEnd = 25.dp,
-                            bottomEnd = 0.dp,
-                            bottomStart = 0.dp
-                        ), color = Color.Gray
-                    )
-                    .fillMaxWidth()
-                    .size(150.dp)
-            ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
-                    painter = painterResource(id = R.drawable.article_dog),
-                    contentDescription = "Gambar Sampul Artikel",
+                    painter = painterResource(id = R.drawable.profile_photo), // Replace with your image resource
+                    contentDescription = "Foto Profil",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .clip(
-                            shape = RoundedCornerShape(
-                                topStart = 25.dp,
-                                topEnd = 25.dp,
-                                bottomEnd = 0.dp,
-                                bottomStart = 0.dp
-                            )
-                        )
-                        .fillMaxSize()
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(24.dp))
+                )
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                Column {
+                    Text(
+                        text = community.user,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color.Black
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Box(
+                modifier = Modifier
+                    .height(46.dp)
+                    .border(1.dp, Color.Transparent, RectangleShape)
+            ) {
+                Text(
+                    text = community.content,
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Justify
                 )
             }
-            Row(
-                modifier = Modifier
-                    .padding(vertical = 15.dp)
-            ) {
-                Spacer(modifier = modifier.width(16.dp))
-                Text(text = "Judul")
-            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = community.date,
+                fontSize = 14.sp,
+                color = Color.Gray,
+                textAlign = TextAlign.End,
+                modifier = Modifier.fillMaxWidth()
+            )
+
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun HomeCommunityPreview() {
-    HomeCommunityText()
+    LazyCommunity(
+        community = Community(
+            id = 1,
+            user = "Danir",
+            userPhoto = null,
+            title = "Cara Merawat Anjing Yang Menjengkelkan Hingga Mau Dibuang Ke laut",
+            content = "Merawat anjing bisa menjadi pengalaman yang memuaskan, meskipun mungkin ada tantangan yang harus dihadapi. Namun, membuang anjing ke laut bukanlah pilihan yang baik dan bahkan bisa menjadi ilegal di banyak tempat. Sebagai gantinya, berikut adalah beberapa tips untuk merawat anjing yang mungkin membuatnya kurang menjengkelkan...",
+            time = 1,
+            picture = null,
+            muchLike = 100,
+            muchComment = 200,
+            date = "5 Mei 2024"
+        )
+    )
 }

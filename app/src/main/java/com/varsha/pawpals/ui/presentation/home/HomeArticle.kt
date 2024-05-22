@@ -26,6 +26,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -117,53 +118,9 @@ fun LazyArticle(
         verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(start = 8.dp)
+            .padding(horizontal = 8.dp)
             .fillMaxWidth()
-            .clickable { onItemClicked(kategoriArtikel.id) }
     ) {
-//        Row(
-//            horizontalArrangement = Arrangement.SpaceBetween,
-//            verticalAlignment = Alignment.CenterVertically,
-//        ) {
-//            Text(
-//                text = kategoriArtikel.tagname,
-//                style = TextStyle(
-//                    fontSize = 16.sp,
-//                    lineHeight = 24.sp,
-//                    fontWeight = FontWeight(600),
-//                    color = Color(0xFF010911),
-//                )
-//            )
-//            // Spacer(modifier = Modifier.padding(end = 40.dp))
-//            Row(
-//                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
-//                verticalAlignment = Alignment.CenterVertically,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .height(20.dp)
-//            ) {
-//                Text(
-//                    text = "Semua",
-//                    style = TextStyle(
-//                        fontSize = 12.sp,
-//                        lineHeight = 20.sp,
-//                        fontWeight = FontWeight(600),
-//                        color = Color(0xFF010911),
-//                    )
-//                )
-//                Icon(
-//                    imageVector = Icons.Default.ArrowForwardIos,
-//                    contentDescription = "Back"
-//                )
-//
-//            }
-//
-//
-//
-//
-//
-//        }
-
         Card(
             shape = RoundedCornerShape(25.dp),
             elevation = CardDefaults.cardElevation(6.dp),
