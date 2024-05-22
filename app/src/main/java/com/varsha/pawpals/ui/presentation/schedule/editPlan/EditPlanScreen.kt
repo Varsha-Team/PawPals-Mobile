@@ -1,5 +1,7 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.background
@@ -23,8 +25,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.R
+import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
+import java.time.LocalDate
 
 @Composable
 fun EditPlanScreen(

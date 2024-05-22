@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBackIosNew
+import androidx.compose.material.icons.filled.Backspace
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DatePicker
@@ -36,7 +40,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.ui.presentation.component.ButtonItem1
+import com.varsha.pawpals.ui.presentation.component.ButtonItem2
 import com.varsha.pawpals.ui.presentation.component.ScheduleTimeTextField
+import com.varsha.pawpals.ui.presentation.component.SwitchItem
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 import com.varsha.pawpals.ui.presentation.component.TimePickerDialog
 import java.text.SimpleDateFormat
@@ -187,14 +195,62 @@ fun ColumnEditPlan(
                     }
                 }
             }
+            NotificationRowItem()
 
-
-
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                ButtonItem2(
+                    text = "Batal",
+                    icon = Icons.Default.Close,
+                    onClick = {},
+                    navController = rememberNavController(),
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                ButtonItem1(
+                    text = "Simpan",
+                    icon = Icons.Default.Add,
+                    onClick = {},
+                    navController = rememberNavController(),
+                )
+            }
         }
     }
 }
 
-@Preview (showBackground = true)
+@Composable
+fun NotificationRowItem(
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth(),
+        //.padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "Notification",
+            modifier = Modifier.height(21.dp),
+            style = TextStyle(
+                fontSize = 14.sp,
+                fontWeight = FontWeight(400),
+                color = Color(0xFF030303),
+                textAlign = TextAlign.Start,
+            )
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        SwitchItem()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun NotificationRowItemPreview() {
+    NotificationRowItem()
+}
+
+@Preview(showBackground = true)
 @Composable
 private fun ColumnEditPlanPreview() {
     ColumnEditPlan()
