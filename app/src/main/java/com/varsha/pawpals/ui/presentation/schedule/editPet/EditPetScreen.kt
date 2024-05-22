@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPet
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
@@ -24,13 +25,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.varsha.pawpals.DataUser
 import com.varsha.pawpals.data.DataPet
-import com.varsha.pawpals.ui.presentation.article.DetailArticleContent
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.schedule.addPet.ColumnEditPet
 import com.varsha.pawpals.ui.theme.PawPalsTheme
-@RequiresApi(Build.VERSION_CODES.O)
+
+@SuppressLint("NewApi")
 @Composable
 fun EditPetScreen(
     onBackClicked: () -> Unit,
@@ -84,8 +84,7 @@ fun EditPetScreen(
     }
 }
 
-
-@RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("NewApi")
 @Preview(showBackground = true)
 @Composable
 private fun EditPetScreenPreview() {

@@ -13,6 +13,7 @@ object DataPet {
             id = 1,
             nama = "Bjir",
             photo = R.drawable.pet_photo1,
+            type = "Cat",
             jenis = "kucing oren",
             gender = "tidak tau",
             birthday = LocalDate.of(2020, 5, 18)
