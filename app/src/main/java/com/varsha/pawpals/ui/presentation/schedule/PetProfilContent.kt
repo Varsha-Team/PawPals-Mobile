@@ -42,15 +42,16 @@ import java.time.LocalDate
 
 @Composable
 fun PetProfilContent(
-    pet : PetData,
     navController: NavController,
+    pet : PetData,
    // modifier: Modifier = Modifier
     onItemClicked: (Int) -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp)
+            ,
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
@@ -100,17 +101,17 @@ fun PetProfilContent(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 ButtonItem2(
+                    navController = navController,
                     text = "Edit Pet",
                     icon = Icons.Default.Edit,
                     onClick = {onItemClicked(pet.id)},
                    // modifier = Modifier .clickable { navController.navigate(Screen.EditPet.route) }
                 )
                 ButtonItem2(
-                    text = "Edit Plan",
+                    navController = navController,
+                    text = "My Plan",
                     icon = Icons.Default.Edit,
-                    onClick = {
-                       navController.navigate(Screen.EditPlan.route)
-                              },
+                    onClick = { navController.navigate(Screen.PlanPet.route) },
                   //  modifier = Modifier.clickable { navController.navigate(Screen.EditPlan.route) }
 
                 )
@@ -127,6 +128,7 @@ private fun PetProfilContentPreview() {
         pet = PetData(id = 1,
             nama = "Bjir",
             photo = R.drawable.pet_photo1,
+            type = "",
             jenis = "kucing oren",
             gender = "tidak tau",
             birthday = LocalDate.of(2020, 5, 18)

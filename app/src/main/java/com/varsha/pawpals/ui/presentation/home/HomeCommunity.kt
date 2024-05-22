@@ -32,8 +32,8 @@ import com.varsha.pawpals.navigation.Screen
 
 @Composable
 fun HomeCommunity(
+    navController: NavController,
     modifier: Modifier = Modifier,
-    navController: NavController
 ) {
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
@@ -45,7 +45,7 @@ fun HomeCommunity(
             )
             .padding(vertical = 20.dp)
             .fillMaxWidth()
-            .clickable { navController.navigate("community") }
+            .clickable { navController.navigate(Screen.Community.route) }
     ) {
 
         Row(

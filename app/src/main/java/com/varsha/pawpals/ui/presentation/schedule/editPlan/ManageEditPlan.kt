@@ -37,8 +37,9 @@ import java.time.LocalDate
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ManageEditPlan(
+    modifier: Modifier = Modifier,
     pet : PetData,
-    modifier: Modifier = Modifier
+
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(1.dp, Alignment.Start),
@@ -102,6 +103,7 @@ private fun ManageEditPetPreview() {
         pet = PetData(id = 1,
             nama = "Bjir",
             photo = R.drawable.pet_photo1,
+            type = "",
             jenis = "kucing oren",
             gender = "tidak tau",
             birthday = LocalDate.of(2020, 5, 18))

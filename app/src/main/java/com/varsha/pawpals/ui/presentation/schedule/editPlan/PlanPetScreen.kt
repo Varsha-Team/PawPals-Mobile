@@ -1,6 +1,9 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,13 +26,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.data.DataPet
+import com.varsha.pawpals.model.PetData
+import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun PlanPetScreen(
+    navController: NavController,
     modifier: Modifier = Modifier,
-    navController: NavController
     ) {
     Scaffold(
         topBar = {
@@ -47,19 +54,19 @@ fun PlanPetScreen(
                     textAlign = TextAlign.Center,
                     color = Color(0xFF973B2C),
                     modifier = Modifier.align(Alignment.Center)
-
                 )
                 BackIconItem(
-                    onBackClicked = { /*TODO*/ },
+                    onBackClicked = { navController.navigateUp() },
                     modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
         },
         floatingActionButton = {
             ButtonItem1(
+                navController = navController,
                 text = "Plan",
                 icon = Icons.Default.Add,
-                onClick = { navController.navigate("addPetScreen") }
+                onClick = { navController.navigate(Screen.EditPlan.route) }
             )
         }
     ){contentPadding ->
@@ -68,11 +75,15 @@ fun PlanPetScreen(
                 .padding(contentPadding)
                 .background(Color(0xFFFBEDEC))
                 .fillMaxSize()
+
         ){
             LazyColumn (
                 modifier = Modifier
             ){
                 item {
+
+                   // ManageEditPlan(pet = DataPet.Pet)
+                    
                     DailyPlanItem()
                 }
             }
@@ -80,6 +91,7 @@ fun PlanPetScreen(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
 private fun PlanPetScreenPreview() {

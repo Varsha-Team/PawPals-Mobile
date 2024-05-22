@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -24,7 +27,10 @@ import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @Composable
-fun EditPlanScreen(modifier: Modifier = Modifier, navController: NavController) {
+fun EditPlanScreen(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+) {
     Scaffold(
         topBar = {
             Box(
@@ -35,7 +41,7 @@ fun EditPlanScreen(modifier: Modifier = Modifier, navController: NavController) 
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Edit Pet",
+                    text = "Edit Plan",
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
@@ -43,7 +49,7 @@ fun EditPlanScreen(modifier: Modifier = Modifier, navController: NavController) 
                     modifier = Modifier.align(Alignment.Center)
                 )
                 BackIconItem(
-                    onBackClicked = { /*TODO*/ },
+                    onBackClicked = { navController.navigateUp() },
                     modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
@@ -52,8 +58,18 @@ fun EditPlanScreen(modifier: Modifier = Modifier, navController: NavController) 
         Column(
             modifier = Modifier
                 .padding(contentPadding)
+                .background(Color(0xFFFBEDEC))
         ) {
-
+            LazyColumn(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(Color.White)
+                    .fillMaxSize()
+            ) {
+                item {
+                    ColumnEditPlan()
+                }
+            }
         }
     }
 }

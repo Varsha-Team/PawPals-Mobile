@@ -50,8 +50,8 @@ import com.varsha.pawpals.ui.presentation.article.componentArticle.ArticleItem
 
 @Composable
 fun HomeArticle(
-    modifier: Modifier = Modifier,
     navController: NavController,
+    modifier: Modifier = Modifier,
     //article: List<KategoriArtikel> = DataArticle.kategoriArtikel,
     kategoriArtikels: List<KategoriArtikel> = DataArticle.kategoriArtikel,
 

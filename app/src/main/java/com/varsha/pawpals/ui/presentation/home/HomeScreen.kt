@@ -29,7 +29,7 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            ScaffoldProfile(navController = rememberNavController())
+            ScaffoldProfile(navController)
         },
     ) { contentPadding ->
         Column(
@@ -45,11 +45,11 @@ fun HomeScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                HomeCommunity(navController = rememberNavController())
+                HomeCommunity(navController = navController)
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                HomeArticle(navController = rememberNavController())
+                HomeArticle(navController = navController)
 
                 Spacer(modifier = Modifier.height(16.dp))
 

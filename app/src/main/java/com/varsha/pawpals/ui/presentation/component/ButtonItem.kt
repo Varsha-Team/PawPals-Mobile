@@ -30,6 +30,7 @@ import com.varsha.pawpals.navigation.Screen
 
 @Composable
 fun ButtonItem1(
+    navController: NavController,
     text: String,
     icon: ImageVector,
     onClick: () -> Unit,
@@ -71,6 +72,7 @@ fun ButtonItem1(
 
 @Composable
 fun ButtonItem2(
+    navController: NavController,
     text: String,
     icon: ImageVector,
     onClick: () -> Unit,
@@ -115,7 +117,7 @@ fun ButtonItem2(
 fun ButtonItemPreview1() {
    // val navController = rememberNavController()
     ButtonItem1(
-        text = "Pets", icon = Icons.Default.Add, onClick = {},
+        text = "Pets", icon = Icons.Default.Add, onClick = {}, navController = rememberNavController()
     )
 }
 
@@ -124,6 +126,6 @@ fun ButtonItemPreview1() {
 fun ButtonItemPreview2() {
    // val navController = rememberNavController()
     ButtonItem2(
-        text = "Pets", icon = Icons.Default.Add, onClick = {}
+        text = "Pets", icon = Icons.Default.Add, onClick = {}, navController = rememberNavController()
     )
 }

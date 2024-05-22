@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.schedule.addPet
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
@@ -9,10 +10,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -31,30 +39,62 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.data.DataPet
 import com.varsha.pawpals.model.PetData
+import com.varsha.pawpals.ui.presentation.component.ScheduleTimeTextField
 import com.varsha.pawpals.ui.presentation.component.TextFieldDropdowns
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
+import java.util.Locale
 
-@RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("NewApi")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ColumnEditPet(
     modifier: Modifier = Modifier,
     newPetList: List<PetData>
 ) {
-    var namepet by remember { mutableStateOf("") }
-    var type by remember { mutableStateOf("") }
-    var breed by remember { mutableStateOf("") }
-    var gender by remember { mutableStateOf("") }
-    var birthday by rememberSaveable { mutableStateOf("") }
+    val context = LocalContext.current
 
-  //  if (newPetList.isNotEmpty()) {
-        val pet = newPetList[0] // Assuming you want to edit the first pet in the list
-//        namepet = pet.nama
-//        type = pet.jenis
-//       // breed = pet.breed
-//        gender = pet.gender
-//        birthday = pet.birthday.toString()
-   // }
+    val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    val date = remember { Calendar.getInstance().timeInMillis }
+
+    val pet = newPetList[0]
+
+    var namepet by remember { mutableStateOf(pet.nama) }
+    var breed by remember { mutableStateOf(pet.jenis) }
+    var type by remember { mutableStateOf(pet.type) }
+    var gender by remember { mutableStateOf(pet.gender) }
+
+    var scheduleDate by remember { mutableStateOf(pet.birthday.format(dateFormatter)) }
+
+    val datePickerState = rememberDatePickerState(initialSelectedDateMillis = date)
+    var showDatePicker by remember { mutableStateOf(false) }
+
+    if (showDatePicker) {
+        DatePickerDialog(
+            onDismissRequest = { showDatePicker = false },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        val selectedDate = Calendar.getInstance().apply {
+                            timeInMillis = datePickerState.selectedDateMillis!!
+                        }
+                        scheduleDate = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(selectedDate.time)
+                        showDatePicker = false
+                    }
+                ) {
+                    Text("OK")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDatePicker = false }
+                ) { Text("Cancel") }
+            }
+        ) {
+            DatePicker(state = datePickerState)
+        }
+    }
 
     Column(
         verticalArrangement = Arrangement.spacedBy(25.dp, Alignment.CenterVertically),
@@ -114,7 +154,11 @@ fun ColumnEditPet(
                     textAlign = TextAlign.Start,
                 )
             )
-            TextFieldDropdowns(list = listOf("Cat", "Dog"))
+            TextFieldDropdowns(
+                list = listOf("Cat", "Dog"),
+                selectedValue = type,
+                onValueChange = { type = it }
+            )
         }
 
         Column(
@@ -135,7 +179,7 @@ fun ColumnEditPet(
             TextFieldItem(
                 value = breed,
                 onValueChange = { breed = it },
-                label = "Breed",
+                label = pet.jenis,
             )
         }
 
@@ -154,11 +198,16 @@ fun ColumnEditPet(
                     textAlign = TextAlign.Start
                 )
             )
-            TextFieldDropdowns(list = listOf("Male", "Girl"))
+            TextFieldDropdowns(
+                list = listOf("Male", "Female"),
+                selectedValue = gender,
+                onValueChange = { gender = it }
+            )
         }
 
         Column(
-            modifier = Modifier.padding(32.dp, 0.dp)
+            modifier = Modifier
+                .padding(32.dp, 0.dp)
         ) {
             Text(
                 text = "Birthday",
@@ -172,15 +221,19 @@ fun ColumnEditPet(
                     textAlign = TextAlign.Start
                 )
             )
-            TextFieldItem(
-                value = birthday,
-                onValueChange = { birthday = it },
-                label = pet.birthday.toString(),
+            ScheduleTimeTextField(
+                value = scheduleDate,
+                onValueChange = { scheduleDate = it },
+                label = "Atur Tanggal",
+                icon = Icons.Default.DateRange,
+                onIconClick = {
+                    showDatePicker = true
+                }
             )
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { /* TODO */ },
             colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#D05440"))),
             modifier = Modifier
                 .width(194.dp)
@@ -201,7 +254,7 @@ fun ColumnEditPet(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("NewApi")
 @Preview(showBackground = true)
 @Composable
 private fun ColumnEditPetPreview() {

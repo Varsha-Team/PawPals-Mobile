@@ -2,12 +2,15 @@ package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,11 +31,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.ui.presentation.component.ScheduleTimeTextField
+import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 import com.varsha.pawpals.ui.presentation.component.TimePickerDialog
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -45,14 +50,16 @@ fun ColumnEditPlan(
 ) {
     val context = LocalContext.current
 
-    var namepet by remember { mutableStateOf("") }
-    var breed by remember { mutableStateOf("") }
-    var gender by remember { mutableStateOf("") }
+    var planname by remember { mutableStateOf("") }
 
     var scheduleTime by rememberSaveable { mutableStateOf("") }
 
     val timePickerState = rememberTimePickerState()
     var showTimePicker by remember { mutableStateOf(false) }
+
+    var daysSelected by rememberSaveable { mutableStateOf(List(7) { false }) }
+    val daysOfWeek = listOf("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")
+
 
     if (showTimePicker) {
         TimePickerDialog(
@@ -110,18 +117,84 @@ fun ColumnEditPlan(
                 value = scheduleTime,
                 onValueChange = { scheduleTime = it },
                 label = "Atur Tanggal",
-                icon = Icons.Default.DateRange,
+                icon = Icons.Default.AccessTime,
                 onIconClick = {
                     showTimePicker = true
                 }
             )
 
-            
+            Spacer(modifier = Modifier.padding(8.dp))
+
+
+            Text(
+                text = "Nama Plan",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(21.dp),
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight(400),
+                    color = Color(0xFF030303),
+                    textAlign = TextAlign.Start,
+                )
+            )
+            TextFieldItem(
+                value = planname,
+                onValueChange = { planname = it },
+                label = "Masukkan Nama Plan",
+                keyboardType = KeyboardType.Text,
+            )
+
+            Spacer(modifier = Modifier.padding(8.dp))
+
+            Column {
+                Text(
+                    text = "Pilih Hari",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(21.dp),
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight(400),
+                        color = Color(0xFF030303),
+                        textAlign = TextAlign.Start,
+                    )
+                )
+                daysOfWeek.forEachIndexed { index, day ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp)
+                    ) {
+                        Checkbox(
+                            checked = daysSelected[index],
+                            onCheckedChange = { checked ->
+                                daysSelected = daysSelected.toMutableList().apply {
+                                    this[index] = checked
+                                }
+                            }
+                        )
+                        Text(
+                            text = day,
+                            style = TextStyle(
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight(400),
+                                color = Color(0xFF030303),
+                                textAlign = TextAlign.Start,
+                            )
+                        )
+                    }
+                }
+            }
+
+
+
         }
     }
 }
 
-@Preview
+@Preview (showBackground = true)
 @Composable
 private fun ColumnEditPlanPreview() {
     ColumnEditPlan()
