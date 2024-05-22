@@ -26,12 +26,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.varsha.pawpals.DataUser
+import com.varsha.pawpals.model.UserData
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ColumnEdit(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    userData: UserData
 ) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -68,7 +71,7 @@ fun ColumnEdit(
             TextFieldItem(
                 value = username,
                 onValueChange = { username = it },
-                label = "Enter Username",
+                label = userData.nama,
                 keyboardType = KeyboardType.Text,
             )
         }
@@ -93,7 +96,7 @@ fun ColumnEdit(
             TextFieldItem(
                 value = email,
                 onValueChange = { email = it },
-                label = "Enter Email",
+                label = userData.email,
                 keyboardType = KeyboardType.Text,
             )
         }
@@ -118,7 +121,7 @@ fun ColumnEdit(
             TextFieldItem(
                 value = nomor,
                 onValueChange = { nomor = it },
-                label = "Masukkan nomor telp",
+                label = userData.nomor,
                 keyboardType = KeyboardType.Text,
             )
         }
@@ -206,5 +209,5 @@ fun ColumnEdit(
 @Preview(showBackground = true)
 @Composable
 private fun ColumnEditPreview() {
-    ColumnEdit()
+    ColumnEdit(userData = DataUser.User)
 }

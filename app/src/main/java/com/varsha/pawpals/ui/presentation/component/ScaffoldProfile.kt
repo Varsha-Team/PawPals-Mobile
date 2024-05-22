@@ -69,6 +69,7 @@ fun ScaffoldProfile(
                 modifier = Modifier
                     .padding(10.dp)
                     .background(Color.White, RoundedCornerShape(16.dp))
+                   // .clickable { navController.navigate(Screen.Notification2.route) }
             ) {
                 IconButton(
                     onClick = { navController.navigate(Screen.Notification.route) },
@@ -81,6 +82,7 @@ fun ScaffoldProfile(
                         modifier = Modifier
                             .padding(5.dp)
                             .fillMaxSize()
+
                     )
                 }
             }
