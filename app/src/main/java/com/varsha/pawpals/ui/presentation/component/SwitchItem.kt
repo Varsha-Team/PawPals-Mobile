@@ -16,28 +16,16 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun SwitchItem(modifier: Modifier = Modifier) {
     var isChecked by remember { mutableStateOf(false) }
-
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        Switch(
-            checked = isChecked,
-            onCheckedChange = { isChecked = it },
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = Color.White,
-                checkedTrackColor = Color(0xFF973B2C),
-                uncheckedThumbColor = Color.White,
-                uncheckedTrackColor = Color(0xFFFBEDEC)
-            )
+    Switch(
+        checked = isChecked,
+        onCheckedChange = { isChecked = it },
+        colors = SwitchDefaults.colors(
+            checkedThumbColor = Color.White,
+            checkedTrackColor = Color(0xFF973B2C),
+            uncheckedThumbColor = Color.White,
+            uncheckedTrackColor = Color(0xFFFBEDEC)
         )
-        if (isChecked) {
-            Icon(imageVector = Icons.Filled.Check, contentDescription = null)
-        }
-    }
+    )
 }
 
 @Preview
