@@ -27,10 +27,10 @@ import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @Composable
-fun EditPlanScreen(
+fun EditPlanScreen(){
+    navController: NavController,
     modifier: Modifier = Modifier,
-    navController: NavController
-){
+) {
     Scaffold(
         topBar = {
             Box(
@@ -41,7 +41,7 @@ fun EditPlanScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Edit Pet",
+                    text = "Edit Plan",
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
@@ -49,7 +49,7 @@ fun EditPlanScreen(
                     modifier = Modifier.align(Alignment.Center)
                 )
                 BackIconItem(
-                    onBackClicked = { /*TODO*/ },
+                    onBackClicked = { navController.navigateUp() },
                     modifier = Modifier.align(Alignment.CenterStart)
                 )
             }

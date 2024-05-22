@@ -39,8 +39,8 @@ import com.varsha.pawpals.ui.presentation.profile.AddPetScreen
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ScheduleScreen(
-    modifier: Modifier = Modifier,
     navController: NavController,
+    modifier: Modifier = Modifier,
     petProfil: List<PetData> = DataPet.Pet,
 ) {
     Scaffold(
@@ -64,6 +64,7 @@ fun ScheduleScreen(
         },
         floatingActionButton = {
             ButtonItem1(
+                navController = navController,
                 text = "Add Pets",
                 icon = Icons.Default.Add,
                 onClick = { navController.navigate(Screen.AddPet.route) }
@@ -81,7 +82,7 @@ fun ScheduleScreen(
                 petProfil, key = { it.id }
             ) { pet ->
                 PetProfilContent(
-                    navController = rememberNavController(),
+                    navController = navController,
                     pet = pet,
                 ) { petId ->
                     navController.navigate(Screen.EditPet.route + "/$petId")

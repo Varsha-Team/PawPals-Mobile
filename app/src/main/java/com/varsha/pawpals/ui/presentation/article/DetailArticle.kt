@@ -64,12 +64,13 @@ fun DetailArticleScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailArticleContent(
+    navController: NavController,
     newArtikelList: List<Artikel>,
 //    kategoriArtikels: List<KategoriArtikel> = DataArticle.kategoriArtikel,
 //    newKategoriList: List<KategoriArtikel>,
 
     modifier: Modifier = Modifier,
-    navController: NavController
+
 ) {
     Scaffold(
         topBar = {

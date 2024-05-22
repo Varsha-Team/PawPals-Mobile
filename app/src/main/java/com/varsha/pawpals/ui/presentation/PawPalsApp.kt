@@ -49,6 +49,7 @@ import com.varsha.pawpals.ui.presentation.profile.ProfileScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPet.EditPetScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.EditPlanScreen
+import com.varsha.pawpals.ui.presentation.schedule.editPlan.PlanPetScreen
 
 // Background Color
 val backgroundColor = Brush.radialGradient(
@@ -126,6 +127,14 @@ fun PawPalsApp(
                 NotificationScreen(navController = navController)
             }
 
+            composable(Screen.PlanPet.route) {
+                PlanPetScreen(navController = navController)
+            }
+
+            composable(Screen.EditPlan.route) {
+                EditPlanScreen(navController = navController)
+            }
+
             composable(Screen.AddPet.route) {
                 AddPetScreen(onBackClicked = {}, navController = navController)
             }
@@ -140,9 +149,7 @@ fun PawPalsApp(
                     )
             }
 
-            composable(Screen.EditPlan.route) {
-                EditPlanScreen(navController = navController)
-            }
+
 
             composable(
                 Screen.ExploreArticle.route + "/{kategoriArtikelId}",

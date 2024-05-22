@@ -37,8 +37,9 @@ import java.time.LocalDate
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ManageEditPlan(
+    modifier: Modifier = Modifier,
     pet : PetData,
-    modifier: Modifier = Modifier
+
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(1.dp, Alignment.Start),
