@@ -61,7 +61,7 @@ fun ScaffoldProfile(
                     .clip(CircleShape)
                     .size(50.dp)
                     .fillMaxSize()
-                    .clickable { navController.navigateUp() }
+                    .clickable { navController.navigate(Screen.Profile.route) }
             )
         },
         actions = {
