@@ -27,7 +27,7 @@ import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @Composable
-fun EditPlanScreen(){
+fun EditPlanScreen(
     navController: NavController,
     modifier: Modifier = Modifier,
 ) {
@@ -55,17 +55,17 @@ fun EditPlanScreen(){
             }
         }
     ) { contentPadding ->
-        Column (
+        Column(
             modifier = Modifier
                 .padding(contentPadding)
                 .background(Color(0xFFFBEDEC))
-        ){
-            LazyColumn (
+        ) {
+            LazyColumn(
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
                     .background(Color.White)
                     .fillMaxSize()
-            ){
+            ) {
                 item {
                     ColumnEditPlan()
                 }
