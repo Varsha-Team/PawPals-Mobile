@@ -46,6 +46,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -93,10 +94,12 @@ fun TextFieldItem(
 @Composable
 fun TextFieldDropdowns(
     modifier: Modifier = Modifier,
-    list: List<String>
+    list: List<String>,
+    selectedValue: String,
+    onValueChange: (String) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-    var selectedText by remember { mutableStateOf("") }
+    var selectedText by remember { mutableStateOf(selectedValue) }
 
     ExposedDropdownMenuBox(
         expanded = expanded,
@@ -116,9 +119,7 @@ fun TextFieldDropdowns(
             )
             .clip(RoundedCornerShape(10.dp))
             .fillMaxWidth()
-            //.width(312.dp)
             .padding(0.5.dp)
-
     ) {
         TextField(
             value = selectedText,
@@ -146,12 +147,26 @@ fun TextFieldDropdowns(
                 DropdownMenuItem(
                     onClick = {
                         selectedText = selectionOption
+                        onValueChange(selectionOption)
                         expanded = false
                     },
                     text = { Text(text = selectionOption) }
                 )
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TextFieldDropdownsPreview() {
+    var gender by remember { mutableStateOf("") }
+    PawPalsTheme {
+        TextFieldDropdowns(
+            list = listOf("Male", "Female"),
+            selectedValue = gender,
+            onValueChange = { gender = it }
+        )
     }
 }
 
@@ -254,15 +269,6 @@ fun ScheduleTimeTextFieldPreview() {
         )
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun TextFieldDropdownsPreview() {
-    PawPalsTheme {
-        TextFieldDropdowns(list = listOf("Cat", "Dog"))
-    }
-}
-
 
 @Preview(showBackground = true)
 @Composable

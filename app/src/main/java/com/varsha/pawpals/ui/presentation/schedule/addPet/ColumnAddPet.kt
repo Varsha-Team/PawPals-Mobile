@@ -57,16 +57,13 @@ fun ColumnAddPet(
 
     var namepet by remember { mutableStateOf("") }
     var breed by remember { mutableStateOf("") }
+    var type by remember { mutableStateOf("") }
     var gender by remember { mutableStateOf("") }
 
     var scheduleDate by remember { mutableStateOf("") }
-    var scheduleTime by rememberSaveable { mutableStateOf("") }
 
     val datePickerState = rememberDatePickerState(initialSelectedDateMillis = date)
     var showDatePicker by remember { mutableStateOf(false) }
-
-    val timePickerState = rememberTimePickerState()
-    var showTimePicker by remember { mutableStateOf(false) }
 
     if (showDatePicker) {
         DatePickerDialog(
@@ -90,31 +87,6 @@ fun ColumnAddPet(
             }
         ) {
             DatePicker(state = datePickerState)
-        }
-    }
-
-    if (showTimePicker) {
-        TimePickerDialog(
-            onDismissRequest = { showTimePicker = false },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        scheduleTime = "${timePickerState.hour}:${timePickerState.minute}"
-                        showTimePicker = false
-                    }
-                ) {
-                    Text("OK")
-                }
-            },
-            dismissButton = {
-                TextButton(
-                    onClick = { showTimePicker = false }
-                ) {
-                    Text("Cancel")
-                }
-            }
-        ) {
-            TimePicker(state = timePickerState)
         }
     }
 
@@ -148,14 +120,14 @@ fun ColumnAddPet(
             Text(
                 text = "Nama",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -173,17 +145,20 @@ fun ColumnAddPet(
             Text(
                 text = "Type",
                 modifier = Modifier
-                    .width(54.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
-            TextFieldDropdowns(list = listOf("Cat", "Dog"))
+            TextFieldDropdowns(list = listOf("Cat", "Dog"),
+                selectedValue = type,
+                onValueChange = { type = it }
+            )
         }
 
         Column (
@@ -193,14 +168,14 @@ fun ColumnAddPet(
             Text(
                 text = "Breed",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldItem(
@@ -210,27 +185,25 @@ fun ColumnAddPet(
             )
         }
 
-        Column (
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
-        ){
+        Column(
+            modifier = Modifier.padding(32.dp, 0.dp)
+        ) {
             Text(
                 text = "Gender",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
-            TextFieldItem(
-                value = gender,
-                onValueChange = { gender = it },
-                label = "Gender",
+            TextFieldDropdowns(
+                list = listOf("Male", "Female"),
+                selectedValue = gender,
+                onValueChange = { gender = it }
             )
         }
 
@@ -241,14 +214,14 @@ fun ColumnAddPet(
             Text(
                 text = "Birthday",
                 modifier = Modifier
-                    .width(78.dp)
+                    .fillMaxWidth()
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
             )
             ScheduleTimeTextField(
@@ -289,7 +262,7 @@ fun ColumnAddPet(
 
 }
 
-@Preview
+@Preview (showBackground = true)
 @Composable
 private fun ColumnAddPetPreview() {
     ColumnAddPet()
