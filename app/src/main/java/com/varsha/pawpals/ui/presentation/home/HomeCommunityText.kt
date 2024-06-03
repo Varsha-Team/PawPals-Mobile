@@ -97,7 +97,7 @@ fun HomeCommunityText(
         LazyRow(
             //  verticalArrangement = Arrangement.spacedBy(0.dp),
             modifier = Modifier
-                .background(color = Color(0xFFFBEDEC))
+                .background(color = Color.White)
         ) {
             items(community) {
                 LazyCommunity(community = it)

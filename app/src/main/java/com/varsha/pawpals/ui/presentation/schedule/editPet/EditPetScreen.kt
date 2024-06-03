@@ -44,7 +44,7 @@ fun EditPetScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -64,11 +64,11 @@ fun EditPetScreen(
         }
     ) { contentPadding ->
         Column(
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .padding(contentPadding)
-                .background(color = Color(0xFFFBEDEC)),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
+               // .background(color = Color(0xFFFBEDEC)),
         ) {
             ManageEditPet(pet = newPetList[0])
             LazyColumn(

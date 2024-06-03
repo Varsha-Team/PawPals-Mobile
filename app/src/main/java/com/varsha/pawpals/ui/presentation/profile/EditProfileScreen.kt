@@ -43,7 +43,7 @@ fun EditProfileScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -52,7 +52,7 @@ fun EditProfileScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFED6A09),
                     modifier = Modifier.align(Alignment.Center)
                 )
                 BackIconItem(
@@ -70,7 +70,7 @@ fun EditProfileScreen(
             Column(
                 modifier = Modifier
                     .padding(contentPadding)
-                    .background(color = Color(0xFFFBEDEC)),
+                    //.background(color = Color(0xFFFBEDEC)),
             ) {
                 ManageProfile()
                 LazyColumn (

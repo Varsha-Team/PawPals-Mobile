@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,15 +36,16 @@ fun PostCommunity(
 ) {
     Column(
         modifier = Modifier
+            .shadow(elevation = 4.dp, spotColor = Color(0x40000000), ambientColor = Color(0x40000000))
             .fillMaxWidth()
-            .background(Color.White, RoundedCornerShape(8.dp))
+            .background(Color.White, RoundedCornerShape(20.dp))
             .clickable { onItemClicked(posted.id) }
             .padding(16.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
         ) {
             Text(
                 text = posted.user,
@@ -53,7 +55,8 @@ fun PostCommunity(
             Text(
                 text = "${posted.time} Menit Yang Lalu",
                 style = MaterialTheme.typography.bodySmall,
-                color = Color.Gray
+                color = Color.Gray,
+                modifier = Modifier.padding(start = 16.dp)
             )
         }
 
@@ -65,7 +68,7 @@ fun PostCommunity(
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp
             ),
-            color = Color(0xFFE53935)
+            color = Color(0xFFCE5628)
         )
 
         Spacer(modifier = Modifier.height(8.dp))

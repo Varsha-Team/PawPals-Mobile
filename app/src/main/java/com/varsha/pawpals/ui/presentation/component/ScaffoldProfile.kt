@@ -88,7 +88,7 @@ fun ScaffoldProfile(
             }
         },
         colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = Color(0xFFFBEDEC)
+            containerColor = Color.White
             //containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
         )
     )

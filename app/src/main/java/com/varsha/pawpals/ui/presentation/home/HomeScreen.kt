@@ -34,18 +34,18 @@ fun HomeScreen(
     ) { contentPadding ->
         Column(
             modifier = Modifier
-                .background(color = Color(0xFFFBEDEC))
+                .background(color = Color.White)
                 .verticalScroll(scrollState)
                 .padding(contentPadding)
         ) {
             Column(
                 Modifier.padding(16.dp)
             ) {
-                HomePlanning()
+                HomePlanning(navController = navController)
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-                HomeCommunity(navController = navController)
+//                Spacer(modifier = Modifier.height(16.dp))
+//
+//                HomeCommunity(navController = navController)
 
                 Spacer(modifier = Modifier.height(16.dp))
 

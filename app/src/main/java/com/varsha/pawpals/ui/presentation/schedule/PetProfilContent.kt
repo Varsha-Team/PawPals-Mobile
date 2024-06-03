@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -49,41 +50,36 @@ fun PetProfilContent(
 ) {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            ,
+            .width(500.dp)
+            .padding(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(6.dp),
     ) {
-        Column(
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.Start),
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-//                .shadow(
-//                    elevation = 4.dp,
-//                    spotColor = Color(0x40000000),
-//                    ambientColor = Color(0x40000000)
-//                )
-                .padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(16.dp)
         ) {
-            Row(
+            Image(
+                painter = painterResource(id = pet.photo),
+                contentDescription = pet.nama,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    //.padding(24.dp)
-                    //.height(IntrinsicSize.Min) // Allow height to wrap content
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                //horizontalArrangement = Arrangement.Center
+                    .size(62.dp)
+                    .clip(CircleShape)
+            )
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier
+                    .width(20.dp)
+                    .weight(1f)
+                    .padding(end = 0.dp)
             ) {
-                Image(
-                    painter = painterResource(id = pet.photo),
-                    contentDescription = pet.nama,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(62.dp)
-                        .clip(CircleShape)
-                )
-                Spacer(modifier = Modifier.width(24.dp))
                 Text(
                     text = pet.nama,
                     style = TextStyle(
@@ -91,33 +87,45 @@ fun PetProfilContent(
                         lineHeight = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF010911),
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Start
                     )
                 )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                ButtonItem2(
-                    navController = navController,
-                    text = "Edit Pet",
-                    icon = Icons.Default.Edit,
-                    onClick = {onItemClicked(pet.id)},
-                   // modifier = Modifier .clickable { navController.navigate(Screen.EditPet.route) }
-                )
-                ButtonItem2(
-                    navController = navController,
-                    text = "My Plan",
-                    icon = Icons.Default.Edit,
-                    onClick = { navController.navigate(Screen.PlanPet.route) },
-                  //  modifier = Modifier.clickable { navController.navigate(Screen.EditPlan.route) }
+                Row(
+                    modifier = Modifier.fillMaxWidth()
+                )      {
+                    Text(
+                        text = pet.type,
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            lineHeight = 19.sp,
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF6D6F77),
+                            textAlign = TextAlign.Start,
+                        )
+                    )
 
-                )
+                    Text(
+                        text = " - ${pet.jenis}",
+                        style = TextStyle(
+                            fontSize = 16.sp,
+                            lineHeight = 19.sp,
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF6D6F77),
+                            textAlign = TextAlign.Start,
+                        )
+                    )
+                }
             }
+
+            ButtonItem2(
+                navController = navController,
+                text = "Plan",
+                icon = Icons.Default.Edit,
+                onClick = { navController.navigate(Screen.PlanPet.route) }
+            )
         }
     }
+
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -126,9 +134,9 @@ fun PetProfilContent(
 private fun PetProfilContentPreview() {
     PetProfilContent(
         pet = PetData(id = 1,
-            nama = "Bjir",
+            nama = "Basuki",
             photo = R.drawable.pet_photo1,
-            type = "",
+            type = "Cat",
             jenis = "kucing oren",
             gender = "tidak tau",
             birthday = LocalDate.of(2020, 5, 18)

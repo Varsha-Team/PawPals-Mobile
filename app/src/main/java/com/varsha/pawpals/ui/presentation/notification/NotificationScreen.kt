@@ -45,7 +45,7 @@ fun NotificationScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -80,7 +80,7 @@ fun NotificationScreen(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(0.dp),
                     modifier = Modifier
-                        .background(color = Color(0xFFFBEDEC))
+                        .background(color = Color.White)
                 ) {
                     items(notifications, key = { it.id }) {
                         SystemNotificationItem(notification = it, modifier = Modifier)

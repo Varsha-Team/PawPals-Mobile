@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -48,46 +49,52 @@ fun ExploreArticleItem(
         modifier = Modifier
             .padding(start = 16.dp, end = 16.dp)
     ) {
-        Card(
-            shape = RoundedCornerShape(25.dp),
-            elevation = CardDefaults.cardElevation(6.dp),
-            colors = CardDefaults.cardColors(Color.White),
-            modifier = Modifier
-                .padding(bottom = 16.dp)
-                .clickable { onItemClicked(artikel.id) }
-        ) {
-            Column(
-                verticalArrangement = Arrangement.SpaceBetween,
+//        Card(
+//            shape = RoundedCornerShape(25.dp),
+//            elevation = CardDefaults.cardElevation(6.dp),
+//            colors = CardDefaults.cardColors(Color.White),
+//            modifier = Modifier
+//                .padding(bottom = 16.dp)
+//                .clickable { onItemClicked(artikel.id) }
+//        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.Start),
+                verticalAlignment = Alignment.CenterVertically,
+
+                //verticalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
-                    .height(240.dp)
-                    .width(328.dp)
-                    .fillMaxWidth()
-                    .border(1.dp, Color.Transparent, RoundedCornerShape(25.dp))
+                    .width(307.dp)
+                    .height(100.dp)
+                    .clickable { onItemClicked(artikel.id) }
+//                    .border(1.dp, Color.Transparent, RoundedCornerShape(25.dp))
             ) {
                 Box(
-                    modifier = Modifier
-                        .background(
-                            shape = RoundedCornerShape(
-                                topStart = 25.dp,
-                                topEnd = 25.dp,
-                                bottomEnd = 0.dp,
-                                bottomStart = 0.dp
-                            ), color = Color.Gray
-                        )
-                        .fillMaxWidth()
-                        .size(150.dp)
+//                    modifier = Modifier
+//                        .background(
+//                            shape = RoundedCornerShape(
+//                                topStart = 25.dp,
+//                                topEnd = 25.dp,
+//                                bottomEnd = 0.dp,
+//                                bottomStart = 0.dp
+//                            ), color = Color.Gray
+//                        )
+//                        .fillMaxWidth()
+                       // .size(150.dp)
                 ) {
                     Image(
                         painter = painterResource(id = artikel.photo),
                         contentDescription = "Gambar Sampul Artikel",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
+                            .padding(8.dp)
+                            .width(93.09998.dp)
+                            .height(90.dp)
                             .clip(
                                 shape = RoundedCornerShape(
-                                    topStart = 25.dp,
-                                    topEnd = 25.dp,
-                                    bottomEnd = 0.dp,
-                                    bottomStart = 0.dp
+                                    topStart = 20.dp,
+                                    topEnd = 20.dp,
+                                    bottomEnd = 20.dp,
+                                    bottomStart = 20.dp
                                 )
                             )
                             .fillMaxSize()
@@ -95,30 +102,55 @@ fun ExploreArticleItem(
                 }
                 Column(
                     modifier = Modifier
-                        .padding(vertical = 14.dp)
+                        .padding(vertical = 4.dp)
                         .fillMaxSize()
                 ) {
-                    Spacer(modifier = modifier.width(16.dp))
                     Text(
-                        text = artikel.title,
-                        overflow = TextOverflow.Ellipsis,
-                        maxLines = 1,
-                        modifier = Modifier
-                            .padding(start = 8.dp, top = 2.dp, bottom = 4.dp, end = 4.dp)
-                    )
-                    Text(
-                        text = artikel.description,
+                        text = artikel.category,
                         modifier = Modifier.padding(start = 8.dp, top = 4.dp, bottom = 0.dp, end = 4.dp),
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight(400),
                             color = Color(0xFFA9ACB8),
-                            textAlign = TextAlign.Justify,
                         )
                     )
+                    Spacer(modifier = modifier.width(16.dp))
+                    Text(
+                        text = artikel.title,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2,
+                        modifier = Modifier
+                            .padding(start = 8.dp, top = 2.dp, bottom = 4.dp, end = 4.dp)
+                    )
+                    Row(
+                        verticalAlignment = Alignment.Bottom,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Text(
+                            text = artikel.author,
+                            modifier = Modifier.padding(start = 8.dp, top = 4.dp, bottom = 0.dp, end = 4.dp),
+                            style = TextStyle(
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight(400),
+                                color = Color(0xFFA9ACB8),
+                            )
+                        )
+                        Spacer(modifier = Modifier.padding(24.dp))
+                        Text(
+                            text = artikel.date,
+                            modifier = Modifier.padding(start = 8.dp, top = 4.dp, bottom = 0.dp, end = 4.dp),
+                            style = TextStyle(
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight(400),
+                                color = Color(0xFFA9ACB8),
+                            )
+                        )
+                    }
+
                 }
             }
-        }
+      //  }
 
 
 
@@ -131,11 +163,14 @@ private fun ExploreArticleItemPrev() {
     PawPalsTheme {
         ExploreArticleItem(artikel =Artikel(
             1, "Cara Memberi Makan Kucing Unik", R.drawable.article_dog,
+            "Health",
+             "SehatPet",
+            "9 Sep 2022",
            "Bagaimana Cara Merencanakan Jadwal Makan Kucing Saya?\n" +
                     "Anda  dapat membagi diet harian kucing Anda menjadi dua bagian utama dengan  jeda tidak lebih dari 12 jam. Atau, Anda dapat membagi waktu makan  mereka menjadi beberapa kali  mulai dari sarapan, makan siang, dan makan  malam. Namun, pastikan bahwa makanan yang Anda berikan dapat memenuhi  kalori dan nutrisi lainnya, tidak lebih atau kurang dari yang  direkomendasikan."
 
         ),
             onItemClicked =  { artikelId -> println("Artikel Id : $artikelId") }
-            )
+        )
     }
 }
