@@ -2,15 +2,11 @@ package com.varsha.pawpals.ui.presentation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Chat
-import androidx.compose.material.icons.outlined.EventAvailable
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material.icons.outlined.PersonOutline
 import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.Search
@@ -18,7 +14,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemColors
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,9 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -61,7 +53,6 @@ import com.varsha.pawpals.ui.presentation.schedule.editPet.EditPetScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.EditPlanScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.PlanPetScreen
 import com.varsha.pawpals.ui.presentation.splash.SplashScreen
-import com.varsha.pawpals.R
 
 // Background Color
 val backgroundColor = Brush.radialGradient(

@@ -52,7 +52,7 @@ fun ArticleItem(
         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.Top),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(horizontal = 16.dp)
+            .padding(start = 8.dp)
             .fillMaxWidth()
             .clickable { onItemClicked(artikel.id) }
     ) {

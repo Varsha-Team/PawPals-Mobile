@@ -43,10 +43,6 @@ fun HomeScreen(
             ) {
                 HomePlanning(navController = navController)
 
-//                Spacer(modifier = Modifier.height(16.dp))
-//
-//                HomeCommunity(navController = navController)
-
                 Spacer(modifier = Modifier.height(16.dp))
 
                 HomeArticle(navController = navController)

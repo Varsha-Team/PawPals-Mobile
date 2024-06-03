@@ -76,7 +76,7 @@ fun HomeArticle(
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
-                    .padding(start = 16.dp)
+                    .padding(start = 0.dp)
             )
 
             Row(
@@ -100,7 +100,7 @@ fun HomeArticle(
         LazyRow(
           //  verticalArrangement = Arrangement.spacedBy(0.dp),
             modifier = Modifier
-
+                .padding(end = 4.dp)
         ) {
             items(artikels, key = { it.id }) { artikel ->
                 ArticleItem(artikel = artikel) { artikelId ->

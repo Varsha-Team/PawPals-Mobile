@@ -38,6 +38,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -250,18 +251,29 @@ fun LoginScreen (
                     )
                 }
 
-                Text(
-                    text = "Belum punya akun?  Daftar",
-//                    modifier = Modifier
-//                        .clickable { navController.navigate(Screen.Register.route) },
-                    style = TextStyle(
-                        fontSize = 14.sp,
-                        //   fontFamily = FontFamily(Font(R.font.poppins)),
-                        fontWeight = FontWeight(400),
-                        color = Color(0xCC000000),
+                Row {
+                    Text(
+                        text = "Belum punya akun ? ",
+                        style = TextStyle(
+                            fontSize = 14.sp,
+                            //   fontFamily = FontFamily(Font(R.font.poppins)),
+                            fontWeight = FontWeight(400),
+                            color = Color(0xCC000000),
 
+                            )
                     )
-                )
+                    Text(
+                        text = "Daftar",
+                        modifier = Modifier
+                            .clickable { navController.navigate(Screen.Register.route) },
+                        style = TextStyle(
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(800),
+                            color = Color(0xCC000000)
+                            ),
+                        color = Color(0xFFED6A09)
+                    )
+                }
 
             }
 

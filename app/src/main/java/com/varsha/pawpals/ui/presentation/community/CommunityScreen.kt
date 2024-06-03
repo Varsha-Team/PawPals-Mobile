@@ -57,10 +57,10 @@ fun CommunityScreen(
     Scaffold(
         topBar = {
             Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White)
-                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = "Komunitas",
@@ -86,7 +86,7 @@ fun CommunityScreen(
         Column(
             modifier = Modifier
                 .padding(contentPadding)
-               // .background(color = Color(0xFFFBEDEC))
+                .background(color = Color.White)
                 .fillMaxSize()
 //                .verticalScroll(rememberScrollState())
         ) {

@@ -113,7 +113,6 @@ fun ExploreArticleScreenContent(
             }
 
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(0.dp),
                 modifier = Modifier
 
             ) {

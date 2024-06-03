@@ -73,7 +73,7 @@ fun ProfileScreen(
             modifier = Modifier
                 .padding(contentPadding)
                 .fillMaxSize()
-               // .background(color = Color(0xFFFBEDEC)),
+                .background(color = Color.White),
 
         ) {
             item {
