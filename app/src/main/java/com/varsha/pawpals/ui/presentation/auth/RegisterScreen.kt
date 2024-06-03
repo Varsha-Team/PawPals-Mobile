@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -197,16 +198,25 @@ fun RegisterScreen (
                 )
             }
 
-            Text(
-                text = "Sudah punya akun?  Login",
-                modifier = Modifier.clickable { navController.navigate(Screen.Login.route) },
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    //   fontFamily = FontFamily(Font(R.font.poppins)),
-                    fontWeight = FontWeight(400),
-                    color = Color(0xCC000000),
+            Row {
+                Text(
+                    text = "Sudah punya akun ? ",
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight(400),
+                        color = Color(0xCC000000),
+                    )
                 )
-            )
+                Text(
+                    text = "Login",
+                    modifier = Modifier.clickable { navController.navigate(Screen.Login.route) },
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight(800)
+                    ),
+                    color = Color(0xFFED6A09)
+                )
+            }
         }
     }
 }

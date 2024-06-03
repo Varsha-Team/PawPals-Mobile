@@ -45,42 +45,19 @@ fun ExploreArticleItem(
     ) {
     Column(
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp)
+        horizontalAlignment = Alignment.Start
     ) {
-//        Card(
-//            shape = RoundedCornerShape(25.dp),
-//            elevation = CardDefaults.cardElevation(6.dp),
-//            colors = CardDefaults.cardColors(Color.White),
-//            modifier = Modifier
-//                .padding(bottom = 16.dp)
-//                .clickable { onItemClicked(artikel.id) }
-//        ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.Start),
                 verticalAlignment = Alignment.CenterVertically,
 
                 //verticalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
-                    .width(307.dp)
                     .height(100.dp)
                     .clickable { onItemClicked(artikel.id) }
-//                    .border(1.dp, Color.Transparent, RoundedCornerShape(25.dp))
+                    .padding(horizontal = 16.dp)
             ) {
-                Box(
-//                    modifier = Modifier
-//                        .background(
-//                            shape = RoundedCornerShape(
-//                                topStart = 25.dp,
-//                                topEnd = 25.dp,
-//                                bottomEnd = 0.dp,
-//                                bottomStart = 0.dp
-//                            ), color = Color.Gray
-//                        )
-//                        .fillMaxWidth()
-                       // .size(150.dp)
-                ) {
+                Box() {
                     Image(
                         painter = painterResource(id = artikel.photo),
                         contentDescription = "Gambar Sampul Artikel",
@@ -100,6 +77,7 @@ fun ExploreArticleItem(
                             .fillMaxSize()
                     )
                 }
+
                 Column(
                     modifier = Modifier
                         .padding(vertical = 4.dp)

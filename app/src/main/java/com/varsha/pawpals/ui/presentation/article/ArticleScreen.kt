@@ -60,7 +60,7 @@ fun ArticleScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    //  .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -78,7 +78,7 @@ fun ArticleScreen(
         Column(
             modifier = Modifier
                 .padding(contentPadding)
-                //.background(color = Color(0xFFFBEDEC))
+                .background(color = Color.White)
                 .fillMaxSize()
         ) {
             Spacer(modifier = Modifier.height(16.dp))
@@ -89,70 +89,12 @@ fun ArticleScreen(
                 keyboardType = KeyboardType.Text,
                 modifier = Modifier.padding(horizontal = 18.dp)
             )
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
-                Text(
-                    text = "Breaking news",
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        lineHeight = 24.sp,
-                        fontWeight = FontWeight(600),
-                        color = Color(0xFF010911),
-                    )
-                )
-                // Spacer(modifier = Modifier.padding(end = 40.dp))
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(20.dp)
-                ) {
-                    Text(
-                        text = "Semua",
-                        style = TextStyle(
-                            fontSize = 12.sp,
-                            lineHeight = 20.sp,
-                            fontWeight = FontWeight(600),
-                            color = Color(0xFF010911),
-                        )
-                    )
-                    Icon(
-                        imageVector = Icons.Default.ArrowForwardIos,
-                        contentDescription = "Back",
-                        modifier = Modifier
-                            .width(16.dp)
-                            .height(16.dp)
-                    )
-
-                }
-
-
-
-
-
-            }
-//            LazyRow(
-//               // verticalArrangement = Arrangement.spacedBy(0.dp),
-//                modifier = Modifier
-//                  //  .background(color = Color(0xFFFBEDEC))
-//            ) {
-//                items(kategoriArtikels, key = { it.id }) {
-//                    ArticleItem(kategoriArtikel = it) { kategoriArtikelId ->
-//                        navController.navigate(Screen.ExploreArticle.route + "/$kategoriArtikelId")
-//                    }
-//                }
-//            }
+            Spacer(modifier = Modifier.height(16.dp))
 
             Text(
                 text = "For you",
                 modifier = Modifier
-                    .padding(8.dp),
+                    .padding(horizontal = 16.dp),
                 style = TextStyle(
                     fontSize = 16.sp,
                     lineHeight = 24.sp,

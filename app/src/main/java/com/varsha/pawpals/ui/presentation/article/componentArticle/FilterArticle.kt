@@ -38,7 +38,7 @@ fun FilterArticle(modifier: Modifier = Modifier) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
-            .padding(start = 16.dp, top = 16.dp, bottom = 16.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
             .horizontalScroll(rememberScrollState())
     ) {
         var selectedAll by remember { mutableStateOf(true) }
