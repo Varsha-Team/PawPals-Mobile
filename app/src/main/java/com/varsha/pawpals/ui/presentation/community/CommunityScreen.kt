@@ -16,6 +16,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,6 +39,7 @@ import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.data.DataCommunity
 import com.varsha.pawpals.model.Community
 import com.varsha.pawpals.navigation.Screen
+import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 import com.varsha.pawpals.ui.presentation.component.FilterCommunity
 import com.varsha.pawpals.ui.presentation.component.FilterIconItem
 import com.varsha.pawpals.ui.presentation.component.PostCommunity
@@ -57,7 +60,7 @@ fun CommunityScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(
-                        Color(0xFFf4d4d2),
+                        Color(0xFFFBEDEC),
                         RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
                     ),
                 contentAlignment = Alignment.Center
@@ -73,6 +76,14 @@ fun CommunityScreen(
                         .padding(vertical = 16.dp)
                 )
             }
+        },
+        floatingActionButton = {
+            ButtonItem1(
+                navController = navController,
+                text = "Post",
+                icon = Icons.Default.Add,
+                onClick = {  }
+            )
         }
     ) {contentPadding ->
         Column(

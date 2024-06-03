@@ -37,5 +37,8 @@ sealed class Screen(val route: String) {
     // Community Menu
     data object CommunityDetail : Screen("community_detail")
 
+    // Splash Screen
+    data object Splash : Screen("splash")
+
 
 }

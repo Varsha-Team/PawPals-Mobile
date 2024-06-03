@@ -76,7 +76,7 @@ fun ArticleScreen(
                 onValueChange = { searchQuery = it },
                 label = "Search",
                 keyboardType = KeyboardType.Text,
-                modifier = Modifier.padding(start = 18.dp)
+                modifier = Modifier.padding(horizontal = 18.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
             LazyColumn(
