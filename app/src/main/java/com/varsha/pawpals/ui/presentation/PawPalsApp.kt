@@ -2,25 +2,35 @@ package com.varsha.pawpals.ui.presentation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Chat
 import androidx.compose.material.icons.outlined.EventAvailable
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material.icons.outlined.PersonOutline
+import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemColors
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -50,6 +60,8 @@ import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPet.EditPetScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.EditPlanScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.PlanPetScreen
+import com.varsha.pawpals.ui.presentation.splash.SplashScreen
+import com.varsha.pawpals.R
 
 // Background Color
 val backgroundColor = Brush.radialGradient(
@@ -77,6 +89,7 @@ fun PawPalsApp(
                 && !currentRoute.contains(Screen.ExploreArticle.route)
                 && !currentRoute.contains(Screen.DetailArticle.route)
                 && !currentRoute.contains(Screen.EditProfile.route)
+                && !currentRoute.contains(Screen.Splash.route)
             ) {
                 BottomBar(navController = navController)
             }
@@ -84,9 +97,13 @@ fun PawPalsApp(
     ) { contentPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Onboarding.route,
+            startDestination = Screen.Splash.route,
             modifier = Modifier.padding(contentPadding)
         ) {
+            composable(Screen.Splash.route){
+                SplashScreen(navController = navController)
+            }
+            
             composable(Screen.Home.route) {
                 HomeScreen(navController = navController)
             }
@@ -149,8 +166,6 @@ fun PawPalsApp(
                     )
             }
 
-
-
             composable(
                 Screen.ExploreArticle.route + "/{kategoriArtikelId}",
                 arguments = listOf(navArgument("kategoriArtikelId") { type = NavType.IntType })
@@ -195,7 +210,8 @@ private fun BottomBar(
     modifier: Modifier = Modifier
 ) {
     NavigationBar(
-        modifier = Modifier
+        modifier = Modifier,
+        containerColor = Color.White
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
@@ -203,23 +219,28 @@ private fun BottomBar(
         val navigationItems = listOf(
             NavigationItem(
                 icon = Icons.Outlined.Home,
-                screen = Screen.Home
+                screen = Screen.Home,
+                label = "Beranda"
             ),
             NavigationItem(
                 icon = Icons.Outlined.Search,
-                screen = Screen.Article
+                screen = Screen.Article,
+                label = "Artikel"
             ),
             NavigationItem(
-                icon = Icons.Outlined.Newspaper,
-                screen = Screen.Community
+                icon = Icons.Outlined.Chat,
+                screen = Screen.Community,
+                label = "Komunitas"
             ),
             NavigationItem(
-                icon = Icons.Outlined.EventAvailable,
-                screen = Screen.Schedule
+                icon = Icons.Outlined.Schedule,
+                screen = Screen.Schedule,
+                label = "Jadwal"
             ),
             NavigationItem(
                 icon = Icons.Outlined.PersonOutline,
-                screen = Screen.Profile
+                screen = Screen.Profile,
+                label = "Profil"
             )
         )
 
@@ -241,7 +262,19 @@ private fun BottomBar(
                         contentDescription = "Icon Bottom Bar",
                         modifier = Modifier.size(25.dp)
                     )
-                }
+                },
+                label = {
+                    Text(
+                        text = item.label
+                    )
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = Color(0xFFCE5628), // Warna ikon saat dipilih
+                    unselectedIconColor = Color.Gray, // Warna ikon saat tidak dipilih
+                    selectedTextColor = Color(0xFFCE5628), // Warna teks saat dipilih
+                    unselectedTextColor = Color.Gray, // Warna teks saat tidak dipilih
+                    indicatorColor = Color.White // Warna latar belakang saat dipilih
+                )
             )
         }
     }

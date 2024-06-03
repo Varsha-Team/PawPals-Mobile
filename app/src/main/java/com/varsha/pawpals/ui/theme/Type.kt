@@ -16,7 +16,12 @@ val provider = GoogleFont.Provider(
     certificates = R.array.com_google_android_gms_fonts_certs
 )
 
-
+val bodyFontFamily = FontFamily(
+    Font(
+        googleFont = GoogleFont("IBM Plex Sans"),
+        fontProvider = provider,
+    )
+)
 
 val displayFontFamily = FontFamily(
     Font(
@@ -38,10 +43,10 @@ val AppTypography = Typography(
     titleLarge = baseline.titleLarge.copy(fontFamily = displayFontFamily),
     titleMedium = baseline.titleMedium.copy(fontFamily = displayFontFamily),
     titleSmall = baseline.titleSmall.copy(fontFamily = displayFontFamily),
-    bodyLarge = baseline.bodyLarge.copy(fontFamily = displayFontFamily),
-    bodyMedium = baseline.bodyMedium.copy(fontFamily = displayFontFamily),
-    bodySmall = baseline.bodySmall.copy(fontFamily = displayFontFamily),
-    labelLarge = baseline.labelLarge.copy(fontFamily = displayFontFamily),
-    labelMedium = baseline.labelMedium.copy(fontFamily = displayFontFamily),
-    labelSmall = baseline.labelSmall.copy(fontFamily = displayFontFamily),
+    bodyLarge = baseline.bodyLarge.copy(fontFamily = bodyFontFamily),
+    bodyMedium = baseline.bodyMedium.copy(fontFamily = bodyFontFamily),
+    bodySmall = baseline.bodySmall.copy(fontFamily = bodyFontFamily),
+    labelLarge = baseline.labelLarge.copy(fontFamily = bodyFontFamily),
+    labelMedium = baseline.labelMedium.copy(fontFamily = bodyFontFamily),
+    labelSmall = baseline.labelSmall.copy(fontFamily = bodyFontFamily),
 )
