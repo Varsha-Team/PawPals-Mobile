@@ -234,7 +234,7 @@ fun ColumnEditPet(
 
         Button(
             onClick = { /* TODO */ },
-            colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#D05440"))),
+            colors = ButtonDefaults.buttonColors(Color(0xFFED6A09)),
             modifier = Modifier
                 .width(194.dp)
                 .height(60.dp)

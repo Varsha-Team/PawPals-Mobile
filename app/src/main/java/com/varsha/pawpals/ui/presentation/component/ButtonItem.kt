@@ -34,6 +34,7 @@ fun ButtonItem1(
     text: String,
     icon: ImageVector,
     onClick: () -> Unit,
+
 ) {
 
     Button(
@@ -43,12 +44,10 @@ fun ButtonItem1(
             .height(48.dp)
             .clip(RoundedCornerShape(50))
             .border(
-                width = 2.dp,
-                color = Color(0xFFC85440),
-                shape = RoundedCornerShape(50)
+                width = 2.dp, color = Color(0xFFED6A09), shape = RoundedCornerShape(50)
             ),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFFC85440),
+            containerColor = Color(0xFFED6A09),
             //backgroundColor = Color(0xFFE57373),
             contentColor = Color.White
         ),
@@ -85,9 +84,7 @@ fun ButtonItem2(
             .height(48.dp)
             .clip(RoundedCornerShape(50))
             .border(
-                width = 2.dp,
-                color = Color(0xFFC85440),
-                shape = RoundedCornerShape(50)
+                width = 2.dp, color = Color(0xFFED6A09), shape = RoundedCornerShape(50)
             ),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.White,
@@ -117,7 +114,10 @@ fun ButtonItem2(
 fun ButtonItemPreview1() {
    // val navController = rememberNavController()
     ButtonItem1(
-        text = "Pets", icon = Icons.Default.Add, onClick = {}, navController = rememberNavController()
+        text = "Pets",
+        icon = Icons.Default.Add,
+        onClick = {},
+        navController = rememberNavController(),
     )
 }
 
@@ -126,6 +126,9 @@ fun ButtonItemPreview1() {
 fun ButtonItemPreview2() {
    // val navController = rememberNavController()
     ButtonItem2(
-        text = "Pets", icon = Icons.Default.Add, onClick = {}, navController = rememberNavController()
+        text = "Pets",
+        icon = Icons.Default.Add,
+        onClick = {},
+        navController = rememberNavController()
     )
 }

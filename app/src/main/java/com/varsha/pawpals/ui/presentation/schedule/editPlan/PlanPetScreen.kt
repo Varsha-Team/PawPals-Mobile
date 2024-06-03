@@ -49,7 +49,7 @@ fun PlanPetScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -79,7 +79,7 @@ fun PlanPetScreen(
         Column (
             modifier = Modifier
                 .padding(contentPadding)
-                .background(Color(0xFFFBEDEC))
+                //.background(Color(0xFFFBEDEC))
                 .fillMaxSize()
 
         ){

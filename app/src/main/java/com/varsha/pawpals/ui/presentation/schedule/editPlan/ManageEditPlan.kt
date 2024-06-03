@@ -70,14 +70,14 @@ fun ManageEditPlan(
                 modifier = Modifier
                     .size(110.dp)
                     .border(
-                        width = 3.dp, Color(0xFFD05440), shape = RoundedCornerShape(size = 110.dp)
+                        width = 3.dp, Color(0xFFED6A09), shape = RoundedCornerShape(size = 110.dp)
                     )
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
             Card(
                 modifier = Modifier
-                    .border(3.dp, Color(0xFFD05440), RoundedCornerShape(16.dp))
+                    .border(3.dp, Color(0xFFED6A09), RoundedCornerShape(16.dp))
                     .align(Alignment.BottomEnd)
             ) {
                 IconButton(
@@ -87,7 +87,7 @@ fun ManageEditPlan(
                     Icon(
                         Icons.Filled.Image,
                         contentDescription = "Back",
-                        tint = Color(0xFFD05440)
+                        tint = Color(0xFFED6A09)
                     )
                 }
             }
@@ -101,7 +101,7 @@ fun ManageEditPlan(
 private fun ManageEditPetPreview() {
     ManageEditPlan(
         pet = PetData(id = 1,
-            nama = "Bjir",
+            nama = "Basuki",
             photo = R.drawable.pet_photo1,
             type = "",
             jenis = "kucing oren",

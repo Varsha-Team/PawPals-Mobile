@@ -11,7 +11,7 @@ object DataPet {
     val Pet = listOf(
         PetData(
             id = 1,
-            nama = "Bjir",
+            nama = "Basuki",
             photo = R.drawable.pet_photo1,
             type = "Cat",
             jenis = "kucing oren",

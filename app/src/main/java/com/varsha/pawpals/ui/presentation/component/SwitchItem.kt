@@ -21,8 +21,8 @@ fun SwitchItem(modifier: Modifier = Modifier) {
         onCheckedChange = { isChecked = it },
         colors = SwitchDefaults.colors(
             checkedThumbColor = Color.White,
-            checkedTrackColor = Color(0xFF973B2C),
-            uncheckedThumbColor = Color.White,
+            checkedTrackColor = Color(0xFFED6A09),
+            uncheckedThumbColor = Color.Gray,
             uncheckedTrackColor = Color(0xFFFBEDEC)
         )
     )
