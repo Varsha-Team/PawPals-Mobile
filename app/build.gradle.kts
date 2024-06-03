@@ -80,5 +80,8 @@ dependencies {
     // GOOGLE PLAY SERVICES
     implementation(libs.play.services.base)
     implementation(libs.play.services.auth)
+
+    // DATA STORE
+    implementation(libs.androidx.datastore.preferences.core)
 }
 

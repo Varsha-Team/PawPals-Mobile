@@ -59,7 +59,7 @@ fun ScaffoldProfile(
                 modifier = Modifier
                     .padding(horizontal = 10.dp, vertical = 5.dp)
                     .clip(CircleShape)
-                    .size(50.dp)
+                    .size(45.dp)
                     .fillMaxSize()
                     .clickable { navController.navigate(Screen.Profile.route) }
             )

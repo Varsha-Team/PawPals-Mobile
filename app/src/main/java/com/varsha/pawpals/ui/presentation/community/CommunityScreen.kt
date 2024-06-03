@@ -59,7 +59,7 @@ fun CommunityScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White),
+                    .background(Color.White)
                 contentAlignment = Alignment.Center
             ) {
                 Text(

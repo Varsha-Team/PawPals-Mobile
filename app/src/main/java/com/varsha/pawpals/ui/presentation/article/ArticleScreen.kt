@@ -87,7 +87,7 @@ fun ArticleScreen(
                 onValueChange = { searchQuery = it },
                 label = "Search",
                 keyboardType = KeyboardType.Text,
-                modifier = Modifier.padding(start = 18.dp, end = 18.dp)
+                modifier = Modifier.padding(horizontal = 18.dp)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

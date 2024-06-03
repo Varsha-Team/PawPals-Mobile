@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
+import CalendarRowComponent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
@@ -95,6 +96,15 @@ fun PlanPetScreen(
                             gender = "tidak tau",
                             birthday = LocalDate.of(2020, 5, 18))
                     )
+
+                    Column(
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                    ) {
+                        CalendarRowComponent()
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
                         text = "Today’s Daily Habits",

@@ -67,7 +67,7 @@ fun OnboardingScreen(
                     fontSize = 32.sp,
                     lineHeight = 41.6.sp,
                     fontWeight = FontWeight(700),
-                    color = Color(0xFF1F2223),
+                    color = Color(0xFFCE5628),
 
                     )
             )
@@ -88,7 +88,7 @@ fun OnboardingScreen(
             onClick = {
                 navController.navigate(Screen.Login.route)
                       },
-            colors = ButtonDefaults.buttonColors(Color(0xFFED6A09)),
+            colors = ButtonDefaults.buttonColors(Color(0xFFED6A09))
             elevation = ButtonDefaults.elevatedButtonElevation(4.dp),
             modifier = Modifier
                 .width(125.dp)
