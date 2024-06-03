@@ -48,7 +48,7 @@ fun ScheduleScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -57,7 +57,7 @@ fun ScheduleScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFED6A09),
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
@@ -65,7 +65,7 @@ fun ScheduleScreen(
         floatingActionButton = {
             ButtonItem1(
                 navController = navController,
-                text = "Add Pets",
+                text = "Pets",
                 icon = Icons.Default.Add,
                 onClick = { navController.navigate(Screen.AddPet.route) }
             )
@@ -76,7 +76,7 @@ fun ScheduleScreen(
             modifier = Modifier
                 .padding(contentPadding)
                 .fillMaxSize()
-                .background(color = Color(0xFFFBEDEC)),
+                .background(color = Color.White),
         ) {
             items(
                 petProfil, key = { it.id }

@@ -47,7 +47,7 @@ fun ProfileScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -56,7 +56,7 @@ fun ProfileScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFED6A09),
                     modifier = Modifier.align(Alignment.Center)
 
                 )
@@ -68,12 +68,13 @@ fun ProfileScreen(
         }
     ) { contentPadding ->
         LazyColumn(
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .padding(contentPadding)
                 .fillMaxSize()
-                .background(color = Color(0xFFFBEDEC)),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
+               // .background(color = Color(0xFFFBEDEC)),
+
         ) {
             item {
                 Spacer(modifier = Modifier.height(16.dp))
@@ -84,7 +85,7 @@ fun ProfileScreen(
                         .size(200.dp)
                         .border(
                             width = 3.dp,
-                            Color(0xFFD05440),
+                            Color(0xFFED6A09),
                             shape = RoundedCornerShape(size = 110.dp)
                         )
                         .clip(CircleShape),

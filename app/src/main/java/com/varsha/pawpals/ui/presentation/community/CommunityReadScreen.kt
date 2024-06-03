@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Message
 import androidx.compose.material3.Card
@@ -39,6 +40,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -57,7 +59,9 @@ import coil.request.ImageRequest
 import com.varsha.pawpals.R
 import com.varsha.pawpals.data.DataCommunity
 import com.varsha.pawpals.model.Community
+import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
+import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 
 @Composable
 fun CommunityDetail(
@@ -89,7 +93,7 @@ fun CommunityReadScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -98,7 +102,7 @@ fun CommunityReadScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFED6A09),
                     modifier = Modifier.align(Alignment.Center)
 
                 )
@@ -107,11 +111,19 @@ fun CommunityReadScreen(
                     modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
+        },
+        floatingActionButton = {
+            ButtonItem1(
+                navController = navController,
+                text = "Post",
+                icon = Icons.Default.Add,
+                onClick = { navController.navigate(Screen.AddPet.route) },
+            )
         }
     ) { contentPaddding ->
         Column(
             modifier = Modifier
-                .background(Color(0xFFFBEDEC))
+                .background(Color.White)
                 .fillMaxSize()
                 .padding(contentPaddding)
                 .verticalScroll(rememberScrollState())
@@ -120,12 +132,14 @@ fun CommunityReadScreen(
                 shape = RoundedCornerShape(10.dp),
                 colors = CardDefaults.cardColors(Color.White),
                 modifier = Modifier
+                   // .shadow(elevation = 4.dp, spotColor = Color(0x40000000), ambientColor = Color(0x40000000)).shadow(elevation = 4.dp, spotColor = Color(0x40000000), ambientColor = Color(0x40000000))
                     .padding(16.dp)
                     .fillMaxWidth()
             ) {
                 Column(
                     modifier = Modifier
                         .padding(16.dp)
+                       // .shadow(elevation = 4.dp, spotColor = Color(0x40000000), ambientColor = Color(0x40000000))
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
@@ -158,7 +172,7 @@ fun CommunityReadScreen(
                         text = detailCommunity[0].title,
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp,
-                        color = Color(0xFFE53935)
+                        color = Color(0xFFED6A09)
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))

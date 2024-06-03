@@ -44,6 +44,7 @@ fun PetRowContent(modifier: Modifier = Modifier) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .padding(32.dp, 16.dp)
+
         ) {
             Image(
                 painter = painterResource(id = R.drawable.logo_pawpals),
@@ -59,17 +60,17 @@ fun PetRowContent(modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "Jumlah Pets",
+                    text = "Total Pets",
                     fontSize = 25.sp,
                     lineHeight = 19.sp,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFED6A09),
                     fontWeight = FontWeight(600),
                 )
                 Text(
                     text = "2",
                     fontSize = 42.sp,
                     lineHeight = 19.sp,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFED6A09),
                     fontWeight = FontWeight(600),
                 )
             }

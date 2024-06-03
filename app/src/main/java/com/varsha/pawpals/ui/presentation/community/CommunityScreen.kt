@@ -59,10 +59,7 @@ fun CommunityScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(
-                        Color(0xFFFBEDEC),
-                        RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
-                    ),
+                    .background(Color.White)
                 contentAlignment = Alignment.Center
             ) {
                 Text(
@@ -70,7 +67,7 @@ fun CommunityScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFCE5628),
                     modifier = Modifier
                         .align(Alignment.Center)
                         .padding(vertical = 16.dp)
@@ -82,14 +79,14 @@ fun CommunityScreen(
                 navController = navController,
                 text = "Post",
                 icon = Icons.Default.Add,
-                onClick = {  }
-            )
+                onClick = { navController.navigate(Screen.AddPet.route) },
+                )
         }
     ) {contentPadding ->
         Column(
             modifier = Modifier
                 .padding(contentPadding)
-                .background(color = Color(0xFFFBEDEC))
+               // .background(color = Color(0xFFFBEDEC))
                 .fillMaxSize()
 //                .verticalScroll(rememberScrollState())
         ) {
@@ -139,6 +136,7 @@ fun CommunityScreen(
                 }
             }
         }
+
     }
 }
 

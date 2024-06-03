@@ -51,7 +51,7 @@ fun RegisterScreen (
             .fillMaxSize()
             // .padding(it)
             .background(
-                color = Color(android.graphics.Color.parseColor("#f9dcd3"))
+                color = Color.White
             )
     ) {
         Column(
@@ -65,7 +65,7 @@ fun RegisterScreen (
                 text = "Register",
                 fontWeight = FontWeight.Bold,
                 fontSize = 36.sp,
-                color = Color(android.graphics.Color.parseColor("#D05440")),
+                color = Color(0xFFED6A09),
                 modifier = Modifier
                     .padding(15.dp)
             )
@@ -176,7 +176,7 @@ fun RegisterScreen (
             Button(
                 onClick = { navController.navigate(Screen.Home.route) },
                 colors = ButtonDefaults.buttonColors(
-                    Color(android.graphics.Color.parseColor("#D05440"))
+                    Color(0xFFED6A09)
                 ),
                 modifier = Modifier
 

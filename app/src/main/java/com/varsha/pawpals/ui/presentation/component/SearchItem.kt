@@ -59,23 +59,24 @@ fun SearchTextFieldItem(
         ),
         maxLines = 1,
         modifier = modifier
+            .border(
+                width = 1.dp,
+                color = Color(0x4D000000),
+                shape = RoundedCornerShape(size = 10.dp)
+            )
             .fillMaxWidth()
             .shadow(
                 elevation = 4.dp,
                 spotColor = Color(0x40000000),
                 ambientColor = Color(0x40000000)
             )
-            .border(
-                width = 1.dp,
-                color = Color.White,
-                shape = RoundedCornerShape(size = 10.dp)
-            )
+
             .clip(RoundedCornerShape(10.dp))
             .padding(0.5.dp)
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun SearchTextFieldPreview() {
     var searchQuery by remember { mutableStateOf("") }

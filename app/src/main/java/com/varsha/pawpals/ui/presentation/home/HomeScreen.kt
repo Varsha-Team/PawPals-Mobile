@@ -41,11 +41,11 @@ fun HomeScreen(
             Column(
                 Modifier.padding(16.dp)
             ) {
-                HomePlanning()
+                HomePlanning(navController = navController)
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-                HomeCommunity(navController = navController)
+//                Spacer(modifier = Modifier.height(16.dp))
+//
+//                HomeCommunity(navController = navController)
 
                 Spacer(modifier = Modifier.height(16.dp))
 

@@ -47,7 +47,7 @@ fun SystemNotificationItem(
            // .border(width = 1.dp, color = Variables.primary300,)
             .width(320.dp)
             .height(110.dp)
-            .background(color = Variables.primary100)
+            //.background(color = Variables.primary100)
             .padding(16.dp)
             .fillMaxSize()
     ) {

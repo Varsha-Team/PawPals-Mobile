@@ -36,123 +36,136 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.R
+import com.varsha.pawpals.model.Artikel
 import com.varsha.pawpals.model.KategoriArtikel
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @Composable
 fun ArticleItem(
-    kategoriArtikel: KategoriArtikel,
+   // kategoriArtikel: KategoriArtikel,
+    artikel: Artikel,
     modifier: Modifier = Modifier,
     onItemClicked: (Int) -> Unit
   //  modifier: (Any) -> Unit = Modifier
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.Top),
+        verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.Top),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
-            .clickable { onItemClicked(kategoriArtikel.id) }
+            .clickable { onItemClicked(artikel.id) }
     ) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = kategoriArtikel.tagname,
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                    fontWeight = FontWeight(600),
-                    color = Color(0xFF010911),
-                )
-            )
-           // Spacer(modifier = Modifier.padding(end = 40.dp))
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(20.dp)
-            ) {
-                Text(
-                    text = "Semua",
-                    style = TextStyle(
-                        fontSize = 12.sp,
-                        lineHeight = 20.sp,
-                        fontWeight = FontWeight(600),
-                        color = Color(0xFF010911),
-                    )
-                )
-                Icon(
-                    imageVector = Icons.Default.ArrowForwardIos,
-                    contentDescription = "Back"
-                )
-
-            }
-
-
-
-
-
-        }
+//        Row(
+//            horizontalArrangement = Arrangement.SpaceBetween,
+//            verticalAlignment = Alignment.CenterVertically,
+//        ) {
+//            Text(
+//                text = kategoriArtikel.tagname,
+//                style = TextStyle(
+//                    fontSize = 16.sp,
+//                    lineHeight = 24.sp,
+//                    fontWeight = FontWeight(600),
+//                    color = Color(0xFF010911),
+//                )
+//            )
+//           // Spacer(modifier = Modifier.padding(end = 40.dp))
+//            Row(
+//                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(20.dp)
+//            ) {
+//                Text(
+//                    text = "Semua",
+//                    style = TextStyle(
+//                        fontSize = 12.sp,
+//                        lineHeight = 20.sp,
+//                        fontWeight = FontWeight(600),
+//                        color = Color(0xFF010911),
+//                    )
+//                )
+//                Icon(
+//                    imageVector = Icons.Default.ArrowForwardIos,
+//                    contentDescription = "Back"
+//                )
+//
+//            }
+//        }
 
         Card(
-            shape = RoundedCornerShape(25.dp),
+            shape = RoundedCornerShape(20.dp),
             elevation = CardDefaults.cardElevation(6.dp),
             colors = CardDefaults.cardColors(Color.White),
             modifier = Modifier
                 .padding(bottom = 16.dp, end = 16.dp)
-                .clickable { onItemClicked(kategoriArtikel.id) }
+                .width(255.dp)
+                .height(300.dp)
+                .clickable { onItemClicked(artikel.id) }
         ) {
             Column(
                 verticalArrangement = Arrangement.SpaceBetween,
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .height(200.dp)
-                    .width(328.dp)
+//                    .height(200.dp)
+//                    .width(328.dp)
                     .fillMaxWidth()
                     .border(1.dp, Color.Transparent, RoundedCornerShape(25.dp))
             ) {
-                Box(
-                    modifier = Modifier
-                        .background(
-                            shape = RoundedCornerShape(
-                                topStart = 25.dp,
-                                topEnd = 25.dp,
-                                bottomEnd = 0.dp,
-                                bottomStart = 0.dp
-                            ), color = Color.Gray
-                        )
-                        .fillMaxWidth()
-                        .size(150.dp)
-                ) {
                     Image(
-                        painter = painterResource(id = kategoriArtikel.photo),
+                        painter = painterResource(id = artikel.photo),
                         contentDescription = "Gambar Sampul Artikel",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
+                            .padding(top = 8.dp)
+                            .width(231.dp)
+                            .height(164.dp)
+                            .fillMaxSize()
                             .clip(
                                 shape = RoundedCornerShape(
-                                    topStart = 25.dp,
-                                    topEnd = 25.dp,
-                                    bottomEnd = 0.dp,
-                                    bottomStart = 0.dp
+                                    topStart = 20.dp,
+                                    topEnd = 20.dp,
+                                    bottomEnd = 20.dp,
+                                    bottomStart = 20.dp
                                 )
                             )
-                            .fillMaxSize()
                     )
-                }
                 Row(
                     modifier = Modifier
                         .padding(vertical = 14.dp)
                 ) {
                     Spacer(modifier = modifier.width(16.dp))
                     Text(
-                        text = kategoriArtikel.title,
+                        text = artikel.title,
                         overflow = TextOverflow.Ellipsis,
-                        maxLines = 1,
+                        maxLines = 2,
                         modifier = Modifier
                             .padding(end = 16.dp)
+                    )
+                }
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(3.dp, Alignment.CenterVertically),
+                    horizontalAlignment = Alignment.Start,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, top = 0.dp, bottom = 8.dp, end = 8.dp)
+                    ) {
+                    Text(
+                        text = artikel.author,
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF19202D),
+                        )
+                    )
+                    Text(
+                        text = artikel.date,
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF9397A0),
+                        )
                     )
                 }
             }
@@ -168,13 +181,16 @@ fun ArticleItem(
 private fun ArticleItemPrev() {
     PawPalsTheme {
         ArticleItem(
-            kategoriArtikel = KategoriArtikel(
-                1,
-                "Pet Health",
-                R.drawable.article_dog,
-                "Health care for your pets service"
+            artikel =Artikel(
+                1, "Cara Memberi Makan Kucing Unik", R.drawable.article_dog,
+                "Health",
+                "SehatPet",
+                "9 Sep 2022",
+                "Bagaimana Cara Merencanakan Jadwal Makan Kucing Saya?\n" +
+                        "Anda  dapat membagi diet harian kucing Anda menjadi dua bagian utama dengan  jeda tidak lebih dari 12 jam. Atau, Anda dapat membagi waktu makan  mereka menjadi beberapa kali  mulai dari sarapan, makan siang, dan makan  malam. Namun, pastikan bahwa makanan yang Anda berikan dapat memenuhi  kalori dan nutrisi lainnya, tidak lebih atau kurang dari yang  direkomendasikan."
+
             ),
-            onItemClicked = { kategoriArtikelId -> println("Kategori Id : $kategoriArtikelId") }
+            onItemClicked =  { artikelId -> println("Artikel Id : $artikelId") }
         )
     }
     

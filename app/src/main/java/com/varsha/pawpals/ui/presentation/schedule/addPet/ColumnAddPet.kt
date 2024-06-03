@@ -238,7 +238,7 @@ fun ColumnAddPet(
         Button(
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(
-                Color(android.graphics.Color.parseColor("#D05440"))
+                Color(0xFFED6A09)
             ),
             modifier = Modifier
 

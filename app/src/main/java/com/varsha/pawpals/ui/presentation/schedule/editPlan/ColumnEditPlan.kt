@@ -235,7 +235,7 @@ fun NotificationRowItem(
             style = TextStyle(
                 fontSize = 14.sp,
                 fontWeight = FontWeight(400),
-                color = Color(0xFF030303),
+                color = Color(0xFFED6A09),
                 textAlign = TextAlign.Start,
             )
         )
