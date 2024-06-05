@@ -1,31 +1,13 @@
 package com.varsha.pawpals.ui.presentation.schedule.addPet
 
-import android.app.TimePickerDialog
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import android.os.Build
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TimePicker
-import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.material3.rememberTimePickerState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,23 +19,32 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.varsha.pawpals.R
+import com.varsha.pawpals.utils.SQLiteHelper
+import com.varsha.pawpals.model.PetData
+import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.ScheduleTimeTextField
 import com.varsha.pawpals.ui.presentation.component.TextFieldDropdowns
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
-import com.varsha.pawpals.ui.presentation.component.TimePickerDialog
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
+import okhttp3.Route
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ColumnAddPet(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController
 ) {
     val context = LocalContext.current
+    val db = SQLiteHelper(context)
 
     val date = remember { Calendar.getInstance().timeInMillis }
-    val formatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
 
     var namepet by remember { mutableStateOf("") }
     var breed by remember { mutableStateOf("") }
@@ -74,7 +65,7 @@ fun ColumnAddPet(
                         val selectedDate = Calendar.getInstance().apply {
                             timeInMillis = datePickerState.selectedDateMillis!!
                         }
-                        scheduleDate = formatter.format(selectedDate.time)
+                        scheduleDate = selectedDate.toInstant().atZone(TimeZone.getDefault().toZoneId()).toLocalDate().format(formatter)
                         showDatePicker = false
                     }
                 ) {
@@ -96,20 +87,16 @@ fun ColumnAddPet(
         modifier = modifier
             .fillMaxWidth(1f)
             .padding(0.dp, 24.dp)
-        //.background(Color.White),
     ) {
         Column(
             modifier = Modifier
                 .padding(32.dp, 0.dp)
-        )
-        {
+        ) {
             Text(
                 text = "Pet Details",
-                modifier = Modifier
-                    .height(21.dp),
+                modifier = Modifier.height(21.dp),
                 style = TextStyle(
                     fontSize = 20.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(600),
                     color = Color(0xFF030303),
                     textAlign = TextAlign.Center,
@@ -124,7 +111,6 @@ fun ColumnAddPet(
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
                     textAlign = TextAlign.Start,
@@ -139,8 +125,7 @@ fun ColumnAddPet(
         }
 
         Column(
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
+            modifier = Modifier.padding(32.dp, 0.dp)
         ) {
             Text(
                 text = "Type",
@@ -149,22 +134,17 @@ fun ColumnAddPet(
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF030303),
                     textAlign = TextAlign.Start,
                 )
             )
-            TextFieldDropdowns(list = listOf("Cat", "Dog"),
-                selectedValue = type,
-                onValueChange = { type = it }
-            )
+            TextFieldDropdowns(list = listOf("Cat", "Dog"), selectedValue = type, onValueChange = { type = it })
         }
 
-        Column (
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
-        ){
+        Column(
+            modifier = Modifier.padding(32.dp, 0.dp)
+        ) {
             Text(
                 text = "Breed",
                 modifier = Modifier
@@ -172,7 +152,6 @@ fun ColumnAddPet(
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
                     textAlign = TextAlign.Start,
@@ -197,20 +176,18 @@ fun ColumnAddPet(
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Start
+                    textAlign = TextAlign.Start,
                 )
             )
             TextFieldDropdowns(
                 list = listOf("Male", "Female"),
                 selectedValue = gender,
-                onValueChange = { gender = it }
-            )
+                onValueChange = { gender = it })
         }
 
-        Column (
-            modifier = Modifier
-                .padding(32.dp, 0.dp)
-        ){
+        Column(
+            modifier = Modifier.padding(32.dp, 0.dp)
+        ) {
             Text(
                 text = "Birthday",
                 modifier = Modifier
@@ -218,30 +195,46 @@ fun ColumnAddPet(
                     .height(21.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(400),
                     color = Color(0xFF000000),
-                    textAlign = TextAlign.Start
+                    textAlign = TextAlign.Start,
                 )
             )
             ScheduleTimeTextField(
                 value = scheduleDate,
-                onValueChange = { scheduleDate = it },
-                label = "Atur Tanggal",
+                onValueChange = {},
+                onIconClick = { showDatePicker = true },
+                label = "DD-MM-YYYY",
                 icon = Icons.Default.DateRange,
-                onIconClick = {
-                    showDatePicker = true
-                }
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(55.dp)
             )
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                val newPet = PetData(
+                    id = 0, // ID will be auto-generated
+                    nama = namepet,
+                    photo = R.drawable.profile_photo, // Replace with actual photo ID
+                    type = type,
+                    jenis = breed,
+                    gender = gender,
+                    birthday = LocalDate.parse(scheduleDate, formatter)
+                )
+                val status = db.addPet(newPet)
+                if (status > -1) {
+                    Toast.makeText(context, "Pet Added", Toast.LENGTH_SHORT).show()
+                    navController.navigate(Screen.Schedule.route)
+                } else {
+                    Toast.makeText(context, "Error Adding Pet", Toast.LENGTH_SHORT).show()
+                }
+            },
             colors = ButtonDefaults.buttonColors(
-                Color(0xFFED6A09)
+                Color(0xFFC85440)
             ),
             modifier = Modifier
-
                 .width(194.dp)
                 .height(60.dp)
                 .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp)
@@ -251,19 +244,11 @@ fun ColumnAddPet(
                 style = TextStyle(
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
-                    //fontFamily = FontFamily(Font(R.font.ibm plex sans)),
                     fontWeight = FontWeight(700),
-                    color = Color(0xFFFFFFFF),
+                    color = Color.White,
                     textAlign = TextAlign.Center,
                 )
             )
         }
     }
-
-}
-
-@Preview (showBackground = true)
-@Composable
-private fun ColumnAddPetPreview() {
-    ColumnAddPet()
 }

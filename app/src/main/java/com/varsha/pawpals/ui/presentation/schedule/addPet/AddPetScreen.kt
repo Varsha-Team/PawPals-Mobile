@@ -44,11 +44,11 @@ fun AddPetScreen(
     Scaffold(
         topBar = {
             Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                   // .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
-                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = "Add Pet",
@@ -73,7 +73,7 @@ fun AddPetScreen(
             Column(
                 modifier = Modifier
                     .padding(contentPadding)
-                    //.background(color = Color(0xFFFBEDEC)),
+                    .background(color = Color.White),
             ) {
                 ManageAddPet()
                 LazyColumn (
@@ -84,7 +84,7 @@ fun AddPetScreen(
                         .background(Color.White)
                 ){
                     item {
-                        ColumnAddPet()
+                        ColumnAddPet(navController = navController)
                     }
                 }
             }

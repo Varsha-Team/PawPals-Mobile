@@ -83,5 +83,8 @@ dependencies {
 
     // DATA STORE
     implementation(libs.androidx.datastore.preferences.core)
+
+    implementation(libs.androidx.activity.compose.v131)
+
 }
 

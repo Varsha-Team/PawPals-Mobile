@@ -52,7 +52,7 @@ fun PetProfilContent(
         modifier = Modifier
             .clickable { onItemClicked(pet.id)}
             .width(500.dp)
-            .padding(16.dp),
+            .padding(vertical = 8.dp, horizontal = 16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
