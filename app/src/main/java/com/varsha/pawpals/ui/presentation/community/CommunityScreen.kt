@@ -67,7 +67,7 @@ fun CommunityScreen(
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFFCE5628),
+                    color = Color(0xFFED6A09),
                     modifier = Modifier
                         .align(Alignment.Center)
                         .padding(vertical = 16.dp)
@@ -79,7 +79,7 @@ fun CommunityScreen(
                 navController = navController,
                 text = "Post",
                 icon = Icons.Default.Add,
-                onClick = { navController.navigate(Screen.AddPet.route) },
+                onClick = { navController.navigate(Screen.PostScreen.route) },
                 )
         }
     ) {contentPadding ->

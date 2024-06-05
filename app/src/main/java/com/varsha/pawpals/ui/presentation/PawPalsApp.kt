@@ -43,6 +43,7 @@ import com.varsha.pawpals.ui.presentation.auth.LoginScreen
 import com.varsha.pawpals.ui.presentation.auth.RegisterScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityDetail
 import com.varsha.pawpals.ui.presentation.community.CommunityScreen
+import com.varsha.pawpals.ui.presentation.community.post.PostingScreen
 import com.varsha.pawpals.ui.presentation.home.HomeScreen
 import com.varsha.pawpals.ui.presentation.notification.NotificationScreen
 import com.varsha.pawpals.ui.presentation.onboarding.OnboardingScreen
@@ -135,7 +136,7 @@ fun PawPalsApp(
             composable(Screen.Notification.route) {
                 NotificationScreen(navController = navController)
             }
-
+            
             composable(Screen.Bookmark.route) {
                 BookmarkScreen(navController = navController)
             }
@@ -151,6 +152,10 @@ fun PawPalsApp(
             composable(Screen.AddPet.route) {
                 AddPetScreen(onBackClicked = {}, navController = navController)
             }
+            
+            composable(Screen.PostScreen.route){
+                PostingScreen(navController = navController)
+            }   
 
             composable(Screen.EditPet.route + "/{petId}",
                 arguments = listOf(navArgument("petId"){type = NavType.IntType})
@@ -160,6 +165,16 @@ fun PawPalsApp(
                     navController = navController,
                     petId = navBackStackEntry.arguments?.getInt("petId")
                     )
+            }
+            
+            composable(Screen.PlanPet.route + "/{petId}",
+                arguments = listOf(navArgument("petId"){type = NavType.IntType})
+                ){navBackStackEntry->
+                    PlanPetScreen(
+                        navController = navController,
+                        petId = navBackStackEntry.arguments?.getInt("petId")
+                    )
+                
             }
 
             composable(

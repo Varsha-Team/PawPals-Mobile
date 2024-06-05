@@ -1,4 +1,4 @@
-package com.varsha.pawpals.ui.presentation.post
+package com.varsha.pawpals.ui.presentation.community.post
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -49,10 +49,15 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
+import com.varsha.pawpals.navigation.Screen
 
 @Composable
-fun PostComponent() {
+fun PostComponent(
+    navController: NavController
+) {
     val profilePicture = painterResource(id = R.drawable.profile_photo)
 
     Column(
@@ -125,7 +130,7 @@ fun PostComponent() {
                     Icon(
                         imageVector = Icons.Default.AddPhotoAlternate,
                         contentDescription = "Icon Tambah",
-                        tint = Color(0xFFCE5628)
+                        tint = Color(0xFFED6A09)
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -133,7 +138,7 @@ fun PostComponent() {
                     Icon(
                         imageVector = Icons.Default.EmojiEmotions,
                         contentDescription = "Logo Emoji",
-                        tint = Color(0xFFCE5628)
+                        tint = Color(0xFFED6A09)
                     )
                 }
 
@@ -150,18 +155,18 @@ fun PostComponent() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Button(
-                    onClick = {},
+                    onClick = { navController.navigate(Screen.Community.route) },
                     modifier = Modifier
                         .padding(8.dp)
                         .height(48.dp)
                         .clip(RoundedCornerShape(50))
                         .border(
                             width = 2.dp,
-                            color = Color(0xFFC85440),
+                            color = Color(0xFFED6A09),
                             shape = RoundedCornerShape(50)
                         ),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFFC85440),
+                        containerColor = Color(0xFFED6A09),
                         contentColor = Color.White
                     )
                 ) {
@@ -189,5 +194,5 @@ fun PostComponent() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewPostComponent() {
-    PostComponent()
+    PostComponent(navController = rememberNavController())
 }

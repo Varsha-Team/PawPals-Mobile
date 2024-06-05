@@ -37,8 +37,9 @@ import java.time.LocalDate
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ManageEditPlan(
-    modifier: Modifier = Modifier,
     pet : PetData,
+    modifier: Modifier = Modifier,
+
 
 ) {
     Row(
@@ -56,7 +57,7 @@ fun ManageEditPlan(
                 fontWeight = FontWeight(600),
             )
             Text(
-                text = "Take a look at how Lyli’s day was planned.",
+                text = "Take a look at how  " + pet.nama + " ’s day was planned.",
                 fontSize = 12.sp,
             )
         }

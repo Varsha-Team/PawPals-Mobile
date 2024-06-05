@@ -17,6 +17,15 @@ object DataPet {
             jenis = "kucing oren",
             gender = "tidak tau",
             birthday = LocalDate.of(2020, 5, 18)
+        ),
+        PetData(
+            id = 2,
+            nama = "Boomba",
+            photo = R.drawable.mrfresh,
+            type = "Cat",
+            jenis = "kucing oren",
+            gender = "tidak tau",
+            birthday = LocalDate.of(2020, 5, 18)
         )
     )
 }

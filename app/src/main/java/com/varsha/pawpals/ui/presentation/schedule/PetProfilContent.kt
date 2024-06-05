@@ -50,6 +50,7 @@ fun PetProfilContent(
 ) {
     Card(
         modifier = Modifier
+            .clickable { onItemClicked(pet.id)}
             .width(500.dp)
             .padding(16.dp),
         colors = CardDefaults.cardColors(
@@ -121,7 +122,7 @@ fun PetProfilContent(
                 navController = navController,
                 text = "Plan",
                 icon = Icons.Default.Edit,
-                onClick = { navController.navigate(Screen.PlanPet.route) }
+                onClick = {  navController.navigate("plan_pet/${pet.id}") }
             )
         }
     }
