@@ -42,8 +42,12 @@ import java.time.LocalDate
 @Composable
 fun PlanPetScreen(
     navController: NavController,
-    modifier: Modifier = Modifier,
+    petId: Int?
+    //modifier: Modifier = Modifier,
     ) {
+
+    val newPetList = DataPet.Pet.filter { pet -> pet.id == petId }
+
     Scaffold(
         topBar = {
             Box(
@@ -87,15 +91,7 @@ fun PlanPetScreen(
                 modifier = Modifier
             ){
                 item {
-                    ManageEditPlan(
-                        pet = PetData(id = 1,
-                            nama = "Bjir",
-                            photo = R.drawable.pet_photo1,
-                            type = "",
-                            jenis = "kucing oren",
-                            gender = "tidak tau",
-                            birthday = LocalDate.of(2020, 5, 18))
-                    )
+                    ManageEditPlan(pet = newPetList[0])
 
                     Column(
                         modifier = Modifier
@@ -131,5 +127,7 @@ fun PlanPetScreen(
 @Preview
 @Composable
 private fun PlanPetScreenPreview() {
-    PlanPetScreen(navController = rememberNavController())
+    PlanPetScreen(navController = rememberNavController(),
+        petId = DataPet.Pet.first().id
+    )
 }

@@ -1,4 +1,4 @@
-package com.varsha.pawpals.ui.presentation.post
+package com.varsha.pawpals.ui.presentation.community.post
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -17,10 +17,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 
 @Composable
-fun PostingScreen() {
+fun PostingScreen(
+    navController: NavController
+) {
 
     Scaffold(
         topBar = {
@@ -36,11 +40,11 @@ fun PostingScreen() {
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFFC85440),
+                    color = Color(0xFFED6A09),
                     modifier = Modifier.align(Alignment.Center)
                 )
                 BackIconItem(
-                    onBackClicked = { },
+                    onBackClicked = { navController.navigateUp() },
                     modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
@@ -56,7 +60,7 @@ fun PostingScreen() {
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
             ) {
-                PostComponent()
+                PostComponent(navController)
             }
         }
     }
@@ -66,5 +70,5 @@ fun PostingScreen() {
 @Preview(showBackground = true)
 @Composable
 private fun PostingScreenPreview() {
-    PostingScreen()
+    PostingScreen(navController = rememberNavController())
 }

@@ -117,7 +117,7 @@ fun CommunityReadScreen(
                 navController = navController,
                 text = "Post",
                 icon = Icons.Default.Add,
-                onClick = { navController.navigate(Screen.AddPet.route) },
+                onClick = { navController.navigate(Screen.PostScreen.route) },
             )
         }
     ) { contentPaddding ->
