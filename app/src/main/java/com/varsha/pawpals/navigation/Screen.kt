@@ -19,6 +19,9 @@ sealed class Screen(val route: String) {
     // MENU Notification
     data object Notification : Screen("notification")
 
+    //Bookmark
+    data object Bookmark : Screen("bookmark")
+
     //Profil Screen User
     data object EditProfile : Screen("editScreen")
     data object Logout : Screen("logout")

@@ -2,6 +2,7 @@ package com.varsha.pawpals.ui.presentation.article
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -44,6 +46,7 @@ import com.varsha.pawpals.model.Artikel
 import com.varsha.pawpals.model.KategoriArtikel
 import com.varsha.pawpals.ui.presentation.article.componentArticle.TagItem
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
+import com.varsha.pawpals.ui.presentation.component.BookmarkIcon
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 
 @Composable
@@ -84,7 +87,6 @@ fun DetailArticleContent(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    //.background(Color(0xFFFBEDEC))
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -95,11 +97,17 @@ fun DetailArticleContent(
                     textAlign = TextAlign.Center,
                     color = Color(0xFFCE5628),
                     modifier = Modifier.align(Alignment.Center)
-
                 )
+
                 BackIconItem(
                     onBackClicked = { navController.navigateUp() },
                     modifier = Modifier.align(Alignment.CenterStart)
+                )
+
+                BookmarkIcon(
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .clickable {  }
                 )
             }
         }
@@ -200,7 +208,11 @@ fun DetailArticleContent(
                             modifier = Modifier
                                 .padding(4.dp)
                                 .fillMaxWidth()
-                                .border(1.dp, color = Color(0xFFEEEEEE), shape = RoundedCornerShape(10.dp))
+                                .border(
+                                    1.dp,
+                                    color = Color(0xFFEEEEEE),
+                                    shape = RoundedCornerShape(10.dp)
+                                )
 
 
                         ) {
