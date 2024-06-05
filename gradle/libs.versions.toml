@@ -1,4 +1,5 @@
 [versions]
+activityComposeVersion = "1.9.0"
 agp = "8.4.1"
 coilCompose = "2.6.0"
 datastorePreferencesCore = "1.1.1"
@@ -7,16 +8,17 @@ coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.7.0"
+lifecycleRuntimeKtx = "2.8.1"
 activityCompose = "1.9.0"
-composeBom = "2023.08.00"
+composeBom = "2024.05.00"
 materialIconsExtended = "1.6.7"
 navigationCompose = "2.7.7"
-playServicesAuth = "21.1.1"
-playServicesBase = "18.4.0"
+playServicesAuth = "21.2.0"
+playServicesBase = "18.5.0"
 uiTextGoogleFonts = "1.6.7"
 
 [libraries]
+androidx-activity-compose-v131 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastorePreferencesCore" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }

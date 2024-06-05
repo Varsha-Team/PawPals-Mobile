@@ -51,7 +51,7 @@ fun PetProfilContent(
     Card(
         modifier = Modifier
             .width(500.dp)
-            .padding(16.dp),
+            .padding(vertical = 8.dp, horizontal = 16.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
