@@ -38,6 +38,7 @@ import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.ArticleScreen
 import com.varsha.pawpals.ui.presentation.article.DetailArticleScreen
 import com.varsha.pawpals.ui.presentation.article.ExploreArticleScreen
+import com.varsha.pawpals.ui.presentation.article.bookmark.BookmarkScreen
 import com.varsha.pawpals.ui.presentation.auth.LoginScreen
 import com.varsha.pawpals.ui.presentation.auth.RegisterScreen
 import com.varsha.pawpals.ui.presentation.community.CommunityDetail
@@ -133,6 +134,10 @@ fun PawPalsApp(
 
             composable(Screen.Notification.route) {
                 NotificationScreen(navController = navController)
+            }
+
+            composable(Screen.Bookmark.route) {
+                BookmarkScreen(navController = navController)
             }
 
             composable(Screen.PlanPet.route) {

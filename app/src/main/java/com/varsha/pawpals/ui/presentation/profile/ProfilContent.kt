@@ -119,7 +119,7 @@ fun ProfilContent(
                     .padding(8.dp)
                     .fillMaxWidth()
                     .clickable {
-                        navController.navigate(Screen.Notification.route)
+                        navController.navigate(Screen.Bookmark.route)
                     },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
