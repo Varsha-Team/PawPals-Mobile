@@ -142,7 +142,7 @@ fun PawPalsApp(
             }
 
             composable(Screen.PlanPet.route) {
-                PlanPetScreen(navController = navController)
+                PlanPetScreen(navController = navController, id)
             }
 
             composable(Screen.EditPlan.route) {
