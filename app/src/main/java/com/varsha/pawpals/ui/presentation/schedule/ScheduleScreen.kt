@@ -1,4 +1,4 @@
-package com.varsha.pawpals.ui.presentation.schedule
+package com.varsha.pawpals.ui.screen
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -14,22 +14,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.varsha.pawpals.utils.SQLiteHelper
 import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
+import com.varsha.pawpals.ui.presentation.schedule.PetProfilContent
+import com.varsha.pawpals.utils.SQLiteHelper
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun ScheduleScreen(
-    navController: NavController
-) {
+fun ScheduleScreen(navController: NavController) {
     val context = LocalContext.current
     val db = SQLiteHelper(context)
     var pets by remember { mutableStateOf(listOf<PetData>()) }
@@ -73,9 +72,7 @@ fun ScheduleScreen(
                 .fillMaxSize()
                 .background(color = Color.White),
         ) {
-            items(
-                pets, key = { it.id }
-            ) { pet ->
+            items(pets, key = { it.id }) { pet ->
                 PetProfilContent(
                     navController = navController,
                     pet = pet,
