@@ -23,7 +23,12 @@ import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.model.alarm.scheduleNotification
-import com.varsha.pawpals.ui.presentation.component.*
+import com.varsha.pawpals.ui.presentation.component.ButtonItem1
+import com.varsha.pawpals.ui.presentation.component.ButtonItem2
+import com.varsha.pawpals.ui.presentation.component.ScheduleTimeTextField
+import com.varsha.pawpals.ui.presentation.component.SwitchItem
+import com.varsha.pawpals.ui.presentation.component.TextFieldItem
+import com.varsha.pawpals.ui.presentation.component.TimePickerDialog
 import com.varsha.pawpals.utils.AlarmData
 import com.varsha.pawpals.utils.SQLiteHelper
 
@@ -42,7 +47,7 @@ fun ColumnEditPlan(
     val timePickerState = rememberTimePickerState()
     var showTimePicker by remember { mutableStateOf(false) }
     var daysSelected by rememberSaveable { mutableStateOf(List(7) { false }) }
-    val daysOfWeek = listOf("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu")
+    val daysOfWeek = listOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
 
     if (showTimePicker) {
         Dialog(onDismissRequest = { showTimePicker = false }) {
@@ -250,3 +255,4 @@ fun NotificationRowItem(
 private fun NotificationRowItemPreview() {
     NotificationRowItem()
 }
+

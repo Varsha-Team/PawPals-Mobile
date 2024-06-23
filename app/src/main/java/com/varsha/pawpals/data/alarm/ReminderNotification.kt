@@ -29,7 +29,7 @@ class ReminderNotification {
                 NotificationCompat.BigPictureStyle()
                     .bigPicture(context.bitmapFromResource(R.drawable.logo_pawpals))
             )
-            .setContentText("This is a reminder notification")
+            .setContentText("Your Plan Notification")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
 
