@@ -37,12 +37,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+//import com.google.android.libraries.places.api.model.LocalDate
 import com.varsha.pawpals.data.DataPet
 import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.ui.presentation.component.ScheduleTimeTextField
 import com.varsha.pawpals.ui.presentation.component.TextFieldDropdowns
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
+import com.varsha.pawpals.ui.presentation.schedule.DeletePet.PetViewModel
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
@@ -51,21 +54,20 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ColumnEditPet(
-    modifier: Modifier = Modifier,
-    newPetList: List<PetData>
+    pet: PetData,
+    onUpdated: () -> Unit = {},
+    petViewModel: PetViewModel,
+    modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
 
     val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     val date = remember { Calendar.getInstance().timeInMillis }
 
-    val pet = newPetList[0]
-
     var namepet by remember { mutableStateOf(pet.nama) }
     var breed by remember { mutableStateOf(pet.jenis) }
     var type by remember { mutableStateOf(pet.type) }
     var gender by remember { mutableStateOf(pet.gender) }
-
     var scheduleDate by remember { mutableStateOf(pet.birthday.format(dateFormatter)) }
 
     val datePickerState = rememberDatePickerState(initialSelectedDateMillis = date)
@@ -233,7 +235,16 @@ fun ColumnEditPet(
         }
 
         Button(
-            onClick = { /* TODO */ },
+            onClick = {
+                val updatedPet = pet.copy(
+                    nama = namepet,
+                    jenis = breed,
+                    type = type,
+                    gender = gender,
+                    birthday = LocalDate.parse(scheduleDate, dateFormatter)
+                )
+                petViewModel.updatePet(updatedPet) { onUpdated() }
+            },
             colors = ButtonDefaults.buttonColors(Color(0xFFED6A09)),
             modifier = Modifier
                 .width(194.dp)
@@ -254,9 +265,10 @@ fun ColumnEditPet(
     }
 }
 
-@SuppressLint("NewApi")
-@Preview(showBackground = true)
-@Composable
-private fun ColumnEditPetPreview() {
-    ColumnEditPet(newPetList = DataPet.Pet)
-}
+
+//@SuppressLint("NewApi")
+//@Preview(showBackground = true)
+//@Composable
+//private fun ColumnEditPetPreview() {
+//    ColumnEditPet(newPetList = DataPet.Pet)
+//}

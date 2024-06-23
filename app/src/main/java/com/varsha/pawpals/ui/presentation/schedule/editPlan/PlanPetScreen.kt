@@ -37,6 +37,7 @@ import com.varsha.pawpals.utils.SQLiteHelper
 fun PlanPetScreen(
     navController: NavController,
     petId: Int?
+
 ) {
     // Check if petId is null, if so, navigate back
     if (petId == null) {
@@ -47,6 +48,7 @@ fun PlanPetScreen(
     // Local context and SQLiteHelper to access the database
     val context = LocalContext.current
     val db = SQLiteHelper(context)
+
 
     // State to hold the current PetData
     var pet by remember { mutableStateOf<PetData?>(null) }
@@ -126,8 +128,10 @@ fun PlanPetScreen(
                                 textAlign = TextAlign.Center,
                             )
                         )
+
                         DailyPlanItem() // Replace with actual plan display logic
                     }
+
                 }
             }
         }
