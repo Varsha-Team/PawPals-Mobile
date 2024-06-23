@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.text.google.fonts)
+    implementation(libs.androidbrowserhelper)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -85,6 +86,10 @@ dependencies {
     implementation(libs.androidx.datastore.preferences.core)
 
     implementation(libs.androidx.activity.compose.v131)
+    implementation(kotlin("script-runtime"))
+
+    implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
+
 
 }
 
