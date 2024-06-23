@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -51,7 +52,7 @@ fun RegisterScreen (
             .fillMaxSize()
             // .padding(it)
             .background(
-                color = Color(android.graphics.Color.parseColor("#f9dcd3"))
+                color = Color.White
             )
     ) {
         Column(
@@ -65,7 +66,7 @@ fun RegisterScreen (
                 text = "Register",
                 fontWeight = FontWeight.Bold,
                 fontSize = 36.sp,
-                color = Color(android.graphics.Color.parseColor("#D05440")),
+                color = Color(0xFFED6A09),
                 modifier = Modifier
                     .padding(15.dp)
             )
@@ -176,7 +177,7 @@ fun RegisterScreen (
             Button(
                 onClick = { navController.navigate(Screen.Home.route) },
                 colors = ButtonDefaults.buttonColors(
-                    Color(android.graphics.Color.parseColor("#D05440"))
+                    Color(0xFFED6A09)
                 ),
                 modifier = Modifier
 
@@ -197,16 +198,25 @@ fun RegisterScreen (
                 )
             }
 
-            Text(
-                text = "Sudah punya akun?  Login",
-                modifier = Modifier.clickable { navController.navigate(Screen.Login.route) },
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    //   fontFamily = FontFamily(Font(R.font.poppins)),
-                    fontWeight = FontWeight(400),
-                    color = Color(0xCC000000),
+            Row {
+                Text(
+                    text = "Sudah punya akun ? ",
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight(400),
+                        color = Color(0xCC000000),
+                    )
                 )
-            )
+                Text(
+                    text = "Login",
+                    modifier = Modifier.clickable { navController.navigate(Screen.Login.route) },
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight(800)
+                    ),
+                    color = Color(0xFFED6A09)
+                )
+            }
         }
     }
 }

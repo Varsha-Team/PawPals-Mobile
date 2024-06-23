@@ -44,13 +44,16 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
 import com.varsha.pawpals.data.DataArticle
+import com.varsha.pawpals.model.Artikel
 import com.varsha.pawpals.model.KategoriArtikel
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.article.componentArticle.ArticleItem
+import com.varsha.pawpals.ui.presentation.article.componentArticle.ExploreArticleItem
 
 @Composable
 fun HomeArticle(
     navController: NavController,
+    artikels: List<Artikel> = DataArticle.DataArtikel,
     modifier: Modifier = Modifier,
     //article: List<KategoriArtikel> = DataArticle.kategoriArtikel,
     kategoriArtikels: List<KategoriArtikel> = DataArticle.kategoriArtikel,
@@ -71,7 +74,9 @@ fun HomeArticle(
             Text(
                 text = "Artikel",
                 style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(start = 0.dp)
             )
 
             Row(
@@ -95,13 +100,18 @@ fun HomeArticle(
         LazyRow(
           //  verticalArrangement = Arrangement.spacedBy(0.dp),
             modifier = Modifier
-                .background(color = Color(0xFFFBEDEC))
+                .padding(end = 4.dp)
         ) {
-            items(kategoriArtikels, key = { it.id }) {
-                LazyArticle(kategoriArtikel = it) { kategoriArtikelId ->
-                    navController.navigate(Screen.ExploreArticle.route + "/$kategoriArtikelId")
+            items(artikels, key = { it.id }) { artikel ->
+                ArticleItem(artikel = artikel) { artikelId ->
+                    navController.navigate(Screen.DetailArticle.route + "/$artikelId")
                 }
             }
+//                items(artikels, key = { it.id }) { artikel ->
+//                    ExploreArticleItem(artikel = artikel, kategoriArtikelId = kategoriArtikelId!!) { artikelId, kategoriId ->
+//                        navController.navigate(Screen.DetailArticle.route + "/$artikelId/$kategoriId")
+//                    }
+//                }
         }
 
     }

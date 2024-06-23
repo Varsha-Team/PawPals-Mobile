@@ -66,7 +66,7 @@ fun ExploreArticleScreenContent(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                  //  .background(Color(0xFFFBEDEC))
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -75,7 +75,7 @@ fun ExploreArticleScreenContent(
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF973B2C),
+                    color = Color(0xFFCE5628        ),
                     modifier = Modifier.align(Alignment.Center)
 
                 )
@@ -91,7 +91,7 @@ fun ExploreArticleScreenContent(
             modifier = Modifier
                 .padding(contentPadding)
                 .fillMaxSize()
-                .background(color = Color(0xFFFBEDEC))
+               // .background(color = Color(0xFFFBEDEC))
         ) {
             Column(
                 horizontalAlignment = Alignment.Start,
@@ -113,7 +113,6 @@ fun ExploreArticleScreenContent(
             }
 
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(0.dp),
                 modifier = Modifier
 
             ) {

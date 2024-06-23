@@ -27,17 +27,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
+import com.varsha.pawpals.navigation.Screen
 
 
 @Composable
-fun HomePlanning(modifier: Modifier = Modifier) {
+fun HomePlanning(
+    navController: NavController,
+    modifier: Modifier = Modifier) {
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .background(
-                color = Color(0xFFF18B55),
+                color = Color(0xFFCE5628),
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(8.dp)
@@ -58,9 +63,9 @@ fun HomePlanning(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(4.dp))
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate(Screen.PlanPet.route) },
                 shape = RoundedCornerShape(14.dp),
-                colors = ButtonDefaults.buttonColors(Color(0xFFD05440)),
+                colors = ButtonDefaults.buttonColors(Color(0xFFED6A09)),
                 modifier = Modifier
             ) {
 
@@ -96,6 +101,7 @@ fun HomePlanning(modifier: Modifier = Modifier) {
 @Composable
 private fun HomePlanningPreview() {
     HomePlanning(
+        navController = rememberNavController(),
         modifier = Modifier
     )
 }

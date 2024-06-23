@@ -38,6 +38,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -78,7 +79,7 @@ fun LoginScreen (
                 .fillMaxSize()
                 // .padding(it)
                 .background(
-                    color = Color(android.graphics.Color.parseColor("#f9dcd3"))
+                    color = Color.White
                 )
         ) {
             Column(
@@ -92,7 +93,7 @@ fun LoginScreen (
                     text = "Login",
                     fontWeight = FontWeight.Bold,
                     fontSize = 36.sp,
-                    color = Color(android.graphics.Color.parseColor("#D05440")),
+                    color = Color(0xFFED6A09),
                     modifier = Modifier
                         .padding(15.dp)
                 )
@@ -158,7 +159,7 @@ fun LoginScreen (
                             checked = checkedState.value,
                             onCheckedChange = { checkedState.value = it },
                             colors = CheckboxDefaults.colors(
-                                checkedColor = Color(android.graphics.Color.parseColor("#D05440")),
+                                checkedColor = Color(0xFFED6A09),
                                 //uncheckedColor = Color.White
                             )
                         )
@@ -179,7 +180,7 @@ fun LoginScreen (
                 Button(
                     onClick = { navController.navigate(Screen.Home.route) },
                     colors = ButtonDefaults.buttonColors(
-                        Color(android.graphics.Color.parseColor("#D05440"))
+                        Color(0xFFED6A09)
                     ),
                     modifier = Modifier
 
@@ -250,18 +251,29 @@ fun LoginScreen (
                     )
                 }
 
-                Text(
-                    text = "Belum punya akun?  Daftar",
-                    modifier = Modifier
-                        .clickable { navController.navigate(Screen.Register.route) },
-                    style = TextStyle(
-                        fontSize = 14.sp,
-                        //   fontFamily = FontFamily(Font(R.font.poppins)),
-                        fontWeight = FontWeight(400),
-                        color = Color(0xCC000000),
+                Row {
+                    Text(
+                        text = "Belum punya akun ? ",
+                        style = TextStyle(
+                            fontSize = 14.sp,
+                            //   fontFamily = FontFamily(Font(R.font.poppins)),
+                            fontWeight = FontWeight(400),
+                            color = Color(0xCC000000),
 
+                            )
                     )
-                )
+                    Text(
+                        text = "Daftar",
+                        modifier = Modifier
+                            .clickable { navController.navigate(Screen.Register.route) },
+                        style = TextStyle(
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight(800),
+                            color = Color(0xCC000000)
+                            ),
+                        color = Color(0xFFED6A09)
+                    )
+                }
 
             }
 

@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
+import CalendarRowComponent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
@@ -41,14 +42,18 @@ import java.time.LocalDate
 @Composable
 fun PlanPetScreen(
     navController: NavController,
-    modifier: Modifier = Modifier,
+    petId: Int?
+    //modifier: Modifier = Modifier,
     ) {
+
+    val newPetList = DataPet.Pet.filter { pet -> pet.id == petId }
+
     Scaffold(
         topBar = {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFBEDEC))
+                    .background(Color.White)
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -78,7 +83,7 @@ fun PlanPetScreen(
         Column (
             modifier = Modifier
                 .padding(contentPadding)
-                .background(Color(0xFFFBEDEC))
+                //.background(Color(0xFFFBEDEC))
                 .fillMaxSize()
 
         ){
@@ -86,15 +91,16 @@ fun PlanPetScreen(
                 modifier = Modifier
             ){
                 item {
-                    ManageEditPlan(
-                        pet = PetData(id = 1,
-                            nama = "Bjir",
-                            photo = R.drawable.pet_photo1,
-                            type = "",
-                            jenis = "kucing oren",
-                            gender = "tidak tau",
-                            birthday = LocalDate.of(2020, 5, 18))
-                    )
+                    ManageEditPlan(pet = newPetList[0])
+
+                    Column(
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                    ) {
+                        CalendarRowComponent()
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
                         text = "Today’s Daily Habits",
@@ -121,5 +127,7 @@ fun PlanPetScreen(
 @Preview
 @Composable
 private fun PlanPetScreenPreview() {
-    PlanPetScreen(navController = rememberNavController())
+    PlanPetScreen(navController = rememberNavController(),
+        petId = DataPet.Pet.first().id
+    )
 }

@@ -7,16 +7,40 @@ import com.varsha.pawpals.model.KategoriArtikel
 object DataArticle {
     val DataArtikel = listOf(
         Artikel(
-                id = 1,
-                title = "Cara Memberi Makan Kucing Unik",
-                photo = R.drawable.mrfresh,
-                description = "Bagaimana Cara Merencanakan Jadwal Makan Kucing Saya?\n" +
-                        "Anda  dapat membagi diet harian kucing Anda menjadi dua bagian utama dengan  jeda tidak lebih dari 12 jam. Atau, Anda dapat membagi waktu makan  mereka menjadi beberapa kali  mulai dari sarapan, makan siang, dan makan  malam. Namun, pastikan bahwa makanan yang Anda berikan dapat memenuhi  kalori dan nutrisi lainnya, tidak lebih atau kurang dari yang  direkomendasikan."
+            id = 1,
+            title = "11 Cara Merawat Kucing agar Tetap Sehat dan Ceria",
+            photo = R.drawable.image_article1,
+            category = "Health",
+            author = "SehatPet",
+            date = "9 Sep 2022",
+            description = "Kucing merupakan peliharaan yang disukai banyak orang karena mukanya yang lucu, bulunya yang lembut, atau tingkahnya yang menggemaskan. Namun, memelihara kucing tak sebatas memberi makan. Banyak cara merawat kucing yang perlu Anda perhatikan agar anabul sehat dan ceria. \n" +
+                    "Berbagai cara merawat kucing peliharaan\n" +
+                    "Bagi Anda yang baru memelihara kucing dan masih bingung tentang perawatan dasarnya, berikut beberapa cara yang bisa dilakukan.\n" +
+                    "\n1. Beri makan secara teratur\n" +
+                    "Tips merawat kucing yang paling penting yaitu memberi makan sesuai kebutuhannya. Makanan kucing yang dipilih harus seimbang untuk tahap kehidupannya. \n" +
+                    "Perlu diingat, kucing membutuhkan taurin dan asam amino esensial dalam makanannya untuk kesehatan mata dan jantung. Biasanya kandungan ini ditemukan pada dry food.\n" +
+                    "Anda juga bisa memberikan anabul daging sapi, ayam, hati ayam, dan ikan yang sudah dimasak. Hindari daging mentah, busuk, atau ikan berduri kepada anabul.\n" +
+                    "Selain itu, kucing harus diberi camilan sebanyak 5 – 10% dari makanan utamanya.\n" +
+                    "Camilan kucing bermacam-macam, tetapi yang paling sering diberikan adalah wet food. Anda dapat memberikan wet food sebanyak 1 – 2 kali dalam seminggu.\n" +
+                    "\n2. Beri tempat minum kucing\n" +
+                    "Sama seperti manusia, kucing membutuhkan air minum untuk menjaga kesehatan.\n" +
+                    "Dengan mencukupi kebutuhan minumnya, anabul dapat terhindar dari dehidrasi, penyakit infeksi saluran kemih, dan penyakit ginjal.\n" +
+                    "Nah, Anda perlu mengetahui cara minum yang disukai kucing Anda.\n" +
+                    "Jika Anda pernah melihat kucing minum dari keran atau mengais-ngais mangkuk airnya, kemungkinan ia lebih suka minum di air mengalir.\n" +
+                    "Bila kucing menyukai air mengalir, sediakan tempat minum khusus yang terdapat pancuran air sehingga anabul mau minum dari mangkoknya. Jangan lupa ganti air minumnya 1 kali sehari. \n" +
+                    "\n3. Sisir bulu kucing setiap hari\n" +
+                    "Cara menjaga kesehatan kucing yang baik selanjutnya yaitu dengan menyisir bulu kucing setiap hari. Kebiasaan ini ternyata bisa mendekatkan Anda dengan kucing peliharaan. \n" +
+                    "Selain itu, menyisir bulunya mencegah kekusutan dan gimbal terutama pada kucing berbulu panjang.\n" +
+                    "Anabul memang bisa membersihkan bulu-bulu rontok dengan menjilati dan merawat dirinya sendiri, tetapi Anda juga dapat membantunya dalam hal ini.\n" +
+                    "Lagi pula, menyisir sambil mengelus-ngelus bulu kucing merupakan kegiatan yang menyenangkan."
         ),
         Artikel(
             id = 2,
             title = "Bagaimana Merawat Kucing Kesayanganmu?",
             photo = R.drawable.article_food,
+            category = "Health",
+            author = "SehatPet",
+            date = "9 Sep 2022",
             description = "Bagi Anda yang baru memelihara kucing dan masih bingung tentang perawatan dasarnya, berikut beberapa cara yang bisa dilakukan.\n" +
                     "1. Beri makan secara teratur\n" +
                     "Tips merawat kucing yang paling penting yaitu memberi makan sesuai kebutuhannya. Makanan kucing yang dipilih harus seimbang untuk tahap kehidupannya. \n" +
@@ -77,6 +101,9 @@ object DataArticle {
             id = 3,
             title = "Cara merawat anjing agar tetap sehat",
             photo = R.drawable.article_dog,
+            category = "Health",
+            author = "SehatPet",
+            date = "9 Sep 2022",
             description = "Nah, agar kondisi anjing tetap prima, yuk simak cara merawat anjing dengan tepat berikut!\n" +
                     "1. Berikan Makan yang Bernutrisi\n" +
                     "Cara merawat anak anjing hingga dewasa adalah dengan memberikan makanan yang tepat. Tujuannya agar perkembangan hewan dapat sesuai dengan usianya.\n" +
@@ -134,7 +161,7 @@ object DataArticle {
             id = 1,
             tagname = "Pet Health",
             photo = R.drawable.article_dog,
-            title = "Health care for your pet service"
+            title = "11 Cara Merawat Kucing agar Tetap Sehat dan Ceria"
         ),
         KategoriArtikel(
             id = 2,

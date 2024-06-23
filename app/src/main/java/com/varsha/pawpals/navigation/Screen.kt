@@ -19,6 +19,9 @@ sealed class Screen(val route: String) {
     // MENU Notification
     data object Notification : Screen("notification")
 
+    //Bookmark
+    data object Bookmark : Screen("bookmark")
+
     //Profil Screen User
     data object EditProfile : Screen("editScreen")
     data object Logout : Screen("logout")
@@ -36,6 +39,11 @@ sealed class Screen(val route: String) {
 
     // Community Menu
     data object CommunityDetail : Screen("community_detail")
+    //Post Screen
+    data object PostScreen : Screen("post_screen")
+
+    // Splash Screen
+    data object Splash : Screen("splash")
 
 
 }

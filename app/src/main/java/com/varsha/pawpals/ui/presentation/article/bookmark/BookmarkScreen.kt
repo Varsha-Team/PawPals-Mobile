@@ -1,9 +1,23 @@
-package com.varsha.pawpals.ui.presentation.article
+package com.varsha.pawpals.ui.presentation.article.bookmark
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,47 +36,47 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.data.DataArticle
 import com.varsha.pawpals.model.Artikel
 import com.varsha.pawpals.model.KategoriArtikel
 import com.varsha.pawpals.navigation.Screen
+import com.varsha.pawpals.ui.presentation.article.componentArticle.ArticleItem
 import com.varsha.pawpals.ui.presentation.article.componentArticle.ExploreArticleItem
+import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.FilterArticle
 import com.varsha.pawpals.ui.presentation.component.SearchTextFieldItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
-
 @Composable
-fun ArticleScreen(
+fun BookmarkScreen(
     navController: NavController,
     kategoriArtikels: List<KategoriArtikel> = DataArticle.kategoriArtikel,
     artikels: List<Artikel> = DataArticle.DataArtikel,
 ) {
     var searchQuery by remember { mutableStateOf("") }
-    var selectedCategory by remember { mutableStateOf("All") }
-
-    val filteredArticles = artikels.filter { artikel ->
-        val matchesCategory = selectedCategory == "All" || artikel.category == selectedCategory
-        val matchesQuery = artikel.title.contains(searchQuery, ignoreCase = true)
-        matchesCategory && matchesQuery
-    }
 
     Scaffold(
         topBar = {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White)
+                    //.background(Color(0xFFFBEDEC))
                     .padding(16.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Artikel",
+                    text = "Bookmark",
                     fontSize = 24.sp,
                     fontWeight = FontWeight(600),
                     textAlign = TextAlign.Center,
                     color = Color(0xFFCE5628),
                     modifier = Modifier.align(Alignment.Center)
+
+                )
+                BackIconItem(
+                    onBackClicked = { navController.navigateUp() },
+                    modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
         }
@@ -74,48 +88,35 @@ fun ArticleScreen(
                 .fillMaxSize()
         ) {
             Spacer(modifier = Modifier.height(16.dp))
-            SearchTextFieldItem(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                label = "Search",
-                keyboardType = KeyboardType.Text,
-                modifier = Modifier.padding(horizontal = 18.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                text = "For you",
-                modifier = Modifier
-                    .padding(horizontal = 16.dp),
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                    fontWeight = FontWeight(600),
-                    color = Color(0xFF010911),
-                )
-            )
-            FilterArticle(selectedCategory = selectedCategory, onCategorySelected = { selectedCategory = it })
             LazyColumn(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxWidth()
+
             ) {
-                items(filteredArticles, key = { it.id }) { artikel ->
+                items(artikels, key = { it.id }) { artikel ->
                     ExploreArticleItem(artikel = artikel) { artikelId ->
                         navController.navigate(Screen.DetailArticle.route + "/$artikelId")
                     }
                 }
+//                items(artikels, key = { it.id }) { artikel ->
+//                    ExploreArticleItem(artikel = artikel, kategoriArtikelId = kategoriArtikelId!!) { artikelId, kategoriId ->
+//                        navController.navigate(Screen.DetailArticle.route + "/$artikelId/$kategoriId")
+//                    }
+//                }
             }
+
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-private fun ArticleScreenPrev() {
+private fun BookmarkScreenPrev() {
     PawPalsTheme {
-        ArticleScreen(
+        BookmarkScreen(
             navController = rememberNavController(),
             kategoriArtikels = DataArticle.kategoriArtikel
         )

@@ -2,6 +2,7 @@ package com.varsha.pawpals.ui.presentation.schedule.addPet
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,14 +26,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.varsha.pawpals.R
-import com.varsha.pawpals.model.PetData
-import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ManageAddPet(
-   // pet : PetData,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -40,9 +37,13 @@ fun ManageAddPet(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .padding(16.dp, 24.dp)
+            .background(Color.White)
     ) {
         Column(
-            modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier
+                .background(Color.White)
+                .weight(1f)
         ) {
             Text(
                 text = "Manage Your Pet Profile" ,
@@ -58,17 +59,6 @@ fun ManageAddPet(
         Box(
             modifier = Modifier
         ) {
-//            Image(
-//                painter = painterResource(id = ),
-//                contentDescription = "Profile Photo",
-//                modifier = Modifier
-//                    .size(110.dp)
-//                    .border(
-//                        width = 3.dp, Color(0xFFD05440), shape = RoundedCornerShape(size = 110.dp)
-//                    )
-//                    .clip(CircleShape),
-//                contentScale = ContentScale.Crop
-//            )
             Card(
                 modifier = Modifier
                     .border(3.dp, Color(0xFFD05440), RoundedCornerShape(16.dp))
