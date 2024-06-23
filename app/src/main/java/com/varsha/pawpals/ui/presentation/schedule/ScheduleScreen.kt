@@ -1,4 +1,4 @@
-package com.varsha.pawpals.ui.screen
+package com.varsha.pawpals.ui.presentation.schedule
 
 import android.os.Build
 import androidx.annotation.RequiresApi
