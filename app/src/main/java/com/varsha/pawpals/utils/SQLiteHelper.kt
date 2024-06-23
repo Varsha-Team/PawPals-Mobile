@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.varsha.pawpals.model.PetData
+import java.nio.file.Files.delete
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -83,4 +84,52 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         db.close()
         return petList
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getPetById(petId: Int): PetData? {
+        val db = this.readableDatabase
+        var pet: PetData? = null
+        val selectQuery = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID = ?"
+        val cursor = db.rawQuery(selectQuery, arrayOf(petId.toString()))
+
+        if (cursor.moveToFirst()) {
+            pet = PetData(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                nama = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAMA)),
+                photo = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PHOTO)),
+                type = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TYPE)),
+                jenis = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_JENIS)),
+                gender = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
+                birthday = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BIRTHDAY)))
+            )
+        }
+        cursor.close()
+        db.close()
+        return pet
+    }
+
+    fun deletePet(petId: Int): Int {
+        val db = this.writableDatabase
+        val success = db.delete(TABLE_NAME, "$COLUMN_ID=?", arrayOf(petId.toString()))
+        db.close()
+        return success
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun updatePet(pet: PetData): Int {
+        val db = this.writableDatabase
+        val contentValues = ContentValues().apply {
+            put(COLUMN_NAMA, pet.nama)
+            put(COLUMN_PHOTO, pet.photo)
+            put(COLUMN_TYPE, pet.type)
+            put(COLUMN_JENIS, pet.jenis)
+            put(COLUMN_GENDER, pet.gender)
+            put(COLUMN_BIRTHDAY, pet.birthday.format(DateTimeFormatter.ISO_LOCAL_DATE))
+        }
+        val success = db.update(TABLE_NAME, contentValues, "$COLUMN_ID=?", arrayOf(pet.id.toString()))
+        db.close()
+        return success
+    }
+
+
 }

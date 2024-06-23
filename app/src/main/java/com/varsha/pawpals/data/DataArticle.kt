@@ -101,7 +101,7 @@ object DataArticle {
             id = 3,
             title = "Cara merawat anjing agar tetap sehat",
             photo = R.drawable.article_dog,
-            category = "Health",
+            category = "Nutrition",
             author = "SehatPet",
             date = "9 Sep 2022",
             description = "Nah, agar kondisi anjing tetap prima, yuk simak cara merawat anjing dengan tepat berikut!\n" +

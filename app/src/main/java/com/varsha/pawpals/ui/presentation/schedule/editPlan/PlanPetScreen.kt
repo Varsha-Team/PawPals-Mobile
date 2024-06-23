@@ -44,7 +44,7 @@ fun PlanPetScreen(
     navController: NavController,
     petId: Int?
     //modifier: Modifier = Modifier,
-    ) {
+) {
 
     val newPetList = DataPet.Pet.filter { pet -> pet.id == petId }
 
@@ -115,7 +115,6 @@ fun PlanPetScreen(
                             textAlign = TextAlign.Center,
                         )
                     )
-
                     DailyPlanItem()
                 }
             }
