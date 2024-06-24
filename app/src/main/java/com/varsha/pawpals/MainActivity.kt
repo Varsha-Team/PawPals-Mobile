@@ -11,6 +11,7 @@ import androidx.compose.runtime.LaunchedEffect
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+import com.varsha.pawpals.data.alarm.ReminderNotification
 import com.varsha.pawpals.ui.presentation.PawPalsApp
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 import com.varsha.pawpals.utils.DatabaseLogger
@@ -23,6 +24,8 @@ class   MainActivity : ComponentActivity() {
         setContent {
             PawPalsTheme {
                 FirebaseApp.initializeApp(this)
+                val reminderNotification = ReminderNotification(this)
+                reminderNotification.createNotificationChannel()
                 val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
                 LaunchedEffect(key1 = true) {
                     if (!postNotificationPermission.status.isGranted) {
@@ -40,12 +43,10 @@ class   MainActivity : ComponentActivity() {
         // Menampilkan semua data dari tabel ALARMS di Logcat
         databaseLogger.logAllAlarms()
 
+
         // Menampilkan semua data dari tabel USERS di Logcat
         databaseLogger.logAllUsers()
 
 
     }
-
-
-
 }
