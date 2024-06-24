@@ -33,9 +33,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -59,26 +61,50 @@ import coil.request.ImageRequest
 import com.varsha.pawpals.R
 import com.varsha.pawpals.data.DataCommunity
 import com.varsha.pawpals.model.Community
+import com.varsha.pawpals.model.FireBaseCommunity
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
+import com.varsha.pawpals.utils.getPostFromFirestore
+import kotlinx.coroutines.launch
 
 @Composable
 fun CommunityDetail(
     modifier: Modifier = Modifier,
     navController: NavController,
-    idCommunity: Int?
+    idCommunity: String?
 ) {
+    var post by remember { mutableStateOf<FireBaseCommunity?>(null) }
+    val coroutineScope = rememberCoroutineScope()
 
-    val detailCommunityList = DataCommunity.DataCommunity.filter {
-            community -> community.id ==  idCommunity
+    LaunchedEffect(idCommunity) {
+        coroutineScope.launch {
+            if (idCommunity != null) {
+                val postFromFirestore = getPostFromFirestore(idCommunity)
+                post = postFromFirestore
+            }
+        }
     }
 
-    CommunityReadScreen(
-        detailCommunity = detailCommunityList,
-        navController = navController
-    )
-
+    post?.let { detailPost ->
+        CommunityReadScreen(
+            detailCommunity = listOf(
+                Community(
+                    id = detailPost.timestamp.toInt(),
+                    user = "Anonymous",
+                    userPhoto = null,
+                    title = detailPost.title,
+                    content = detailPost.content,
+                    picture = null,
+                    muchLike = 0,
+                    muchComment = 0,
+                    time = (System.currentTimeMillis() - detailPost.timestamp).toInt() / 60000,
+                    date = "Unknown"
+                )
+            ),
+            navController = navController
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

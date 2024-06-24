@@ -49,7 +49,7 @@ fun HomeScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                HomeCommunityText()
+                HomeCommunityText(navController)
             }
         }
     }
