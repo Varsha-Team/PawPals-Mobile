@@ -152,9 +152,10 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
 
 
     fun getAlarmsByPetId(petId: Int): List<AlarmData> {
+        val db = this.readableDatabase
         val alarmList: ArrayList<AlarmData> = ArrayList()
         val selectQuery = "SELECT * FROM $TABLE_ALARMS WHERE $COLUMN_PET_ID = ?"
-        val db = this.readableDatabase
+
         val cursor = db.rawQuery(selectQuery, arrayOf(petId.toString()))
 
         if (cursor.moveToFirst()) {
@@ -189,6 +190,31 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         db.close()
         return success
     }
+
+    // Fungsi untuk mengambil semua data dari tabel ALARMS
+    fun getAllAlarms(): List<AlarmData> {
+        val alarmList: ArrayList<AlarmData> = ArrayList()
+        val selectQuery = "SELECT * FROM $TABLE_ALARMS"
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val alarm = AlarmData(
+                    id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ALARM_ID)),
+                    petId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),
+                    name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ALARM_NAME)),
+                    time = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ALARM_TIME)),
+                    days = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DAYS)).split(",").map { it.toBoolean() }
+                )
+                alarmList.add(alarm)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return alarmList
+    }
+
 
 }
 

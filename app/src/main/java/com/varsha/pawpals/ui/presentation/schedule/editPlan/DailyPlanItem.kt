@@ -38,7 +38,9 @@ import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.utils.AlarmData
 
 @Composable
-fun DailyPlanItem() {
+fun DailyPlanItem(
+    alarm : AlarmData,
+) {
     var isChecked by remember { mutableStateOf(false) }
     Card (
         modifier = Modifier
@@ -78,9 +80,9 @@ fun DailyPlanItem() {
                     .weight(1f)
                     .padding(start = 16.dp)
             ) {
-                Text("Give Breakfast", fontSize = 16.sp, color = Color.Black)
+                Text(alarm.name, fontSize = 16.sp, color = Color.Black)
                 Spacer(modifier = Modifier.padding(8.dp))
-                Text("08:30", fontSize = 20.sp, color = Color.Black, fontWeight = FontWeight.Bold)
+                Text(alarm.time, fontSize = 20.sp, color = Color.Black, fontWeight = FontWeight.Bold)
             }
 
             Column {
@@ -123,5 +125,13 @@ fun DailyPlanItem() {
 @Preview
 @Composable
 private fun DailyPlanItemPreview() {
-    DailyPlanItem()
+    DailyPlanItem(
+        alarm = AlarmData(
+            id = 5,
+            petId = 2,
+            name = "Walk Cat",
+            time = "18:00",
+            days = listOf(false, true, false, true, false, true, false)
+        )
+    )
 }

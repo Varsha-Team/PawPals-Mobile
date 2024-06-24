@@ -1,5 +1,6 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -39,6 +40,7 @@ fun ColumnEditPlan(
     petId: Int,
     modifier: Modifier = Modifier
 ) {
+    Log.d("ColumnEditPlan", "Received petId: $petId")
     val context = LocalContext.current
     val dbHelper = remember { SQLiteHelper(context) }
 
@@ -256,3 +258,9 @@ private fun NotificationRowItemPreview() {
     NotificationRowItem()
 }
 
+@Preview(showBackground = true)
+@Composable
+private fun ColumnEditPlanPreview() {
+    ColumnEditPlan(navController = rememberNavController(), petId = 1)
+
+}

@@ -1,5 +1,7 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -19,10 +21,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.R
 import com.varsha.pawpals.model.PetData
+import java.time.LocalDate
 
 @Composable
 fun ManageEditPlan(
@@ -81,4 +85,20 @@ fun ManageEditPlan(
             }
         }
     }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview
+@Composable
+private fun ManageEditPlanPrev() {
+    ManageEditPlan(pet = PetData(id = 1,
+            nama = "Bjir",
+            photo = R.drawable.pet_photo1,
+            jenis = "kucing oren",
+            gender = "tidak tau",
+            birthday = LocalDate.of(2020, 5, 18),
+            type = "gacor"
+        )
+    )
+
 }

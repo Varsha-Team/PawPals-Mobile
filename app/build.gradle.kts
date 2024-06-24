@@ -90,7 +90,7 @@ dependencies {
     implementation(libs.androidx.activity.compose.v131)
     implementation(kotlin("script-runtime"))
 
-    implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
+    implementation(libs.accompanist.permissions)
 
 
 }
