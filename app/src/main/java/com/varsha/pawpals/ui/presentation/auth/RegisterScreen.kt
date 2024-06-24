@@ -1,6 +1,7 @@
 package com.varsha.pawpals.ui.presentation.auth
 
-
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -32,19 +34,32 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.R
+import com.varsha.pawpals.model.PetData
+import com.varsha.pawpals.model.UserData
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
+import com.varsha.pawpals.utils.SQLiteHelper
+import java.time.LocalDate
+
 
 @Composable
 fun RegisterScreen (
     modifier: Modifier = Modifier,
-    navController: NavController
+    navController: NavController,
+
 ) {
+    val context = LocalContext.current
+    val dbHelper = SQLiteHelper(context)
+
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+    var photo by remember { mutableStateOf("") }
+    var nomor by remember { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var confirmpass by rememberSaveable { mutableStateOf("") }
+
 
     Box(
         contentAlignment = Alignment.Center,
@@ -141,7 +156,7 @@ fun RegisterScreen (
                     value = password,
                     onValueChange = { password = it },
                     label = "Enter Password",
-                    keyboardType = KeyboardType.Text,
+                    keyboardType = KeyboardType.Password,
                     isPassword = true
                 )
             }
@@ -168,14 +183,45 @@ fun RegisterScreen (
                     value = confirmpass,
                     onValueChange = { confirmpass = it },
                     label = "Enter Password",
-                    keyboardType = KeyboardType.Text,
+                    keyboardType = KeyboardType.Password,
                     isPassword = true
                 )
             }
 
 
             Button(
-                onClick = { navController.navigate(Screen.Home.route) },
+                onClick = {
+                    if (username.isBlank() || email.isBlank() || password.isBlank()) {
+                        Toast.makeText(context, "Please fill all field", Toast.LENGTH_SHORT).show()
+                    } else {
+
+                        if (password == confirmpass) {
+
+                            val newUser = UserData(
+                                id = 0,
+                                nama = username,
+                                photo = R.drawable.profile_photo,
+                                email = email,
+                                nomor = nomor,
+                                pass = password
+                            )
+                            val success = dbHelper.addUser(newUser)
+                            if (success > 0) {
+                                navController.navigate(Screen.Login.route)
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Registrasi gagal, coba lagi",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            Toast.makeText(context, "Kata sandi tidak cocok", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        // navController.navigate(Screen.Home.route)
+                    }
+                },
                 colors = ButtonDefaults.buttonColors(
                     Color(0xFFED6A09)
                 ),
@@ -225,6 +271,6 @@ fun RegisterScreen (
 @Composable
 private fun RegisterScreenPrev() {
     PawPalsTheme {
-        RegisterScreen(navController = rememberNavController())
+       // RegisterScreen(navController = rememberNavController())
     }
 }

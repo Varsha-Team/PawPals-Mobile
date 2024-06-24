@@ -24,4 +24,12 @@ class DatabaseLogger(context: Context) {
             Log.d("DatabaseLogger", "Alarm ID: ${alarm.id}, Pet ID: ${alarm.petId}, Name: ${alarm.name}, Time: ${alarm.time}, Days: ${alarm.days}")
         }
     }
+
+    // Fungsi untuk menampilkan semua data dari tabel ALARMS di Logcat
+    fun logAllUsers() {
+        val users = db.getAllUsers()
+        for (user in users) {
+            Log.d("DatabaseLogger", "User ID: ${user.id}, Name: ${user.nama}, Email: ${user.email}, foto: ${user.photo}, nomor: ${user.nomor}, pass: ${user.pass}")
+        }
+    }
 }

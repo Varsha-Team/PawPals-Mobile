@@ -40,6 +40,9 @@ class   MainActivity : ComponentActivity() {
         // Menampilkan semua data dari tabel ALARMS di Logcat
         databaseLogger.logAllAlarms()
 
+        // Menampilkan semua data dari tabel USERS di Logcat
+        databaseLogger.logAllUsers()
+
 
     }
 
