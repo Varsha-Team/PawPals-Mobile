@@ -50,7 +50,6 @@ fun ColumnAddPet(
     var breed by remember { mutableStateOf("") }
     var type by remember { mutableStateOf("") }
     var gender by remember { mutableStateOf("") }
-
     var scheduleDate by remember { mutableStateOf("") }
 
     val datePickerState = rememberDatePickerState(initialSelectedDateMillis = date)
@@ -214,25 +213,29 @@ fun ColumnAddPet(
 
         Button(
             onClick = {
-                val newPet = PetData(
-                    id = 0, // ID will be auto-generated
-                    nama = namepet,
-                    photo = R.drawable.profile_photo, // Replace with actual photo ID
-                    type = type,
-                    jenis = breed,
-                    gender = gender,
-                    birthday = LocalDate.parse(scheduleDate, formatter)
-                )
-                val status = db.addPet(newPet)
-                if (status > -1) {
-                    Toast.makeText(context, "Pet Added", Toast.LENGTH_SHORT).show()
-                    navController.navigate(Screen.Schedule.route)
+                if (namepet.isBlank() || breed.isBlank() || type.isBlank() || gender.isBlank() || scheduleDate.isBlank()) {
+                    Toast.makeText(context, "Please fill all field", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(context, "Error Adding Pet", Toast.LENGTH_SHORT).show()
+                    val newPet = PetData(
+                        id = 0, // ID will be auto-generated
+                        nama = namepet,
+                        photo = R.drawable.profile_photo, // Replace with actual photo ID
+                        type = type,
+                        jenis = breed,
+                        gender = gender,
+                        birthday = LocalDate.parse(scheduleDate, formatter)
+                    )
+                    val status = db.addPet(newPet)
+                    if (status > -1) {
+                        Toast.makeText(context, "Pet Added", Toast.LENGTH_SHORT).show()
+                        navController.navigate(Screen.Schedule.route)
+                    } else {
+                        Toast.makeText(context, "Error Adding Pet", Toast.LENGTH_SHORT).show()
+                    }
                 }
             },
             colors = ButtonDefaults.buttonColors(
-                Color(0xFFC85440)
+                Color(0xFFED6A09)
             ),
             modifier = Modifier
                 .width(194.dp)
