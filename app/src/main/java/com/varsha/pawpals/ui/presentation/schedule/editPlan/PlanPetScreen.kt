@@ -20,14 +20,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavType
+import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
+import com.varsha.pawpals.ui.presentation.schedule.PetProfilContent
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.ManageEditPlan
 import com.varsha.pawpals.utils.AlarmData
 import com.varsha.pawpals.utils.SQLiteHelper
@@ -36,26 +39,31 @@ import com.varsha.pawpals.utils.SQLiteHelper
 @Composable
 fun PlanPetScreen(
     navController: NavController,
-    petId: Int?
+    petId: Int?,
 
 ) {
-    // Check if petId is null, if so, navigate back
+    // Periksa apakah petId null, jika iya, navigasikan kembali
     if (petId == null) {
         navController.navigateUp()
         return
     }
 
-    // Local context and SQLiteHelper to access the database
+    // Konteks lokal dan SQLiteHelper untuk mengakses database
     val context = LocalContext.current
     val db = SQLiteHelper(context)
 
-
-    // State to hold the current PetData
+    // State untuk menyimpan PetData saat ini
     var pet by remember { mutableStateOf<PetData?>(null) }
+    var alarms by remember { mutableStateOf<List<AlarmData>?>(null) }
 
-    // Fetch pet data on load
+    // Ambil data pet saat komponen dimuat
     LaunchedEffect(petId) {
         pet = db.getPetById(petId)
+    }
+
+    // Ambil data alarm saat komponen dimuat
+    LaunchedEffect(petId) {
+        alarms = db.getAlarmsByPetId(petId)
     }
 
     Scaffold(
@@ -86,14 +94,14 @@ fun PlanPetScreen(
                 navController = navController,
                 text = "Plan",
                 icon = Icons.Default.Add,
-                onClick = { navController.navigate(Screen.EditPlan.route) }
+                onClick = { navController.navigate("edit_plan/$petId") }
             )
         }
     ) { contentPadding ->
-        // Show loading if pet data is not yet available
-        if (pet == null) {
+        // Tampilkan loading jika data alarm belum tersedia
+        if (alarms == null) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(text = "Loading...", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text(text = "Not Found", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
         } else {
             Column(
@@ -103,9 +111,10 @@ fun PlanPetScreen(
             ) {
                 LazyColumn(
                     modifier = Modifier
+                        .padding(horizontal = 16.dp)
                 ) {
                     item {
-                        ManageEditPlan(pet = pet!!)
+                        pet?.let { ManageEditPlan(pet = it) }
 
                         Column(
                             modifier = Modifier
@@ -128,10 +137,11 @@ fun PlanPetScreen(
                                 textAlign = TextAlign.Center,
                             )
                         )
-
-                        DailyPlanItem() // Replace with actual plan display logic
                     }
 
+                    items(alarms!!, key = { it.id }) { alarm ->
+                        DailyPlanItem(alarm = alarm)
+                    }
                 }
             }
         }
@@ -139,12 +149,14 @@ fun PlanPetScreen(
 }
 
 
-//@RequiresApi(Build.VERSION_CODES.O)
-//@Preview
-//@Composable
-//private fun PlanPetScreenPreview() {
-//    PlanPetScreen(
-//        navController = rememberNavController(),
-//        petId = 1 // Replace with a valid pet ID for preview
-//    )
-//}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview
+@Composable
+private fun PlanPetScreenPreview() {
+    PlanPetScreen(
+        navController = rememberNavController(),
+        petId = 1 // Replace with a valid pet ID for preview
+    )
+}

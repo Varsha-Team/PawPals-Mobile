@@ -66,7 +66,7 @@ fun ScheduleScreen(
         floatingActionButton = {
             ButtonItem1(
                 navController = navController,
-                text = "Add Pets",
+                text = "Pets",
                 icon = Icons.Default.Add,
                 onClick = { navController.navigate(Screen.AddPet.route) }
             )

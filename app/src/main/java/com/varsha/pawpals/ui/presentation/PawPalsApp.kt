@@ -55,6 +55,7 @@ import com.varsha.pawpals.ui.presentation.schedule.editPlan.PlanPetScreen
 import com.varsha.pawpals.ui.presentation.splash.SplashScreen
 import com.varsha.pawpals.ui.screen.EditPetScreen
 import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
+import com.varsha.pawpals.ui.presentation.schedule.editPlan.ColumnEditPlan
 
 // Background Color
 val backgroundColor = Brush.radialGradient(
@@ -83,6 +84,9 @@ fun PawPalsApp(
                 && !currentRoute.contains(Screen.DetailArticle.route)
                 && !currentRoute.contains(Screen.EditProfile.route)
                 && !currentRoute.contains(Screen.Splash.route)
+                && !currentRoute.contains(Screen.AddPet.route)
+                && !currentRoute.contains(Screen.EditPet.route)
+                && !currentRoute.contains(Screen.EditPlan.route)
             ) {
                 BottomBar(navController = navController)
             }
@@ -145,8 +149,11 @@ fun PawPalsApp(
                 PlanPetScreen(navController = navController, id)
             }
 
-            composable(Screen.EditPlan.route) {
-                EditPlanScreen(navController = navController, id)
+            composable(Screen.EditPlan.route + "/{petId}",
+                arguments = listOf(navArgument("petId") { type = NavType.IntType })
+            ) { backStackEntry ->
+                val petId = backStackEntry.arguments?.getInt("petId") ?: -1
+                ColumnEditPlan(navController, petId)
             }
 
             composable(Screen.AddPet.route) {
@@ -157,14 +164,16 @@ fun PawPalsApp(
                 PostingScreen(navController = navController)
             }
 
-            composable(Screen.EditPet.route + "/{petId}",
+            composable(Screen.EditPlan.route + "/{petId}",
                 arguments = listOf(navArgument("petId"){type = NavType.IntType})
             ) {navBackStackEntry ->
-                EditPetScreen(
-                    onBackClicked = {},
-                    navController = navController,
-                    petId = navBackStackEntry.arguments?.getInt("petId")
-                )
+                navBackStackEntry.arguments?.getInt("petId")?.let {
+                    EditPlanScreen(
+                        // onBackClicked = {},
+                        navController = navController,
+                        petId = it
+                    )
+                }
             }
 
             composable(Screen.PlanPet.route + "/{petId}",
