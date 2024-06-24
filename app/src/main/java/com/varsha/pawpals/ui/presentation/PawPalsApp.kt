@@ -149,11 +149,14 @@ fun PawPalsApp(
                 PlanPetScreen(navController = navController, id)
             }
 
-            composable(Screen.EditPlan.route + "/{petId}",
-                arguments = listOf(navArgument("petId") { type = NavType.IntType })
-            ) { backStackEntry ->
-                val petId = backStackEntry.arguments?.getInt("petId") ?: -1
-                ColumnEditPlan(navController, petId)
+            composable(Screen.EditPet.route + "/{petId}",
+                arguments = listOf(navArgument("petId"){type = NavType.IntType})
+            ) {navBackStackEntry ->
+                EditPetScreen(
+                    onBackClicked = {},
+                    navController = navController,
+                    petId = navBackStackEntry.arguments?.getInt("petId")
+                )
             }
 
             composable(Screen.AddPet.route) {

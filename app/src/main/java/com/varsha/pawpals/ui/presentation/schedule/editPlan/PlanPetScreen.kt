@@ -26,13 +26,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.model.AlarmData
 import com.varsha.pawpals.model.PetData
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.BackIconItem
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 import com.varsha.pawpals.ui.presentation.schedule.PetProfilContent
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.ManageEditPlan
-import com.varsha.pawpals.utils.AlarmData
+
 import com.varsha.pawpals.utils.SQLiteHelper
 
 @RequiresApi(Build.VERSION_CODES.O)
