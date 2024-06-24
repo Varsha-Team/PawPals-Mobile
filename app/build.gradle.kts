@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.androidbrowserhelper)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.places)
+    implementation(libs.firebase.common.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

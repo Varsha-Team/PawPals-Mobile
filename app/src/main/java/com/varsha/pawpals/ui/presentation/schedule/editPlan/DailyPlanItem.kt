@@ -1,8 +1,8 @@
 package com.varsha.pawpals.ui.presentation.schedule.editPlan
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -31,19 +30,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.varsha.pawpals.model.AlarmData
 
-
 @Composable
 fun DailyPlanItem(
-    alarm : AlarmData,
+    alarm: AlarmData,
+    onDelete: (Int) -> Unit
 ) {
     var isChecked by remember { mutableStateOf(false) }
-    Card (
+    Card(
         modifier = Modifier
             .padding(16.dp)
             .shadow(
@@ -55,7 +56,7 @@ fun DailyPlanItem(
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-    ){
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,13 +67,13 @@ fun DailyPlanItem(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Icon(
-                imageVector = Icons.Default.Delete, // Ganti dengan ikon delete yang sesuai
+                imageVector = Icons.Default.Delete,
                 contentDescription = "Delete",
                 tint = Color.Red,
                 modifier = Modifier
                     .size(32.dp)
                     .clickable {
-                        // Aksi untuk menghapus item
+                        onDelete(alarm.id)
                     }
             )
 
@@ -81,58 +82,64 @@ fun DailyPlanItem(
                     .weight(1f)
                     .padding(start = 16.dp)
             ) {
-                Text(alarm.name, fontSize = 16.sp, color = Color.Black)
+                Text(
+                    text = alarm.name,
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
                 Spacer(modifier = Modifier.padding(8.dp))
-                Text(alarm.time, fontSize = 20.sp, color = Color.Black, fontWeight = FontWeight.Bold)
-            }
 
-            Column {
-                Box(
-                    modifier = Modifier
-                        .size(20.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .border(1.dp, Color.Black, RoundedCornerShape(8.dp))
-                        .background(if (isChecked) Color.Red else Color.Transparent)
-                        .align(Alignment.End)
-                        .clickable { isChecked = !isChecked },
-                    contentAlignment = Alignment.Center,
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (isChecked) {
-                        Icon(
-                            imageVector = Icons.Default.Check, // Ganti dengan ikon centang yang sesuai
-                            contentDescription = "Checked",
-                            tint = Color.Black,
-                            modifier = Modifier.size(16.dp)
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.padding(8.dp))
-                Row {
-                    listOf("Sn", "Sl", "R", "K", "J", "Sb", "M").forEach { day ->
-                        Text(
-                            text = day,
-                            fontSize = 16.sp,
-                            color = Color.Red,
-                            modifier = Modifier.padding(start = 12.dp)
-                        )
+                    Text(
+                        alarm.time,
+                        fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Row {
+                        alarm.days.forEachIndexed { index, isSelected ->
+                            val day = when (index) {
+                                0 -> "Sn"
+                                1 -> "Sl"
+                                2 -> "R"
+                                3 -> "K"
+                                4 -> "J"
+                                5 -> "Sb"
+                                6 -> "M"
+                                else -> ""
+                            }
+                            Text(
+                                text = day,
+                                fontSize = 16.sp,
+                                color = if (isSelected) Color.Red else Color.Gray,
+                                modifier = Modifier.padding(start = 8.dp)
+                            )
+                        }
                     }
                 }
             }
         }
     }
-
 }
 
-@Preview
-@Composable
-private fun DailyPlanItemPreview() {
-    DailyPlanItem(
-        alarm = AlarmData(
-            id = 5,
-            petId = 2,
-            name = "Walk Cat",
-            time = "18:00",
-            days = listOf(false, true, false, true, false, true, false)
-        )
-    )
-}
+
+//@Preview
+//@Composable
+//private fun DailyPlanItemPreview() {
+//    DailyPlanItem(
+//        alarm = AlarmData(
+//            id = 5,
+//            petId = 2,
+//            name = "Walk Cat",
+//            time = "18:00",
+//            days = listOf(false, true, false, true, false, true, false)
+//        )
+//    )
+//}
