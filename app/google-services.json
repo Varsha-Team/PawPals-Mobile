@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "567289935351",
+    "project_id": "varsha-pawpals",
+    "storage_bucket": "varsha-pawpals.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567289935351:android:e86f3e4c59e1f0bb76eaf2",
+        "android_client_info": {
+          "package_name": "com.varsha.pawpals"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp-44x9ZfkONmasJJGYpcHaje5UB49-vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

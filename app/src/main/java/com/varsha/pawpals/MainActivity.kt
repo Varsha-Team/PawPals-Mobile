@@ -6,10 +6,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import com.google.firebase.FirebaseApp
 import androidx.compose.runtime.LaunchedEffect
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+import com.varsha.pawpals.data.alarm.ReminderNotification
 import com.varsha.pawpals.ui.presentation.PawPalsApp
 import com.varsha.pawpals.ui.theme.PawPalsTheme
 import com.varsha.pawpals.utils.DatabaseLogger
@@ -21,8 +23,10 @@ class   MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PawPalsTheme {
+                FirebaseApp.initializeApp(this)
+                val reminderNotification = ReminderNotification(this)
+                reminderNotification.createNotificationChannel()
                 val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
-
                 LaunchedEffect(key1 = true) {
                     if (!postNotificationPermission.status.isGranted) {
                         postNotificationPermission.launchPermissionRequest()
@@ -40,8 +44,9 @@ class   MainActivity : ComponentActivity() {
         databaseLogger.logAllAlarms()
 
 
+        // Menampilkan semua data dari tabel USERS di Logcat
+        databaseLogger.logAllUsers()
+
+
     }
-
-
-
 }

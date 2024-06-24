@@ -6,6 +6,7 @@
     <string name="menu_schedule">Schedule</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_notifikasi">Notification</string>
+    <string name="your_notification">Your Pet Needs You</string>
 
 <!--    menu_schedule-->
 <!--    <string name="add_pet">AddPet</string>-->

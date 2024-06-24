@@ -92,6 +92,45 @@ fun TextFieldItem(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun TextFieldPasswordItem(
+    modifier: Modifier = Modifier,
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    isPassword: Boolean = false,
+    visualTransformation: VisualTransformation = PasswordVisualTransformation()
+) {
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = { Text(label) },
+        visualTransformation = if (isPassword) PasswordVisualTransformation() else VisualTransformation.None,
+        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = keyboardType),
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.White
+        ),
+        modifier = modifier
+            .shadow(
+                elevation = 4.dp,
+                spotColor = Color(0x40000000),
+                ambientColor = Color(0x40000000)
+            )
+            .border(
+                width = 1.dp,
+                color = Color(0x66000000),
+                shape = RoundedCornerShape(size = 10.dp)
+            )
+            .clip(RoundedCornerShape(10.dp))
+            .fillMaxWidth()
+            //.width(312.dp)
+            .padding(0.5.dp)
+    )
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun TextFieldDropdowns(
     modifier: Modifier = Modifier,
     list: List<String>,

@@ -27,6 +27,12 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,21 +51,44 @@ import com.varsha.pawpals.R
 import com.varsha.pawpals.data.DataCommunity
 import com.varsha.pawpals.model.Community
 import com.varsha.pawpals.navigation.Screen
+import com.varsha.pawpals.utils.getPostsFromFirestore
+import kotlinx.coroutines.launch
 
 @Composable
 fun HomeCommunityText(
-    modifier: Modifier = Modifier,
-    community: List<Community> = DataCommunity.DataCommunity
+    navController: NavController,
+    modifier: Modifier = Modifier
 ) {
+    var communityPosts by remember { mutableStateOf<List<Community>>(emptyList()) }
+    val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(Unit) {
+        coroutineScope.launch {
+            val posts = getPostsFromFirestore()
+            communityPosts = posts.map {
+                Community(
+                    id = it.timestamp.toInt(),
+                    user = "Anonymous", // Ganti dengan user sebenarnya jika tersedia
+                    userPhoto = null,
+                    title = it.title,
+                    content = it.content,
+                    picture = null,
+                    muchLike = 0,
+                    muchComment = 0,
+                    time = (System.currentTimeMillis() - it.timestamp).toInt() / 60000, // Hitung waktu dalam menit
+                    date = "Unknown" // Ganti dengan tanggal sebenarnya jika tersedia
+                )
+            }
+        }
+    }
+
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = Modifier.fillMaxWidth()
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(
                 text = "Komunitas",
@@ -69,20 +98,17 @@ fun HomeCommunityText(
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .clickable {  }
+                modifier = Modifier.clickable { }
             ) {
                 Text(text = "Semua")
                 IconButton(
                     onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .size(30.dp)
+                    modifier = Modifier.size(30.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowForwardIos,
                         contentDescription = "Icon Panah Kanan",
-                        modifier = Modifier
-                            .size(20.dp)
+                        modifier = Modifier.size(20.dp)
                     )
                 }
             }
@@ -90,22 +116,16 @@ fun HomeCommunityText(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        LazyRow {
-
-        }
-
         LazyRow(
-            //  verticalArrangement = Arrangement.spacedBy(0.dp),
-            modifier = Modifier
-                .background(color = Color.White)
+            modifier = Modifier.background(color = Color.White)
         ) {
-            items(community) {
-                LazyCommunity(community = it)
+            items(communityPosts) { post ->
+                LazyCommunity(community = post)
             }
         }
-
     }
 }
+
 
 @Composable
 fun LazyCommunity(
