@@ -142,33 +142,33 @@ fun CommunityScreen(
                                     date = "Unknown" // Ganti dengan tanggal sebenarnya jika tersedia
                                 )
                             ) { idCommunity ->
-                                navController.navigate(Screen.CommunityDetail.route + "/$idCommunity")
+                                navController.navigate(Screen.CommunityDetail.route + "/${post.id}")
                             }
 
-                            // Tombol untuk menghapus post
-                            Button(
-                                onClick = {
-                                    val postId = post.id
-                                    Log.d("CommunityScreen", "Deleting post with ID: $postId")
-
-                                    deletePostFromFirestore(postId,
-                                        onSuccess = {
-                                            coroutineScope.launch {
-                                                posts = getPostsFromFirestore(
-                                                    selectedCategory,
-                                                    searchQuery
-                                                )
-                                            }
-                                        },
-                                        onFailure = { e ->
-                                            Log.e("CommunityScreen", "Failed to delete post: ", e)
-                                        })
-                                },
-                                modifier = Modifier.padding(vertical = 8.dp)
-                            ) {
-                                Text("Delete")
-                            }
-
+//                            // Tombol untuk menghapus post
+//                            Button(
+//                                onClick = {
+//                                    val postId = post.id
+//                                    Log.d("CommunityScreen", "Deleting post with ID: $postId")
+//
+//                                    deletePostFromFirestore(postId,
+//                                        onSuccess = {
+//                                            coroutineScope.launch {
+//                                                posts = getPostsFromFirestore(
+//                                                    selectedCategory,
+//                                                    searchQuery
+//                                                )
+//                                            }
+//                                        },
+//                                        onFailure = { e ->
+//                                            Log.e("CommunityScreen", "Failed to delete post: ", e)
+//                                        })
+//                                },
+//                                modifier = Modifier.padding(vertical = 8.dp)
+//                            ) {
+//                                Text("Delete")
+//                            }
+//
                             Spacer(modifier = Modifier.height(16.dp))
                         }
                     }

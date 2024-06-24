@@ -60,6 +60,15 @@ suspend fun getPostsFromFirestore(): List<FireBaseCommunity> {
     }
 }
 
+suspend fun getPostFromFirestore(postId: String): FireBaseCommunity? {
+    val db = FirebaseFirestore.getInstance()
+    return try {
+        val documentSnapshot = db.collection("posts").document(postId).get().await()
+        documentSnapshot.toObject(FireBaseCommunity::class.java)?.copy(id = documentSnapshot.id)
+    } catch (e: Exception) {
+        null
+    }
+}
 
 
 fun deletePostFromFirestore(postId: String, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {

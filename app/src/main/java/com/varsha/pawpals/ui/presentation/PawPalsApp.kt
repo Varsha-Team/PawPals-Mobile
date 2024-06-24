@@ -199,13 +199,14 @@ fun PawPalsApp(
 
             composable(
                 Screen.CommunityDetail.route + "/{idCommunity}",
-                arguments = listOf(navArgument("idCommunity") { type = NavType.IntType })
-            ){navBackStackEntry ->
+                arguments = listOf(navArgument("idCommunity") { type = NavType.StringType })
+            ) { navBackStackEntry ->
                 CommunityDetail(
                     navController = navController,
-                    idCommunity = navBackStackEntry.arguments?.getInt("idCommunity")
+                    idCommunity = navBackStackEntry.arguments?.getString("idCommunity")
                 )
             }
+
 
 //            composable(Screen.ExploreArticle.route + "/{articleId}") { backStackEntry ->
 //                val articleId = backStackEntry.arguments?.getString("articleId")
