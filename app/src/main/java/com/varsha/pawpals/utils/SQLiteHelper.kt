@@ -1,11 +1,15 @@
 package com.varsha.pawpals.utils
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.varsha.pawpals.data.alarm.ReminderReceiver
 import com.varsha.pawpals.model.AlarmData
 import com.varsha.pawpals.model.PetData
 import java.nio.file.Files.delete
@@ -113,7 +117,6 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         val cursor = db.rawQuery(selectQuery, arrayOf(petId.toString()))
         var pet: PetData? = null
 
-
         if (cursor.moveToFirst()) {
             pet = PetData(
                 id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
@@ -129,7 +132,6 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         db.close()
         return pet
     }
-
 
     fun addAlarm(alarm: AlarmData): Long {
         val db = this.writableDatabase
@@ -216,6 +218,25 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
         return alarmList
     }
 
+    fun deleteAlarm(context: Context, alarmId: Int): Int {
+        val db = this.writableDatabase
+        val success = db.delete(TABLE_ALARMS, "$COLUMN_ALARM_ID=?", arrayOf(alarmId.toString()))
+        db.close()
+
+        if (success > 0) {
+            cancelAlarm(context, alarmId)
+        }
+        return success
+    }
+
+    private fun cancelAlarm(context: Context, alarmId: Int) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, ReminderReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, alarmId, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        alarmManager.cancel(pendingIntent)
+    }
 
 }
 

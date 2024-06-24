@@ -41,29 +41,20 @@ import com.varsha.pawpals.utils.SQLiteHelper
 fun PlanPetScreen(
     navController: NavController,
     petId: Int?,
-
 ) {
-    // Periksa apakah petId null, jika iya, navigasikan kembali
     if (petId == null) {
         navController.navigateUp()
         return
     }
 
-    // Konteks lokal dan SQLiteHelper untuk mengakses database
     val context = LocalContext.current
     val db = SQLiteHelper(context)
 
-    // State untuk menyimpan PetData saat ini
     var pet by remember { mutableStateOf<PetData?>(null) }
     var alarms by remember { mutableStateOf<List<AlarmData>?>(null) }
 
-    // Ambil data pet saat komponen dimuat
     LaunchedEffect(petId) {
         pet = db.getPetById(petId)
-    }
-
-    // Ambil data alarm saat komponen dimuat
-    LaunchedEffect(petId) {
         alarms = db.getAlarmsByPetId(petId)
     }
 
@@ -99,7 +90,6 @@ fun PlanPetScreen(
             )
         }
     ) { contentPadding ->
-        // Tampilkan loading jika data alarm belum tersedia
         if (alarms == null) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(text = "Not Found", fontSize = 16.sp, fontWeight = FontWeight.Bold)
@@ -141,15 +131,16 @@ fun PlanPetScreen(
                     }
 
                     items(alarms!!, key = { it.id }) { alarm ->
-                        DailyPlanItem(alarm = alarm)
+                        DailyPlanItem(alarm = alarm, onDelete = { alarmId ->
+                            db.deleteAlarm(context, alarmId)
+                            alarms = db.getAlarmsByPetId(petId)
+                        })
                     }
                 }
             }
         }
     }
 }
-
-
 
 
 @RequiresApi(Build.VERSION_CODES.O)
