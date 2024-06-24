@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.varsha.pawpals.model.AlarmData
 import com.varsha.pawpals.model.PetData
 import java.nio.file.Files.delete
 import java.time.LocalDate
@@ -218,10 +219,4 @@ class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
 
 }
 
-data class AlarmData(
-    val id: Int = 0,
-    val petId: Int,
-    val name: String,
-    val time: String,
-    val days: List<Boolean>
-)
+

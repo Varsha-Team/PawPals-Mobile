@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.varsha.pawpals.model.AlarmData
 import com.varsha.pawpals.model.alarm.scheduleNotification
 import com.varsha.pawpals.ui.presentation.component.ButtonItem1
 import com.varsha.pawpals.ui.presentation.component.ButtonItem2
@@ -30,7 +31,7 @@ import com.varsha.pawpals.ui.presentation.component.ScheduleTimeTextField
 import com.varsha.pawpals.ui.presentation.component.SwitchItem
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
 import com.varsha.pawpals.ui.presentation.component.TimePickerDialog
-import com.varsha.pawpals.utils.AlarmData
+
 import com.varsha.pawpals.utils.SQLiteHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
