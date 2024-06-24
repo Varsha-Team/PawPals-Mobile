@@ -54,7 +54,8 @@ import com.varsha.pawpals.ui.presentation.schedule.editPlan.EditPlanScreen
 import com.varsha.pawpals.ui.presentation.schedule.editPlan.PlanPetScreen
 import com.varsha.pawpals.ui.presentation.splash.SplashScreen
 import com.varsha.pawpals.ui.screen.EditPetScreen
-import com.varsha.pawpals.ui.screen.ScheduleScreen
+import com.varsha.pawpals.ui.presentation.schedule.ScheduleScreen
+import com.varsha.pawpals.ui.presentation.schedule.editPlan.ColumnEditPlan
 
 // Background Color
 val backgroundColor = Brush.radialGradient(
@@ -83,6 +84,9 @@ fun PawPalsApp(
                 && !currentRoute.contains(Screen.DetailArticle.route)
                 && !currentRoute.contains(Screen.EditProfile.route)
                 && !currentRoute.contains(Screen.Splash.route)
+                && !currentRoute.contains(Screen.AddPet.route)
+                && !currentRoute.contains(Screen.EditPet.route)
+                && !currentRoute.contains(Screen.EditPlan.route)
             ) {
                 BottomBar(navController = navController)
             }
@@ -96,7 +100,7 @@ fun PawPalsApp(
             composable(Screen.Splash.route){
                 SplashScreen(navController = navController)
             }
-            
+
             composable(Screen.Home.route) {
                 HomeScreen(navController = navController)
             }
@@ -136,7 +140,7 @@ fun PawPalsApp(
             composable(Screen.Notification.route) {
                 NotificationScreen(navController = navController)
             }
-            
+
             composable(Screen.Bookmark.route) {
                 BookmarkScreen(navController = navController)
             }
@@ -145,18 +149,6 @@ fun PawPalsApp(
                 PlanPetScreen(navController = navController, id)
             }
 
-            composable(Screen.EditPlan.route) {
-                EditPlanScreen(navController = navController)
-            }
-
-            composable(Screen.AddPet.route) {
-                AddPetScreen(onBackClicked = {}, navController = navController)
-            }
-            
-            composable(Screen.PostScreen.route){
-                PostingScreen(navController = navController)
-            }   
-
             composable(Screen.EditPet.route + "/{petId}",
                 arguments = listOf(navArgument("petId"){type = NavType.IntType})
             ) {navBackStackEntry ->
@@ -164,17 +156,37 @@ fun PawPalsApp(
                     onBackClicked = {},
                     navController = navController,
                     petId = navBackStackEntry.arguments?.getInt("petId")
-                    )
+                )
             }
-            
+
+            composable(Screen.AddPet.route) {
+                AddPetScreen(onBackClicked = {}, navController = navController)
+            }
+
+            composable(Screen.PostScreen.route){
+                PostingScreen(navController = navController)
+            }
+
+            composable(Screen.EditPlan.route + "/{petId}",
+                arguments = listOf(navArgument("petId"){type = NavType.IntType})
+            ) {navBackStackEntry ->
+                navBackStackEntry.arguments?.getInt("petId")?.let {
+                    EditPlanScreen(
+                        // onBackClicked = {},
+                        navController = navController,
+                        petId = it
+                    )
+                }
+            }
+
             composable(Screen.PlanPet.route + "/{petId}",
                 arguments = listOf(navArgument("petId"){type = NavType.IntType})
-                ){navBackStackEntry->
-                    PlanPetScreen(
-                        navController = navController,
-                        petId = navBackStackEntry.arguments?.getInt("petId")
-                    )
-                
+            ){navBackStackEntry->
+                PlanPetScreen(
+                    navController = navController,
+                    petId = navBackStackEntry.arguments?.getInt("petId")
+                )
+
             }
 
             composable(

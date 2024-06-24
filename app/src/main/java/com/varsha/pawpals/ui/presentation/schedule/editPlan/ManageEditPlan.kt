@@ -4,13 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -34,13 +28,10 @@ import com.varsha.pawpals.R
 import com.varsha.pawpals.model.PetData
 import java.time.LocalDate
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ManageEditPlan(
-    pet : PetData,
-    modifier: Modifier = Modifier,
-
-
+    pet: PetData,
+    modifier: Modifier = Modifier
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(1.dp, Alignment.Start),
@@ -52,12 +43,12 @@ fun ManageEditPlan(
             modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = "Manage " + pet.nama + "'s Plan" ,
+                text = "Manage ${pet.nama}'s Plan",
                 fontSize = 16.sp,
                 fontWeight = FontWeight(600),
             )
             Text(
-                text = "Take a look at how  " + pet.nama + " ’s day was planned.",
+                text = "Take a look at how ${pet.nama}'s day was planned.",
                 fontSize = 12.sp,
             )
         }
@@ -99,14 +90,15 @@ fun ManageEditPlan(
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview
 @Composable
-private fun ManageEditPetPreview() {
-    ManageEditPlan(
-        pet = PetData(id = 1,
-            nama = "Basuki",
+private fun ManageEditPlanPrev() {
+    ManageEditPlan(pet = PetData(id = 1,
+            nama = "Bjir",
             photo = R.drawable.pet_photo1,
-            type = "",
             jenis = "kucing oren",
             gender = "tidak tau",
-            birthday = LocalDate.of(2020, 5, 18))
+            birthday = LocalDate.of(2020, 5, 18),
+            type = "gacor"
+        )
     )
+
 }
