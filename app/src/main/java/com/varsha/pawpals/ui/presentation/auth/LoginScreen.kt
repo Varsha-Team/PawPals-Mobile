@@ -1,6 +1,9 @@
 package com.varsha.pawpals.ui.presentation.auth
 
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,10 +34,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -45,17 +50,27 @@ import androidx.navigation.compose.rememberNavController
 import com.varsha.pawpals.R
 import com.varsha.pawpals.navigation.Screen
 import com.varsha.pawpals.ui.presentation.component.TextFieldItem
+import com.varsha.pawpals.ui.presentation.component.TextFieldPasswordItem
 import com.varsha.pawpals.ui.theme.PawPalsTheme
+import com.varsha.pawpals.utils.SQLiteHelper
 
+
+
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen (
+    navController: NavController,
     modifier: Modifier = Modifier,
-    navController: NavController
+
 ) {
-    var textInput by remember { mutableStateOf("") }
+    val context = LocalContext.current
+
+    //var textInput by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     val checkedState = remember { mutableStateOf(true) }
+    val dbHelper = SQLiteHelper(context)
 
   //  Scaffold(
 //        floatingActionButton = {
@@ -115,9 +130,9 @@ fun LoginScreen (
                         )
                     )
                     TextFieldItem(
-                        value = textInput,
-                        onValueChange = { textInput = it },
-                        label = "Enter Username",
+                        value = email,
+                        onValueChange = { email = it },
+                        label = "Enter email",
                         keyboardType = KeyboardType.Text,
                     )
                 }
@@ -139,12 +154,13 @@ fun LoginScreen (
                             textAlign = TextAlign.Center
                         )
                     )
-                    TextFieldItem(
+                    TextFieldPasswordItem(
                         value = password,
                         onValueChange = { password = it },
                         label = "Enter Password",
-                        keyboardType = KeyboardType.Text,
-                        isPassword = true
+                        keyboardType = KeyboardType.Password,
+                        isPassword = true,
+                        visualTransformation = PasswordVisualTransformation()
                     )
                 }
 
@@ -178,7 +194,23 @@ fun LoginScreen (
                     )
                 }
                 Button(
-                    onClick = { navController.navigate(Screen.Home.route) },
+                    onClick = {
+                        if (email.isBlank() || password.isBlank() ) {
+                            Toast.makeText(context, "Please fill all field", Toast.LENGTH_SHORT).show()
+                        } else {
+                            val user = dbHelper.getUserByEmailAndPassword(email, password)
+                            if (user != null && user.pass == password) {
+                                navController.navigate(Screen.Home.route)
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Email atau kata sandi salah",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                // navController.navigate(Screen.Home.route)
+                            }
+                        }
+                    },
                     colors = ButtonDefaults.buttonColors(
                         Color(0xFFED6A09)
                     ),
@@ -286,6 +318,6 @@ fun LoginScreen (
 @Composable
 private fun LoginScreenPrev() {
     PawPalsTheme {
-        LoginScreen(navController = rememberNavController())
+        //LoginScreen(navController = rememberNavController(), context = context)
     }
 }
