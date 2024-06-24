@@ -154,6 +154,164 @@ object DataArticle {
                     "Sebelum mandi, pastikan untuk menyisir dan memotong kuku anjing terlebih dahulu. Kamu dapat memandikan anjing dengan sabun mandi khusus yang dapat dibeli di toko hewan. Sabun ini sudah memiliki formula khusus untuk membersihkan kotoran pada anjing peliharaan."
 
         ),
+        Artikel(
+            id = 4,
+            title = "Tips Melatih Kucing untuk Menggunakan Litter Box",
+            photo = R.drawable.image_article1,
+            category = "Behaviour & Training",
+            author = "PetTrainer",
+            date = "15 Oct 2022",
+            description = "Mengajarkan kucing menggunakan litter box mungkin tampak sulit, tetapi dengan beberapa tips berikut, prosesnya bisa menjadi lebih mudah:\n" +
+                    "\n1. Pilih litter box yang tepat\n" +
+                    "Pastikan ukuran dan jenis litter box sesuai dengan ukuran dan preferensi kucing Anda. Beberapa kucing lebih suka litter box terbuka, sementara yang lain lebih suka yang tertutup. Memilih litter box yang tepat sangat penting untuk kenyamanan kucing Anda, karena jika kucing merasa nyaman, mereka akan lebih cenderung menggunakannya secara konsisten.\n" +
+                    "\n2. Tempatkan di lokasi yang tepat\n" +
+                    "Letakkan litter box di tempat yang mudah diakses dan tenang, jauh dari area makan dan minum kucing. Kucing suka privasi ketika mereka buang air, jadi tempat yang sepi dan tidak terlalu banyak lalu lintas akan membuat mereka merasa lebih aman dan nyaman.\n" +
+                    "\n3. Kenalkan kucing pada litter box\n" +
+                    "Bawa kucing Anda ke litter box beberapa kali sehari, terutama setelah makan dan bermain. Membiasakan kucing dengan lokasi dan fungsi litter box sejak awal akan membantu mereka memahami bahwa ini adalah tempat yang tepat untuk buang air.\n" +
+                    "\n4. Jaga kebersihan litter box\n" +
+                    "Kucing lebih suka tempat yang bersih, jadi pastikan untuk membersihkan litter box secara teratur. Bersihkan kotoran setiap hari dan ganti seluruh pasir setiap minggu untuk menjaga kebersihan dan mencegah bau yang tidak sedap.\n" +
+                    "\n5. Berikan pujian dan hadiah\n" +
+                    "Setiap kali kucing Anda menggunakan litter box dengan benar, berikan pujian atau camilan sebagai hadiah. Penguatan positif ini akan membantu kucing Anda mengasosiasikan penggunaan litter box dengan pengalaman yang menyenangkan."
+        ),
+        Artikel(
+            id = 5,
+            title = "Manfaat Memberikan Makanan Basah untuk Kucing",
+            photo = R.drawable.pet_photo1,
+            category = "Nutrition",
+            author = "PetFoodExpert",
+            date = "20 Nov 2022",
+            description = "Makanan basah atau wet food memiliki banyak manfaat bagi kucing peliharaan Anda:\n" +
+                    "\n1. Meningkatkan asupan air\n" +
+                    "Kucing yang makan makanan basah cenderung lebih terhidrasi karena wet food mengandung lebih banyak air dibandingkan dry food. Ini sangat penting, terutama bagi kucing yang tidak suka minum air dari mangkuk.\n" +
+                    "\n2. Mengurangi risiko penyakit saluran kemih\n" +
+                    "Asupan cairan yang lebih tinggi dapat membantu mencegah penyakit saluran kemih dan batu ginjal pada kucing. Penyakit saluran kemih bisa sangat menyakitkan dan berbahaya, jadi menjaga kucing Anda tetap terhidrasi adalah langkah pencegahan yang baik.\n" +
+                    "\n3. Lebih mudah dikunyah\n" +
+                    "Wet food lebih lembut dan lebih mudah dikunyah, sehingga baik untuk kucing yang memiliki masalah gigi atau mulut. Kucing yang lebih tua atau yang memiliki masalah kesehatan mulut akan lebih mudah makan makanan basah dibandingkan makanan kering.\n" +
+                    "\n4. Lebih menarik bagi kucing\n" +
+                    "Aroma dan tekstur wet food seringkali lebih menarik bagi kucing, terutama bagi kucing yang pemilih dalam hal makanan. Kucing cenderung lebih bersemangat untuk makan ketika diberikan wet food, yang bisa membantu menjaga berat badan dan kesehatan mereka.\n" +
+                    "\n5. Memenuhi kebutuhan nutrisi\n" +
+                    "Makanan basah biasanya lebih tinggi protein dan lemak, yang penting untuk kesehatan kucing. Kucing adalah hewan karnivora yang membutuhkan banyak protein dalam diet mereka, dan wet food sering kali mengandung nutrisi yang lebih sesuai dengan kebutuhan alami mereka."
+        ),
+        Artikel(
+            id = 6,
+            title = "Cara Merawat Kucing Senior agar Tetap Sehat",
+            photo = R.drawable.article_food,
+            category = "Care",
+            author = "SeniorPetCare",
+            date = "30 Dec 2022",
+            description = "Kucing senior membutuhkan perawatan khusus agar tetap sehat dan nyaman di usia lanjut mereka. Berikut beberapa tips yang dapat Anda terapkan:\n" +
+                    "\n1. Perhatikan pola makan\n" +
+                    "Kucing senior memerlukan diet yang diformulasikan khusus untuk memenuhi kebutuhan nutrisi mereka. Pilih makanan yang tinggi protein dan rendah kalori untuk menjaga berat badan ideal dan mendukung kesehatan otot.\n" +
+                    "\n2. Rutin cek kesehatan\n" +
+                    "Bawa kucing Anda ke dokter hewan setidaknya dua kali setahun untuk pemeriksaan kesehatan rutin dan mendeteksi dini masalah kesehatan. Kunjungan rutin ini penting untuk menangkap masalah kesehatan sebelum menjadi serius.\n" +
+                    "\n3. Jaga kebersihan mulut\n" +
+                    "Masalah gigi sering terjadi pada kucing senior. Bersihkan gigi kucing Anda secara rutin dan periksakan ke dokter hewan jika ada tanda-tanda masalah. Gigi yang sehat sangat penting untuk kenyamanan dan kemampuan makan kucing Anda.\n" +
+                    "\n4. Sediakan tempat tidur yang nyaman\n" +
+                    "Kucing senior mungkin mengalami arthritis atau masalah persendian lainnya. Pastikan mereka memiliki tempat tidur yang empuk dan mudah diakses. Tempat tidur yang nyaman dan hangat akan membantu meringankan nyeri sendi dan memberikan tempat istirahat yang baik.\n" +
+                    "\n5. Berikan perhatian lebih\n" +
+                    "Kucing senior mungkin membutuhkan lebih banyak perhatian dan kasih sayang. Luangkan waktu untuk bermain dan berinteraksi dengan mereka setiap hari. Interaksi sosial dan stimulasi mental sangat penting untuk kebahagiaan dan kesejahteraan kucing yang lebih tua."
+        ),
+        Artikel(
+            id = 7,
+            title = "Pentingnya Memberikan Suplemen untuk Kucing",
+            photo = R.drawable.pet_photo1,
+            category = "Health",
+            author = "VetExpert",
+            date = "5 Jan 2023",
+            description = "Suplemen dapat membantu menjaga kesehatan kucing Anda, terutama jika mereka memiliki kebutuhan khusus atau kondisi kesehatan tertentu. Berikut adalah beberapa suplemen yang bermanfaat bagi kucing:\n" +
+                    "\n1. Asam lemak omega-3\n" +
+                    "Membantu mengurangi peradangan dan mendukung kesehatan kulit serta bulu kucing. Omega-3 dapat ditemukan dalam minyak ikan dan sangat bermanfaat untuk kucing dengan masalah kulit atau bulu yang kusam.\n" +
+                    "\n2. Glukosamin dan kondroitin\n" +
+                    "Baik untuk kesehatan sendi, terutama pada kucing senior yang rentan terhadap arthritis. Suplemen ini membantu menjaga kelenturan dan kesehatan sendi, serta mengurangi nyeri dan kekakuan.\n" +
+                    "\n3. Probiotik\n" +
+                    "Mendukung kesehatan pencernaan dan meningkatkan sistem kekebalan tubuh kucing. Probiotik membantu menjaga keseimbangan bakteri baik dalam usus, yang penting untuk pencernaan yang sehat.\n" +
+                    "\n4. Vitamin B kompleks\n" +
+                    "Membantu menjaga kesehatan saraf dan mendukung metabolisme energi. Vitamin B kompleks sangat penting untuk fungsi saraf yang sehat dan dapat membantu kucing yang mengalami stres atau kecemasan.\n" +
+                    "\n5. Taurin\n" +
+                    "Asam amino esensial yang penting untuk kesehatan jantung dan penglihatan kucing. Taurin adalah nutrisi yang sangat penting bagi kucing, karena kekurangan taurin dapat menyebabkan masalah jantung dan penglihatan yang serius."
+        ),
+        Artikel(
+            id = 8,
+            title = "Cara Menangani Kucing yang Agresif",
+            photo = R.drawable.article_food,
+            category = "Behaviour & Training",
+            author = "CatBehaviorist",
+            date = "12 Feb 2023",
+            description = "Kucing yang agresif bisa menjadi tantangan bagi pemiliknya. Berikut adalah beberapa langkah yang bisa Anda ambil untuk menangani kucing yang menunjukkan perilaku agresif:\n" +
+                    "\n1. Identifikasi Penyebab Agresivitas\n" +
+                    "Kucing bisa menjadi agresif karena berbagai alasan seperti rasa sakit, ketakutan, atau stres. Cobalah untuk mengidentifikasi penyebabnya dengan mengamati situasi ketika kucing Anda menunjukkan agresivitas.\n" +
+                    "\n2. Berikan Ruang yang Aman\n" +
+                    "Pastikan kucing Anda memiliki tempat yang aman dan tenang untuk beristirahat. Ini bisa membantu mengurangi stres dan kecemasan yang dapat memicu agresivitas.\n" +
+                    "\n3. Hindari Hukuman Fisik\n" +
+                    "Menghukum kucing secara fisik hanya akan memperburuk perilaku agresifnya. Sebaliknya, gunakan pendekatan yang lembut dan penuh kasih sayang.\n" +
+                    "\n4. Gunakan Metode Pengalihan\n" +
+                    "Ketika kucing mulai menunjukkan tanda-tanda agresif, coba alihkan perhatiannya dengan mainan atau aktivitas yang menarik. Ini bisa membantu mengurangi intensitas agresivitasnya.\n" +
+                    "\n5. Konsultasikan dengan Ahli Perilaku\n" +
+                    "Jika agresivitas kucing Anda tidak kunjung membaik, konsultasikan dengan ahli perilaku hewan atau dokter hewan untuk mendapatkan bantuan profesional."
+        ),
+        Artikel(
+            id = 9,
+            title = "Nutrisi yang Tepat untuk Kucing Kecil",
+            photo = R.drawable.article_fashion,
+            category = "Nutrition",
+            author = "KittenCareExpert",
+            date = "28 Mar 2023",
+            description = "Memberikan nutrisi yang tepat untuk kucing kecil sangat penting untuk pertumbuhan dan perkembangan mereka. Berikut adalah panduan tentang kebutuhan nutrisi bagi kucing kecil:\n" +
+                    "\n1. Makanan yang Tinggi Protein\n" +
+                    "Kucing kecil membutuhkan makanan yang tinggi protein untuk mendukung pertumbuhan otot dan jaringan. Pilihlah makanan yang khusus diformulasikan untuk anak kucing.\n" +
+                    "\n2. Lemak Sehat\n" +
+                    "Lemak adalah sumber energi yang penting bagi kucing kecil. Pastikan makanan yang Anda berikan mengandung lemak sehat yang cukup untuk memenuhi kebutuhan energi mereka.\n" +
+                    "\n3. Vitamin dan Mineral\n" +
+                    "Vitamin dan mineral seperti kalsium dan fosfor penting untuk perkembangan tulang dan gigi yang sehat. Pastikan makanan anak kucing mengandung keseimbangan nutrisi ini.\n" +
+                    "\n4. DHA untuk Perkembangan Otak\n" +
+                    "DHA, asam lemak omega-3, penting untuk perkembangan otak dan penglihatan. Carilah makanan yang diperkaya dengan DHA untuk mendukung perkembangan kognitif kucing kecil.\n" +
+                    "\n5. Air yang Cukup\n" +
+                    "Kucing kecil membutuhkan hidrasi yang cukup untuk mendukung fungsi tubuh yang optimal. Pastikan mereka selalu memiliki akses ke air bersih dan segar.\n" +
+                    "\n6. Porsi Makan yang Tepat\n" +
+                    "Berikan makanan dalam porsi kecil tetapi sering. Kucing kecil memiliki perut yang kecil dan tidak bisa makan banyak sekaligus, jadi pemberian makanan secara berkala akan membantu mereka tetap energik dan sehat."
+        ),
+        Artikel(
+            id = 10,
+            title = "Tips Perawatan Kucing dengan Masalah Kulit",
+            photo = R.drawable.pet_photo1,
+            category = "Care",
+            author = "VetDermatologist",
+            date = "15 Apr 2023",
+            description = "Kucing bisa mengalami berbagai masalah kulit seperti alergi, infeksi, atau parasit. Berikut adalah beberapa tips untuk merawat kucing dengan masalah kulit:\n" +
+                    "\n1. Identifikasi Penyebab Masalah Kulit\n" +
+                    "Bawa kucing Anda ke dokter hewan untuk mendapatkan diagnosis yang tepat. Penyebab masalah kulit bisa bervariasi mulai dari alergi makanan, gigitan kutu, hingga infeksi jamur.\n" +
+                    "\n2. Berikan Makanan Hipoalergenik\n" +
+                    "Jika kucing Anda mengalami alergi makanan, dokter hewan mungkin akan merekomendasikan diet hipoalergenik. Makanan ini diformulasikan khusus untuk mengurangi reaksi alergi.\n" +
+                    "\n3. Rutin Mandikan Kucing\n" +
+                    "Mandikan kucing Anda dengan sampo khusus yang direkomendasikan oleh dokter hewan. Ini dapat membantu mengurangi gatal dan iritasi serta menghilangkan alergen dan kotoran dari kulit.\n" +
+                    "\n4. Jaga Kebersihan Lingkungan\n" +
+                    "Pastikan lingkungan tempat tinggal kucing bersih dan bebas dari kutu atau parasit lainnya. Cuci tempat tidur dan mainan kucing secara teratur untuk mengurangi risiko infeksi ulang.\n" +
+                    "\n5. Berikan Perawatan Topikal\n" +
+                    "Dokter hewan mungkin akan meresepkan krim atau salep topikal untuk mengobati masalah kulit. Pastikan Anda mengikuti instruksi penggunaan dengan tepat.\n" +
+                    "\n6. Kontrol dan Cegah Kutu\n" +
+                    "Gunakan produk anti-kutu secara rutin untuk mencegah infestasi kutu yang bisa memperburuk masalah kulit. Produk ini biasanya tersedia dalam bentuk spot-on atau kalung anti-kutu."
+        ),
+        Artikel(
+            id = 11,
+            title = "Panduan Vaksinasi Kucing: Apa yang Perlu Anda Ketahui",
+            photo = R.drawable.image_article1,
+            category = "Health",
+            author = "VetCare",
+            date = "10 May 2023",
+            description = "Vaksinasi adalah langkah penting dalam menjaga kesehatan kucing Anda. Berikut adalah panduan tentang vaksinasi kucing yang perlu Anda ketahui:\n" +
+                    "\n1. Vaksinasi Dasar\n" +
+                    "Vaksinasi dasar meliputi vaksin untuk penyakit panleukopenia, rhinotracheitis, dan calicivirus. Ini adalah vaksinasi yang wajib diberikan pada kucing untuk mencegah penyakit yang umum dan berbahaya.\n" +
+                    "\n2. Vaksin Rabies\n" +
+                    "Vaksin rabies adalah wajib di banyak tempat karena penyakit ini sangat berbahaya dan dapat menular ke manusia. Pastikan kucing Anda mendapatkan vaksin rabies sesuai jadwal yang ditentukan oleh dokter hewan.\n" +
+                    "\n3. Vaksin FeLV\n" +
+                    "Vaksin FeLV (Feline Leukemia Virus) dianjurkan untuk kucing yang berisiko tinggi terkena infeksi ini, seperti kucing yang sering keluar rumah atau berinteraksi dengan kucing lain yang mungkin terinfeksi.\n" +
+                    "\n4. Jadwal Vaksinasi\n" +
+                    "Anak kucing biasanya mulai divaksinasi pada usia 6-8 minggu, dengan booster yang diberikan beberapa minggu kemudian. Setelah itu, vaksinasi ulang biasanya diperlukan setiap tahun atau sesuai rekomendasi dokter hewan.\n" +
+                    "\n5. Efek Samping Vaksin\n" +
+                    "Beberapa kucing mungkin mengalami efek samping ringan setelah vaksinasi, seperti demam ringan atau mengantuk. Efek ini biasanya hilang dalam satu atau dua hari. Jika kucing Anda menunjukkan reaksi yang lebih serius, segera hubungi dokter hewan.\n" +
+                    "\n6. Pentingnya Vaksinasi\n" +
+                    "Vaksinasi membantu melindungi kucing Anda dari penyakit yang berpotensi fatal. Selain itu, vaksinasi juga membantu mencegah penyebaran penyakit ke kucing lain dan manusia."
+        )
     )
 
     val kategoriArtikel = listOf(
